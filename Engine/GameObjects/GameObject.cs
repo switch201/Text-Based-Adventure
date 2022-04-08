@@ -14,18 +14,25 @@ namespace Text_Based_Adventure.GameObjects
 
         public GameObject()
         {
-            dto = Readfile();
+            dto = JsonConvert.DeserializeObject<GameObjectDTO>(Readfile());
         }
 
 
-        protected GameObjectDTO Readfile(string fileName = "ObjectText.json")
+        protected string Readfile(string fileName = "Content/JsonContent/GameObjects/ObjectText.json")
         {
-            using (StreamReader reader = new StreamReader(fileName))
-            using (JsonTextReader jsonReader = new JsonTextReader(reader))
+
+            using (StreamReader r = new StreamReader(fileName))
             {
-                JsonSerializer ser = new JsonSerializer();
-                return ser.Deserialize<GameObjectDTO>(jsonReader);
+                return r.ReadToEnd();
             }
+
+            //var x = Path.GetFullPath(fileName);
+            //using (StreamReader reader = new StreamReader(x)) 
+            //using (JsonTextReader jsonReader = new JsonTextReader(reader))
+            //{
+            //    JsonSerializer ser = new JsonSerializer();
+            //    return ser.Deserialize<GameObjectDTO>(jsonReader);
+            //}
         }
 
         public void Describe()

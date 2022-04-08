@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Doors;
@@ -20,14 +21,15 @@ namespace Text_Based_Adventure.Rooms
 
         public Room()
         {
-            dto = (RoomDTO)Readfile();
+            dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile("Content/JsonContent/GameObjects/Rooms/RoomText.json"));
         }
 
         public void Enter() {
+
             Util.wl(dto.EnterText);
         }
 
-        void Exit(Room r) {
+        public void Exit(Room r) {
             Util.wl(dto.ExitText);
             r.Enter();
         }

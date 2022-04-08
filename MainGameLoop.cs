@@ -1,4 +1,6 @@
 ﻿using System;
+using Text_Based_Adventure.Content;
+using Text_Based_Adventure.Rooms;
 
 namespace Text_Based_Adventure
 {
@@ -12,9 +14,12 @@ namespace Text_Based_Adventure
 
             Util.wl(Figgle.FiggleFonts.Gothic.Render("DOOM!!"));
 
-            Util.rl();
+            Room room = new TreasureRoom();
 
-            MainMenu.Start();
+            Room room2 = new Room();
+
+            room.Enter();
+            room.Exit(room2);
         }
     }
 }

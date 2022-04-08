@@ -7,6 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Content\JsonContent\GameObjects\ObjectText.json" />
+    <None Remove="Content\JsonContent\GameObjects\Rooms\RoomText.json" />
+    <None Remove="Content\JsonContent\GameObjects\Rooms\TreasureRoomText.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Content\JsonContent\GameObjects\ObjectText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\JsonContent\GameObjects\Rooms\RoomText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\JsonContent\GameObjects\Rooms\TreasureRoomText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Figgle" Version="0.4.0" />
     <PackageReference Include="Json.Net" Version="1.0.33" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
