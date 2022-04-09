@@ -6,6 +6,9 @@ namespace Text_Based_Adventure.Engine
 {
     class Interpreter
     {
+        public void Interpret(string input)
+        {
 
+        }
     }
 }

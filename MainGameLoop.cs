@@ -1,5 +1,7 @@
 ﻿using System;
 using Text_Based_Adventure.Content;
+using Text_Based_Adventure.Engine;
+using Text_Based_Adventure.Engine.GameStates;
 using Text_Based_Adventure.Rooms;
 
 namespace Text_Based_Adventure
@@ -8,18 +10,29 @@ namespace Text_Based_Adventure
     {
         static void Main(string[] args)
         {
-            Util.wl(Figgle.FiggleFonts.Epic.Render("Welcome"));
+            GameState gameState = new GameState();
+            Interpreter i = new Interpreter();
 
-            Util.wl(Figgle.FiggleFonts.Ghoulish.Render("To Your"));
+            while (gameState.currentGameState != States.Exit)
+            {
+                //Take input
+                i.Interpret(Util.rl());
+                //Interpret
+                //give output
 
-            Util.wl(Figgle.FiggleFonts.Gothic.Render("DOOM!!"));
+            }
 
-            Room room = new TreasureRoom();
+            //Room room = new TreasureRoom();
 
-            Room room2 = new Room();
+            //Room room2 = new Room();
 
-            room.Enter();
-            room.Exit(room2);
+            //GameActions actions = new GameActions();
+
+            //room.Enter();
+            //room.Exit(room2);
+
+            //actions.Examine(room);
+
         }
     }
 }

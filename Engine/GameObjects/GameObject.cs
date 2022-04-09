@@ -25,14 +25,6 @@ namespace Text_Based_Adventure.GameObjects
             {
                 return r.ReadToEnd();
             }
-
-            //var x = Path.GetFullPath(fileName);
-            //using (StreamReader reader = new StreamReader(x)) 
-            //using (JsonTextReader jsonReader = new JsonTextReader(reader))
-            //{
-            //    JsonSerializer ser = new JsonSerializer();
-            //    return ser.Deserialize<GameObjectDTO>(jsonReader);
-            //}
         }
 
         public void Describe()
