@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Text_Based_Adventure.GameObjects.Intractable
+namespace Text_Based_Adventure.Engine.Controllers
 {
-    interface Interactable
+    public class ItemController
     {
     }
 }

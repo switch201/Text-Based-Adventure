@@ -16,7 +16,8 @@ namespace Text_Based_Adventure.Engine
             {
                 new Go(),
                 new Exit(),
-                new Inspect()
+                new Inspect(),
+                new SearchFor(),
             };
         }
 
@@ -24,7 +25,7 @@ namespace Text_Based_Adventure.Engine
         {
             userInput = userInput.ToLower();
 
-            string[] seperatedInputWords = userInput.Split(' ');
+            List<string> seperatedInputWords = new List<string>(userInput.Split(' '));
 
             foreach(InputAction action in gameActions)
             {

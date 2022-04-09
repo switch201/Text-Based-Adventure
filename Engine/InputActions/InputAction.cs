@@ -10,7 +10,7 @@ namespace Text_Based_Adventure.Engine
     {
         public abstract string keyWord { get; }
 
-        public abstract void RespondToInput(GameController controller, string[] seperatedWords);
+        public abstract void RespondToInput(GameController controller, List<string> seperatedWords);
 
     }
 }

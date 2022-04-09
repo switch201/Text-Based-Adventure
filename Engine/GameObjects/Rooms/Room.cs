@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Doors;
+using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.Rooms;
 using Text_Based_Adventure.GameObjects;
 
@@ -15,7 +16,8 @@ namespace Text_Based_Adventure.Rooms
 
         public Dictionary<string, Door> Doors; 
 
-        public List<GameObject> Items;
+        public List<LargeItem> LargeItems;
+        public List<SmallItem> SmallItems;
 
         public Room()
         {
@@ -56,6 +58,11 @@ namespace Text_Based_Adventure.Rooms
         public void setExit(string direction, Room room)
         {
             Exits.Add(direction, room);
+        }
+
+        public void addItem(Item item)
+        {
+
         }
     }
 }

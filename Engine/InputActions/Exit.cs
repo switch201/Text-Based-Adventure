@@ -8,7 +8,7 @@ namespace Text_Based_Adventure.Engine.InputActions
     {
         public override string keyWord => "exit";
 
-        public override void RespondToInput(GameController controller, string[] seperatedWords)
+        public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             controller.ExitGame();
         }
