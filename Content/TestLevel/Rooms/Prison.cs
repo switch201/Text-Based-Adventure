@@ -10,9 +10,9 @@ namespace Text_Based_Adventure.Content.TestLevel.Rooms
 {
     class Prison : Room
     {
-        public Prison()
+        public Prison(string roomName) : base(roomName)
         {
-            dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile("Content/TestLevel/JsonContent/GameObjects/Rooms/PrisonText.json"));
+
         }
 
         protected override GameObjectDTO dto { get; set; }

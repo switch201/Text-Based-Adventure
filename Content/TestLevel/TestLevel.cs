@@ -11,8 +11,8 @@ namespace Text_Based_Adventure.Content.TestLevel
     {
         public TestLevel()
         {
-            Room room1 = new TreasureRoom();
-            Room room2 = new Prison();
+            Room room1 = new TreasureRoom("TreasureRoom");
+            Room room2 = new Prison("Prison");
 
             room1.setExit("west", room2);
             room2.setExit("east", room1);

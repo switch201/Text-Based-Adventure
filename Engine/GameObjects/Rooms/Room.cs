@@ -19,10 +19,10 @@ namespace Text_Based_Adventure.Rooms
         public List<LargeItem> LargeItems;
         public List<SmallItem> SmallItems;
 
-        public Room()
+        public Room(string roomName) : base("void")
         {
             Exits = new Dictionary<string, Room>() { };
-            dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile("Engine/GameObjects/Rooms/RoomText.json"));
+            dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{roomName}Text.json"));
         }
 
         public Room Enter() {

@@ -7,20 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Content\TestLevel\JsonContent\GameObjects\ObjectText.json" />
+    <None Remove="Content\TestLevel\JsonContent\GameObjects\Items\ItemText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\PrisonText.json" />
-    <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\RoomText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\TreasureRoomText.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\ItemText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\TestLevel\JsonContent\GameObjects\Rooms\PrisonText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Engine\GameObjects\ObjectText.json">
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\ObjectText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Engine\GameObjects\Rooms\RoomText.json">
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\Rooms\RoomText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel\JsonContent\GameObjects\Rooms\TreasureRoomText.json">

@@ -12,9 +12,13 @@ namespace Text_Based_Adventure.GameObjects
 
         protected abstract GameObjectDTO dto{ get; set; }
 
-        public GameObject()
+        public string name;
+
+
+        public GameObject(string objectName)
         {
-            dto = JsonConvert.DeserializeObject<GameObjectDTO>(Readfile());
+            if(objectName != "void")
+                dto = JsonConvert.DeserializeObject<GameObjectDTO>(Readfile($"Content/TestLevel/JsonContent/GameObjects/{objectName}Text.json"));
         }
 
 

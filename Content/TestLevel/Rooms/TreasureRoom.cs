@@ -12,9 +12,9 @@ namespace Text_Based_Adventure.Content
 {
     class TreasureRoom : Room
     {
-        public TreasureRoom()
+        public TreasureRoom(string roomName) : base(roomName)
         {
-            dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile("Content/TestLevel/JsonContent/GameObjects/Rooms/TreasureRoomText.json"));
+
         }
 
         protected override GameObjectDTO dto { get; set; }
