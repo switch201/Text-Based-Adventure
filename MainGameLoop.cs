@@ -1,4 +1,11 @@
 ﻿using System;
+using Text_Based_Adventure.Content;
+using Text_Based_Adventure.Content.TestLevel;
+using Text_Based_Adventure.Engine;
+using Text_Based_Adventure.Engine.Games;
+using Text_Based_Adventure.Engine.GameStates;
+using Text_Based_Adventure.Engine.Levels;
+using Text_Based_Adventure.Rooms;
 
 namespace Text_Based_Adventure
 {
@@ -6,15 +13,32 @@ namespace Text_Based_Adventure
     {
         static void Main(string[] args)
         {
-            Util.wl(Figgle.FiggleFonts.Epic.Render("Welcome"));
 
-            Util.wl(Figgle.FiggleFonts.Ghoulish.Render("To Your"));
+            Level testLevel = new TestLevel();
 
-            Util.wl(Figgle.FiggleFonts.Gothic.Render("DOOM!!"));
+            Game testGame = new Game(testLevel);
+
+            GameState gameState = new GameState();
+
+            gameState.LoadTitle();
+
+            Util.wl("Enter your name...");
 
             Util.rl();
 
-            MainMenu.Start();
+            Util.wl("It means nothing now");
+
+            gameState.RunGame();
+
+            GameController gameController = new GameController(gameState, testGame);
+
+            gameController.StartGame();
+
+            while (gameController.gameState.currentGameState != States.Exit)
+            {
+                gameController.TakeUserInputAndRespond();
+            }
+
         }
     }
 }

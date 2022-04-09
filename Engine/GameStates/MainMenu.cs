@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_Based_Adventure.Engine.GameStates;
 
 namespace Text_Based_Adventure
 {
-    class MainMenu
+    class MainMenu : GameState
     {
 
         static List<string> keyWords = new List<string>() { "new", "load", "quit"};
