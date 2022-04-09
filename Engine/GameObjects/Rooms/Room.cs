@@ -11,8 +11,6 @@ namespace Text_Based_Adventure.Rooms
     public abstract class Room : GameObject
     {
 
-        protected new RoomDTO dto;
-
         protected Dictionary<string, Room> Exits;
 
         public Dictionary<string, Door> Doors; 
@@ -26,12 +24,12 @@ namespace Text_Based_Adventure.Rooms
         }
 
         public Room Enter() {
-            Util.wl(dto.EnterText);
+            Util.wl(((RoomDTO)dto).EnterText);
             return this;
         }
 
         public Room Exit(Room r) {
-            Util.wl(dto.ExitText);
+            Util.wl(((RoomDTO)dto).ExitText);
             return r.Enter();
         }
 

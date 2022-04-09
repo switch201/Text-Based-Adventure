@@ -5,7 +5,7 @@ using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Doors
 {
-    public class Door : GameObject
+    public class Door
     {
         bool IsLocked;
 

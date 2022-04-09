@@ -10,7 +10,7 @@ namespace Text_Based_Adventure.GameObjects
     public abstract class GameObject
     {
 
-        protected GameObjectDTO dto;
+        protected abstract GameObjectDTO dto{ get; set; }
 
         public GameObject()
         {

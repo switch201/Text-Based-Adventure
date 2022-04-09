@@ -16,10 +16,11 @@ namespace Text_Based_Adventure.Engine
             {
                 new Go(),
                 new Exit(),
+                new Inspect()
             };
         }
 
-        public States AcceptStringInput(string userInput, GameController gameController)
+        public void AcceptStringInput(string userInput, GameController gameController)
         {
             userInput = userInput.ToLower();
 
@@ -32,8 +33,6 @@ namespace Text_Based_Adventure.Engine
                     action.RespondToInput(gameController, seperatedInputWords);
                 }
             }
-
-            return States.Exit;
         }
 
     }
