@@ -15,7 +15,9 @@ namespace Text_Based_Adventure.Content.TestLevel
             Room room2 = new Prison();
 
             room1.setExit("west", room2);
-            room2.setExit("west", room1);
+            room2.setExit("east", room1);
+
+            StartingRoom = room1;
         }
     }
 }

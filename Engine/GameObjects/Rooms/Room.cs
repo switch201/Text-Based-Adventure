@@ -15,23 +15,29 @@ namespace Text_Based_Adventure.Rooms
 
         protected Dictionary<string, Room> Exits;
 
-        public Dictionary<string, Door> Doors;
+        public Dictionary<string, Door> Doors; 
 
         public List<GameObject> Items;
 
         public Room()
         {
+            Exits = new Dictionary<string, Room>() { };
             dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile("Engine/GameObjects/Rooms/RoomText.json"));
         }
 
-        public void Enter() {
-
+        public Room Enter() {
             Util.wl(dto.EnterText);
+            return this;
         }
 
-        public void Exit(Room r) {
+        public Room Exit(Room r) {
             Util.wl(dto.ExitText);
-            r.Enter();
+            return r.Enter();
+        }
+
+        public Room Exit(string direction)
+        {
+            return Exit(getExit(direction));
         }
 
         public Dictionary<string, Room> getExits()

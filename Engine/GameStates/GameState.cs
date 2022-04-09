@@ -11,21 +11,13 @@ namespace Text_Based_Adventure.Engine.GameStates
     }
     public class GameState
     {
-        GameActions actions;
-
-        public Dictionary<States, Action> stateActions;
-
-        public States currentGameState;
 
         public GameState()
         {
-            currentGameState = States.GamePlay;
-            stateActions = new Dictionary<States, Action>() {
-                { States.Exit, Exit },
-                { States.GamePlay, RunGame },
-                { States.TitleScreen, LoadTitle },
-            };
+            currentGameState = States.TitleScreen;
         }
+
+        public States currentGameState;
 
         public void Exit()
         {
@@ -43,7 +35,7 @@ namespace Text_Based_Adventure.Engine.GameStates
 
         public void RunGame()
         {
-
+            currentGameState = States.GamePlay;
         }
     }
 }

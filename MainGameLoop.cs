@@ -1,7 +1,10 @@
 ﻿using System;
 using Text_Based_Adventure.Content;
+using Text_Based_Adventure.Content.TestLevel;
 using Text_Based_Adventure.Engine;
+using Text_Based_Adventure.Engine.Games;
 using Text_Based_Adventure.Engine.GameStates;
+using Text_Based_Adventure.Engine.Levels;
 using Text_Based_Adventure.Rooms;
 
 namespace Text_Based_Adventure
@@ -10,31 +13,31 @@ namespace Text_Based_Adventure
     {
         static void Main(string[] args)
         {
+
+            Level testLevel = new TestLevel();
+
+            Game testGame = new Game(testLevel);
+
             GameState gameState = new GameState();
 
-            gameState.stateActions[States.TitleScreen]();
+            gameState.LoadTitle();
 
-            Interpreter i = new Interpreter();
+            Util.wl("Enter your name...");
 
-            //while (gameState.currentGameState != States.Exit)
-            //{
-            //    //Take input
-            //    i.Interpret(Util.rl());
-            //    //Interpret
-            //    //give output
+            Util.rl();
 
-            //}
+            Util.wl("It means nothing now");
 
-            //Room room = new TreasureRoom();
+            gameState.RunGame();
 
-            //Room room2 = new Room();
+            GameController gameController = new GameController(gameState, testGame);
 
-            //GameActions actions = new GameActions();
+            gameController.StartGame();
 
-            //room.Enter();
-            //room.Exit(room2);
-
-            //actions.Examine(room);
+            while (gameController.gameState.currentGameState != States.Exit)
+            {
+                gameController.TakeUserInputAndRespond();
+            }
 
         }
     }
