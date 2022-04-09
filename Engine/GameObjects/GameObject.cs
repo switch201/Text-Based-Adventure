@@ -7,7 +7,7 @@ using Text_Based_Adventure.Engine.GameObjects;
 
 namespace Text_Based_Adventure.GameObjects
 {
-    public class GameObject
+    public abstract class GameObject
     {
 
         protected GameObjectDTO dto;
@@ -18,7 +18,7 @@ namespace Text_Based_Adventure.GameObjects
         }
 
 
-        protected string Readfile(string fileName = "Content/JsonContent/GameObjects/ObjectText.json")
+        protected string Readfile(string fileName = "Engine/GameObjects/ObjectText.json")
         {
 
             using (StreamReader r = new StreamReader(fileName))

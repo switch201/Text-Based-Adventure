@@ -13,7 +13,7 @@ namespace Text_Based_Adventure.Content
     {
         public TreasureRoom()
         {
-            dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile("Content/JsonContent/GameObjects/Rooms/TreasureRoomText.json"));
+            dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile("Content/TestLevel/JsonContent/GameObjects/Rooms/TreasureRoomText.json"));
         }
     }
 }

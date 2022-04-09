@@ -11,16 +11,19 @@ namespace Text_Based_Adventure
         static void Main(string[] args)
         {
             GameState gameState = new GameState();
+
+            gameState.stateActions[States.TitleScreen]();
+
             Interpreter i = new Interpreter();
 
-            while (gameState.currentGameState != States.Exit)
-            {
-                //Take input
-                i.Interpret(Util.rl());
-                //Interpret
-                //give output
+            //while (gameState.currentGameState != States.Exit)
+            //{
+            //    //Take input
+            //    i.Interpret(Util.rl());
+            //    //Interpret
+            //    //give output
 
-            }
+            //}
 
             //Room room = new TreasureRoom();
 
