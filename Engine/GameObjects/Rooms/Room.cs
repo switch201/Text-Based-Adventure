@@ -7,10 +7,11 @@ using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.Rooms;
 using Text_Based_Adventure.GameObjects;
 using System.Linq;
+using Text_Based_Adventure.Engine.GameObjects;
 
 namespace Text_Based_Adventure.Rooms
 {
-    public abstract class Room : GameObject
+    public class Room : GameObject
     {
 
         protected Dictionary<string, Room> Exits;
@@ -18,6 +19,8 @@ namespace Text_Based_Adventure.Rooms
         public Dictionary<string, Door> Doors;
 
         public Dictionary<string, Item> Items;
+
+        protected override GameObjectDTO dto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Room(string roomName) : base("void")
         {
