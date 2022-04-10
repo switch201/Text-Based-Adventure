@@ -19,7 +19,7 @@ namespace Text_Based_Adventure.Engine.InputActions
             }
             else if(directoObject == "items")
             {
-
+                controller.roomController.SearchForItems();
             }
             else {
                 Util.wl("Search for what now??");

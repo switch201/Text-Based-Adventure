@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.Controllers;
+using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Rooms;
+using System.Linq;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -11,6 +13,7 @@ namespace Text_Based_Adventure.Engine
         public  Room currentRoom;
 
         public ItemController itemController;
+
 
         public void AttemptToChangeRooms(string direction)
         {
@@ -31,14 +34,42 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
+
+        //TODO skill check
         public void SearchForItems()
         {
-            //Dictionary<string, Room> exits = currentRoom.getItems();
-            //int totalExits = exits.Count;
-            //foreach (string exit in exits.Keys)
-            //{
-            //    Util.wl($"You see an exit to the {exit}");
-            //}
+            
+            Dictionary<string, Item> items = currentRoom.getItems();
+
+            if (items.Count == 0)
+            {
+                Util.wl("You don't see any items");
+            }
+
+            int totalItems = items.Count;
+            foreach (var (name, item) in items)
+            {
+                if (item.HasDiscoverText())
+                {
+                    item.Discover();
+                }
+                Util.wl($"You see a {name}");
+            }
+        }
+
+        public void InspectItem(string name)
+        {
+            Item item = currentRoom.Items.GetValueOrDefault(name);
+            if(item == null)
+            {
+                Util.wl("You can't inspect that.");
+            }
+            else
+            {
+                item.Inspect();
+                item.getQuality();
+            }
+            
         }
 
 

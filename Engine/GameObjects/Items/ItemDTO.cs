@@ -4,8 +4,12 @@ using System.Text;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Items
 {
-    class ItemDTO : GameObjectDTO
+    public class ItemDTO : GameObjectDTO
     {
+        public string DiscoverText;
 
+        public string GrabText;
+
+        public string QuallityText;
     }
 }

@@ -6,6 +6,7 @@ using Text_Based_Adventure.Doors;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.Rooms;
 using Text_Based_Adventure.GameObjects;
+using System.Linq;
 
 namespace Text_Based_Adventure.Rooms
 {
@@ -14,13 +15,13 @@ namespace Text_Based_Adventure.Rooms
 
         protected Dictionary<string, Room> Exits;
 
-        public Dictionary<string, Door> Doors; 
+        public Dictionary<string, Door> Doors;
 
-        public List<LargeItem> LargeItems;
-        public List<SmallItem> SmallItems;
+        public Dictionary<string, Item> Items;
 
         public Room(string roomName) : base("void")
         {
+            Items = new Dictionary<string, Item>() { };
             Exits = new Dictionary<string, Room>() { };
             dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{roomName}Text.json"));
         }
@@ -62,7 +63,22 @@ namespace Text_Based_Adventure.Rooms
 
         public void addItem(Item item)
         {
+            Items.Add(item.name, item);
+        }
 
+        public Item getItem(string name)
+        {
+            return Items.GetValueOrDefault(name);
+        }
+
+        public void setItems(Dictionary<string, Item> items)
+        {
+            this.Items = items;
+        }
+
+        public Dictionary<string, Item> getItems()
+        {
+            return this.Items;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Text_Based_Adventure.Engine.InputActions
             }
             else
             {
-                //controller.roomController.itemController.InspectItem()
+                controller.roomController.InspectItem(directObject);
             }
             
         }

@@ -28,7 +28,7 @@ namespace Text_Based_Adventure.Engine.GameStates
         {
             Util.wl(Figgle.FiggleFonts.Epic.Render("Welcome"));
 
-            Util.wl(Figgle.FiggleFonts.Ghoulish.Render("To Your"));
+            Util.wl(Figgle.FiggleFonts.Epic.Render("To Your"));
 
             Util.wl(Figgle.FiggleFonts.Gothic.Render("DOOM!!"));
         }
