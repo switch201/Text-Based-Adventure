@@ -5,29 +5,28 @@ using Text_Based_Adventure.Engine.GameObjects.Items;
 
 namespace Text_Based_Adventure.Engine.Player
 {
-    public class Inventory
+    public class Inventory : Dictionary<string, Item>
     {
-        Dictionary<string, Item> Items;
 
-        public Inventory()
+        public void addItem(Item item)
         {
-            Items = new Dictionary<string, Item>() { };
-        }
-
-        public void addItem(string name, Item item)
-        {
-            Items.Add(name, item);
+            this.Add(item.name, item);
         }
 
         public Item getItem(string name)
         {
-            return Items.GetValueOrDefault(name);
+            return this.GetValueOrDefault(name);
         }
 
+        /// <summary>
+        /// Removes the given Item and returns it
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public Item removeItem(string name)
         {
             Item item = this.getItem(name);
-            Items.Remove(name);
+            this.Remove(name);
             return item;
         }
     }

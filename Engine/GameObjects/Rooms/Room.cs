@@ -79,6 +79,13 @@ namespace Text_Based_Adventure.Rooms
             this.Items = items;
         }
 
+        public Item removeItem(string itemName)
+        {
+            var item = this.getItem(itemName);
+            this.Items.Remove(itemName);
+            return item;
+        }
+
         public Dictionary<string, Item> getItems()
         {
             return this.Items;
