@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Text_Based_Adventure.Engine.Controllers;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Rooms;
 using System.Linq;
@@ -11,8 +10,6 @@ namespace Text_Based_Adventure.Engine
     public class RoomController
     {
         public  Room currentRoom;
-
-        public ItemController itemController;
 
 
         public void AttemptToChangeRooms(string direction)
