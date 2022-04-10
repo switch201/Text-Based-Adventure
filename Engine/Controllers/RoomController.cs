@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Text_Based_Adventure.Engine.Controllers;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Rooms;
 using System.Linq;
+using Text_Based_Adventure.Engine.Player;
+using Text_Based_Adventure.Engine.Controllers;
 
 namespace Text_Based_Adventure.Engine
 {
     public class RoomController
     {
         public  Room currentRoom;
-
-        public ItemController itemController;
 
 
         public void AttemptToChangeRooms(string direction)
@@ -70,6 +69,25 @@ namespace Text_Based_Adventure.Engine
                 item.getQuality();
             }
             
+        }
+
+        public Item AttemptToTakeItem(string itemName)
+        {
+            var item = currentRoom.getItem(itemName);
+            if(item == null)
+            {
+                Util.wl("You don't see that Item");
+                return null;
+            }
+            else
+            {
+                return currentRoom.removeItem(itemName);
+            }
+        }
+
+        public void AddItemToRoom(Item item)
+        {
+            currentRoom.addItem(item);
         }
 
 

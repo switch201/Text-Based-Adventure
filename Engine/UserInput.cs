@@ -18,6 +18,8 @@ namespace Text_Based_Adventure.Engine
                 new Exit(),
                 new Inspect(),
                 new SearchFor(),
+                new Take(),
+                new Drop()
             };
         }
 

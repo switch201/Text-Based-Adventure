@@ -4,6 +4,8 @@ using System.Text;
 using Text_Based_Adventure.Engine.GameStates;
 using Text_Based_Adventure.Engine.Levels;
 using Text_Based_Adventure.Engine.Games;
+using Text_Based_Adventure.Engine.Player;
+using Text_Based_Adventure.Engine.Controllers;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -15,6 +17,7 @@ namespace Text_Based_Adventure.Engine
         public string displayText;
         public UserInput userInput;
         public Game game;
+        public PlayerController playerConttroller;
 
 
         List<string> actionLog = new List<string>();
@@ -25,12 +28,14 @@ namespace Text_Based_Adventure.Engine
             levelController = new LevelController();
             gameState = initialState;
             userInput = new UserInput();
+            playerConttroller = new PlayerController();
             this.game = game;
         }
 
         public void StartGame()
         {
             this.roomController.currentRoom = game.Levels[0].StartingRoom.Enter();
+            this.playerConttroller.player = new PlayerObject(); //TODO Create a character??
         }
 
         public void TakeUserInputAndRespond()
