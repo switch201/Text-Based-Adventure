@@ -6,8 +6,10 @@ using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Items
 {
-    public abstract class Item : GameObject
+    public class Item : GameObject
     {
+        protected override GameObjectDTO dto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public Item(string itemName) : base("void")
         {
             this.name = itemName;
