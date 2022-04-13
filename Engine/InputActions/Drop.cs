@@ -13,7 +13,7 @@ namespace Text_Based_Adventure.Engine.InputActions
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             string directobject = seperatedWords.Last();
-            Item item = controller.playerConttroller.DropItem(directobject);
+            Item item = controller.playerController.DropItem(directobject);
             if (item != null)
             {
                 //TODO need to put item back in room if over carrying capacity

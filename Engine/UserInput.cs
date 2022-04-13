@@ -24,6 +24,11 @@ namespace Text_Based_Adventure.Engine
             };
         }
 
+        public void AcceptCharacterInput(string userInput, GameController gameController)
+        {
+            
+        }
+
         public void AcceptStringInput(string userInput, GameController gameController)
         {
             userInput = userInput.ToLower();

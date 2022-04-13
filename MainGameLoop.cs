@@ -5,6 +5,7 @@ using Text_Based_Adventure.Engine;
 using Text_Based_Adventure.Engine.Games;
 using Text_Based_Adventure.Engine.GameStates;
 using Text_Based_Adventure.Engine.Levels;
+using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Rooms;
 
 namespace Text_Based_Adventure
@@ -22,18 +23,11 @@ namespace Text_Based_Adventure
 
             gameState.LoadTitle();
 
-            MainMenu.Start();
-
             Util.wl("Enter your name...");
 
             GameController gameController = new GameController(gameState, testGame);
 
-            while (gameController.gameState.currentGameState == States.CharacterCreation)
-            {
-                gameController.TakeUserInputForCharacter();
-            }
-
-            gameState.RunGame();
+            gameController.TakeUserInputForCharacter();
 
             gameController.StartGame();
 

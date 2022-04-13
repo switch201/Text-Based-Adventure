@@ -11,20 +11,23 @@ namespace Text_Based_Adventure.Engine.Player
         public Inventory inventory;
         public StatsSet stats;
         public AttributeSet attributes;
+        public string name;
 
         //TODO Create a Character?
-        public PlayerObject()
+        public PlayerObject(string name)
         {
             this.inventory = new Inventory();
             this.stats = new StatsSet();
             this.attributes = new AttributeSet();
+            this.name = name;
         }
 
-        public PlayerObject(AttributeSet attributes)
+        public PlayerObject(string name, AttributeSet attributes)
         {
             this.inventory = new Inventory();
             this.stats = new StatsSet();
             this.attributes = attributes;
+            this.name = name;
         }
 
     }

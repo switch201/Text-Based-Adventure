@@ -6,6 +6,7 @@ using Text_Based_Adventure.Engine.Levels;
 using Text_Based_Adventure.Engine.Games;
 using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Engine.Controllers;
+using Text_Based_Adventure.Engine.Player.Attributes;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -17,7 +18,7 @@ namespace Text_Based_Adventure.Engine
         public string displayText;
         public UserInput userInput;
         public Game game;
-        public PlayerController playerConttroller;
+        public PlayerController playerController;
 
 
         List<string> actionLog = new List<string>();
@@ -28,19 +29,26 @@ namespace Text_Based_Adventure.Engine
             levelController = new LevelController();
             gameState = initialState;
             userInput = new UserInput();
-            playerConttroller = new PlayerController();
+            playerController = new PlayerController();
             this.game = game;
         }
 
         public void StartGame()
         {
             this.roomController.currentRoom = game.Levels[0].StartingRoom.Enter();
-            this.playerConttroller.player = new PlayerObject(); //TODO Create a character??
         }
 
         public void TakeUserInputForCharacter()
         {
-            string input = Util.rl();
+            var attributeSet = new AttributeSet();
+            string name = Util.rl();
+            foreach (Player.Attributes.Attribute attribute in Enum.GetValues(typeof(Player.Attributes.Attribute)))
+            {
+                Util.wl($"what is your {attribute} value");
+                attributeSet.setAttribute(attribute, Convert.ToInt32(Util.rl()));
+            }
+            this.playerController.player = new PlayerObject(name, attributeSet);
+            this.gameState.RunGame();
 
         }
         public void TakeUserInputAndRespond()
