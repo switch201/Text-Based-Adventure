@@ -9,9 +9,9 @@ namespace Text_Based_Adventure.Engine.Player.Attributes
     {
         Strength,
         Agility,
-        Inteligence,
+        Intelligence,
         Wisdom,
-        Perseption
+        Perception
     }
 
     public class AttributeSet : Dictionary<Attribute, int>

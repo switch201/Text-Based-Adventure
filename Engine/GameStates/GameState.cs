@@ -7,7 +7,8 @@ namespace Text_Based_Adventure.Engine.GameStates
     public enum States {
         TitleScreen,
         GamePlay,
-        Exit
+        Exit,
+        CharacterCreation
     }
     public class GameState
     {

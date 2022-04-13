@@ -8,7 +8,7 @@ namespace Text_Based_Adventure.Engine.InputActions
 {
     class Drop : InputAction
     {
-        public override string keyWord => "drop";
+        public override List<string> keyWord => new List<string>() { "drop", "place" };
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {

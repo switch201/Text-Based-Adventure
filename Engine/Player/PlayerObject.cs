@@ -20,5 +20,12 @@ namespace Text_Based_Adventure.Engine.Player
             this.attributes = new AttributeSet();
         }
 
+        public PlayerObject(AttributeSet attributes)
+        {
+            this.inventory = new Inventory();
+            this.stats = new StatsSet();
+            this.attributes = attributes;
+        }
+
     }
 }

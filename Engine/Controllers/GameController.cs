@@ -38,6 +38,11 @@ namespace Text_Based_Adventure.Engine
             this.playerConttroller.player = new PlayerObject(); //TODO Create a character??
         }
 
+        public void TakeUserInputForCharacter()
+        {
+            string input = Util.rl();
+
+        }
         public void TakeUserInputAndRespond()
         {
             string input = Util.rl();

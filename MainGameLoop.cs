@@ -22,15 +22,18 @@ namespace Text_Based_Adventure
 
             gameState.LoadTitle();
 
+            MainMenu.Start();
+
             Util.wl("Enter your name...");
 
-            Util.rl();
+            GameController gameController = new GameController(gameState, testGame);
 
-            Util.wl("It means nothing now");
+            while (gameController.gameState.currentGameState == States.CharacterCreation)
+            {
+                gameController.TakeUserInputForCharacter();
+            }
 
             gameState.RunGame();
-
-            GameController gameController = new GameController(gameState, testGame);
 
             gameController.StartGame();
 

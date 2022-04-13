@@ -7,13 +7,13 @@ namespace Text_Based_Adventure.Engine.InputActions
 {
     class SearchFor : InputAction
     {
-        public override string keyWord => "search";
+        public override List<string> keyWord => new List<string>() { "search", "look", };
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             string directoObject = seperatedWords.Last();
 
-            if(directoObject == "exits")
+            if(directoObject == "exits" || directoObject == "exit")
             {
                 controller.roomController.SearchForExits();
             }
