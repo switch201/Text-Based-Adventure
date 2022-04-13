@@ -20,6 +20,8 @@ namespace Text_Based_Adventure.Rooms
 
         public Dictionary<string, Item> Items;
 
+        public List<NPC> NPCs;
+
         protected override GameObjectDTO dto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Room(string roomName) : base("void")
@@ -89,6 +91,23 @@ namespace Text_Based_Adventure.Rooms
         public Dictionary<string, Item> getItems()
         {
             return this.Items;
+        }
+
+        public List<NPC> getNPCs()
+        {
+            return this.NPCs;
+        }
+
+        public void addNPC(NPC npc)
+        {
+            this.NPCs.Add(npc);
+        }
+
+        public NPC GetNPC(string name)
+        {
+            return this.NPCs
+                .Where(x => x.name == name || x.Identifiers.Contains(name))
+                .SingleOrDefault();
         }
     }
 }

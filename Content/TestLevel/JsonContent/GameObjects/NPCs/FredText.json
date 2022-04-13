@@ -1,0 +1,24 @@
+{
+  "Name": "Fred",
+  "Identifiers": [
+    "Man",
+    "Guy",
+    "Sly Fellow"
+  ],
+  "SmallTalk": [
+    "Fine day in these here 2 rooms we are stuck in huh?",
+    "I was really high when I wrote this. How do you think I ended up in Prison",
+    "I think there is something about defining the laws of physics if you know what I mean.",
+    "Spell check is a must have"
+  ],
+  "DescriptionText": "A sly looking fellow. with some pretty big mussels",
+  "InspectionText": "You don't know why, but he looks shifty",
+  "Attributes": {
+    "Strength": 8,
+    "Agility": 6,
+    "Intelligence": 7,
+    "Wisdom": 5,
+    "Perception": 3
+  }
+
+}

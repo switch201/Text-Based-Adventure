@@ -20,13 +20,9 @@ namespace Text_Based_Adventure.Engine
                 new Inspect(),
                 new SearchFor(),
                 new Take(),
-                new Drop()
+                new Drop(),
+                new TalkTo(),
             };
-        }
-
-        public void AcceptCharacterInput(string userInput, GameController gameController)
-        {
-            
         }
 
         public void AcceptStringInput(string userInput, GameController gameController)

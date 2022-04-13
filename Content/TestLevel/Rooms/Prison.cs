@@ -12,7 +12,7 @@ namespace Text_Based_Adventure.Content.TestLevel.Rooms
     {
         public Prison(string roomName) : base(roomName)
         {
-
+            NPC npc1 = new NPC("Fred");
         }
 
         protected override GameObjectDTO dto { get; set; }
