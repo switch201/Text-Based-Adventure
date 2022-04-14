@@ -18,7 +18,5 @@ namespace Text_Based_Adventure.Content
         {
             this.addItem(new Consumable("pumpkinpie"));
         }
-
-        protected override GameObjectDTO dto { get; set; }
     }
 }

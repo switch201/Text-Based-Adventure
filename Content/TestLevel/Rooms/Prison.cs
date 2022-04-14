@@ -14,7 +14,5 @@ namespace Text_Based_Adventure.Content.TestLevel.Rooms
         {
             NPC npc1 = new NPC("Fred");
         }
-
-        protected override GameObjectDTO dto { get; set; }
     }
 }

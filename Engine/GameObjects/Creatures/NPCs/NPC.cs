@@ -29,6 +29,5 @@ namespace Text_Based_Adventure.Engine.GameObjects
         {
             Util.RandomFromList(this.SmallTalk);
         }
-        protected override GameObjectDTO dto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

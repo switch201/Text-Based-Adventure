@@ -20,24 +20,32 @@ namespace Text_Based_Adventure.Rooms
 
         public Dictionary<string, Item> Items;
 
+        public string EnterText;
+
+        public string ExitText;
+
         public List<NPC> NPCs;
 
-        protected override GameObjectDTO dto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public Room(string roomName) : base("void")
+         public Room(string roomName) : base("void")
         {
             Items = new Dictionary<string, Item>() { };
             Exits = new Dictionary<string, Room>() { };
-            dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{roomName}Text.json"));
+            var jsonSerializerSettings = new JsonSerializerSettings();
+            jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            Room temp = JsonConvert.DeserializeObject<Room>(Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{roomName}Text.json"), jsonSerializerSettings);
+            foreach (var property in GetType().GetProperties())
+            {
+                property.SetValue(this, property.GetValue(temp, null), null);
+            }
         }
 
         public Room Enter() {
-            Util.wl(((RoomDTO)dto).EnterText);
+            Util.wl(this.EnterText);
             return this;
         }
 
         public Room Exit(Room r) {
-            Util.wl(((RoomDTO)dto).ExitText);
+            Util.wl(this.ExitText);
             return r.Enter();
         }
 
