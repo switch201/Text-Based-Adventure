@@ -6,6 +6,7 @@ using Text_Based_Adventure.Rooms;
 using System.Linq;
 using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Engine.Controllers;
+using Text_Based_Adventure.Engine.GameObjects;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -33,8 +34,23 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
-
         //TODO skill check
+        public void SearchForCreatures()
+        {
+            List<NPC> npcs = currentRoom.getNPCs();
+
+            if (npcs.Count == 0)
+            {
+                Util.wl("You don't see any people or creatures");
+            }
+            foreach (var npc in npcs)
+            {
+                Util.wl($"You see a {npc.DescriptionText}");
+            }
+        }
+
+
+        
         public void SearchForItems()
         {
             
@@ -69,6 +85,20 @@ namespace Text_Based_Adventure.Engine
                 item.getQuality();
             }
             
+        }
+
+        public void TalkToNpc(string nameOrIdentifier)
+        {
+            NPC target = this.currentRoom.GetNPC(nameOrIdentifier);
+
+            if (target != null)
+            {
+                target.SaySmallTalk();
+            }
+            else
+            {
+                Util.wl("Talk to who now?");
+            }
         }
 
         public Item AttemptToTakeItem(string itemName)

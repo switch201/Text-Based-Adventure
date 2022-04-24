@@ -8,7 +8,7 @@ namespace Text_Based_Adventure.Engine.InputActions
 {
     public class Go : InputAction
     {
-        public override string keyWord => "go";
+        public override List<string> keyWord => new List<string>() { "go", "run",  };
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {

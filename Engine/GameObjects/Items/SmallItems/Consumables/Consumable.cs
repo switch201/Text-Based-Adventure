@@ -11,7 +11,5 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables
         {
 
         }
-
-        protected override GameObjectDTO dto { get; set; }
     }
 }

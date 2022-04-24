@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.Player.Stats;
@@ -9,9 +10,9 @@ namespace Text_Based_Adventure.Engine.Player.Attributes
     {
         Strength,
         Agility,
-        Inteligence,
+        Intelligence,
         Wisdom,
-        Perseption
+        Perception
     }
 
     public class AttributeSet : Dictionary<Attribute, int>

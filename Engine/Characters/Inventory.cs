@@ -10,7 +10,7 @@ namespace Text_Based_Adventure.Engine.Player
 
         public void addItem(Item item)
         {
-            this.Add(item.name, item);
+            this.Add(item.Name, item);
         }
 
         public Item getItem(string name)

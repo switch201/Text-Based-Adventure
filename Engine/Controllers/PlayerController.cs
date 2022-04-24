@@ -14,7 +14,7 @@ namespace Text_Based_Adventure.Engine.Controllers
         public void AttemptToTakeItem(Item item)
         {
             player.inventory.addItem(item);
-            Util.wl($"You take the {item.name}");
+            Util.wl($"You take the {item.Name}");
         }
 
         public Item DropItem(string itemName)
@@ -22,10 +22,10 @@ namespace Text_Based_Adventure.Engine.Controllers
             Item item = player.inventory.getItem(itemName);
             if(item == null)
             {
-                Util.wl($"You aren't carrying a ${itemName}");
+                Util.wl($"You aren't carrying a {itemName}");
                 return null;
             }
-            Util.wl($"You drop the {item.name}");
+            Util.wl($"You drop the {item.Name}");
             return player.inventory.removeItem(itemName);
         }
     }

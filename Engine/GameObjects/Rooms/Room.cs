@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Doors;
 using Text_Based_Adventure.Engine.GameObjects.Items;
-using Text_Based_Adventure.Engine.Rooms;
 using Text_Based_Adventure.GameObjects;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
@@ -20,22 +19,26 @@ namespace Text_Based_Adventure.Rooms
 
         public Dictionary<string, Item> Items;
 
-        protected override GameObjectDTO dto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string EnterText;
 
-        public Room(string roomName) : base("void")
+        public string ExitText;
+
+        public List<NPC> NPCs;
+
+         public Room(string roomName) : base(roomName)
         {
             Items = new Dictionary<string, Item>() { };
             Exits = new Dictionary<string, Room>() { };
-            dto = JsonConvert.DeserializeObject<RoomDTO>(Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{roomName}Text.json"));
+            NPCs = new List<NPC>() { };
         }
 
         public Room Enter() {
-            Util.wl(((RoomDTO)dto).EnterText);
+            Util.wl(this.EnterText);
             return this;
         }
 
         public Room Exit(Room r) {
-            Util.wl(((RoomDTO)dto).ExitText);
+            Util.wl(this.ExitText);
             return r.Enter();
         }
 
@@ -66,7 +69,7 @@ namespace Text_Based_Adventure.Rooms
 
         public void addItem(Item item)
         {
-            Items.Add(item.name, item);
+            Items.Add(item.Name, item);
         }
 
         public Item getItem(string name)
@@ -89,6 +92,23 @@ namespace Text_Based_Adventure.Rooms
         public Dictionary<string, Item> getItems()
         {
             return this.Items;
+        }
+
+        public List<NPC> getNPCs()
+        {
+            return this.NPCs;
+        }
+
+        public void addNPC(NPC npc)
+        {
+            NPCs.Add(npc);
+        }
+
+        public NPC GetNPC(string name)
+        {
+            return this.NPCs
+                .Where(x => x.Name.Equals(name) || x.Identifiers.Contains(name))
+                .SingleOrDefault();
         }
     }
 }

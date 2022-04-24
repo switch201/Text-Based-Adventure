@@ -7,7 +7,7 @@ namespace Text_Based_Adventure.Engine.InputActions
 {
     class Inspect : InputAction
     {
-        public override string keyWord => "inspect";
+        public override List<string> keyWord => new List<string>() { "inspect", "examine" };
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {

@@ -8,32 +8,38 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
 {
     public class Item : GameObject
     {
-        protected override GameObjectDTO dto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public Item(string itemName) : base("void")
+        public string DiscoverText;
+
+        public string GrabText;
+
+        public string QuallityText;
+
+        public Item(string itemName) : base(itemName)
         {
-            this.name = itemName;
-            dto = JsonConvert.DeserializeObject<ItemDTO>(Readfile($"Content/TestLevel/JsonContent/GameObjects/Items/{itemName}Text.json"));
+            //TODO move to Json
+            this.Name = itemName;
+
         }
 
         public void Discover()
         {
-            Util.wl(((ItemDTO)dto).DiscoverText);
+            Util.wl(this.DiscoverText);
         }
 
         public bool HasDiscoverText()
         {
-            return ((ItemDTO)dto).DiscoverText == "";
+            return this.DiscoverText == "";
         }
 
         public void getQuality()
         {
-            Util.wl(((ItemDTO)dto).QuallityText);
+            Util.wl(this.QuallityText);
         }
 
         public void Grab()
         {
-            Util.wl(((ItemDTO)dto).GrabText);
+            Util.wl(this.GrabText);
         }
     }
 }

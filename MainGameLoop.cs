@@ -5,6 +5,7 @@ using Text_Based_Adventure.Engine;
 using Text_Based_Adventure.Engine.Games;
 using Text_Based_Adventure.Engine.GameStates;
 using Text_Based_Adventure.Engine.Levels;
+using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Rooms;
 
 namespace Text_Based_Adventure
@@ -24,13 +25,9 @@ namespace Text_Based_Adventure
 
             Util.wl("Enter your name...");
 
-            Util.rl();
-
-            Util.wl("It means nothing now");
-
-            gameState.RunGame();
-
             GameController gameController = new GameController(gameState, testGame);
+
+            gameController.TakeUserInputForCharacter();
 
             gameController.StartGame();
 

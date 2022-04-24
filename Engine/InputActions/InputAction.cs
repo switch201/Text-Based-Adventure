@@ -8,7 +8,7 @@ namespace Text_Based_Adventure.Engine
 {
     public abstract class InputAction
     {
-        public abstract string keyWord { get; }
+        public abstract List<string> keyWord { get; }
 
         public abstract void RespondToInput(GameController controller, List<string> seperatedWords);
 
