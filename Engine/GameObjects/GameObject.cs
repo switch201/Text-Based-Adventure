@@ -9,7 +9,7 @@ namespace Text_Based_Adventure.GameObjects
 {
     public abstract class GameObject
     {
-        public string name;
+        public string Name;
 
         public string DescriptionText;
 
@@ -18,14 +18,7 @@ namespace Text_Based_Adventure.GameObjects
 
         public GameObject(string objectName)
         {
-            if(objectName != "void")
-            {
-                GameObject temp = JsonConvert.DeserializeObject<GameObject>(Readfile($"Content/TestLevel/JsonContent/GameObjects/{objectName}Text.json"));
-                foreach (var property in GetType().GetProperties())
-                {
-                    property.SetValue(this, property.GetValue(temp, null), null);
-                }
-            }
+
         }
 
 

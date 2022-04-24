@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Doors;
 using Text_Based_Adventure.Engine.GameObjects.Items;
-using Text_Based_Adventure.Engine.Rooms;
 using Text_Based_Adventure.GameObjects;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
@@ -26,17 +25,11 @@ namespace Text_Based_Adventure.Rooms
 
         public List<NPC> NPCs;
 
-         public Room(string roomName) : base("void")
+         public Room(string roomName) : base(roomName)
         {
             Items = new Dictionary<string, Item>() { };
             Exits = new Dictionary<string, Room>() { };
-            var jsonSerializerSettings = new JsonSerializerSettings();
-            jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
-            Room temp = JsonConvert.DeserializeObject<Room>(Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{roomName}Text.json"), jsonSerializerSettings);
-            foreach (var property in GetType().GetProperties())
-            {
-                property.SetValue(this, property.GetValue(temp, null), null);
-            }
+            NPCs = new List<NPC>() { };
         }
 
         public Room Enter() {
@@ -76,7 +69,7 @@ namespace Text_Based_Adventure.Rooms
 
         public void addItem(Item item)
         {
-            Items.Add(item.name, item);
+            Items.Add(item.Name, item);
         }
 
         public Item getItem(string name)
@@ -108,13 +101,13 @@ namespace Text_Based_Adventure.Rooms
 
         public void addNPC(NPC npc)
         {
-            this.NPCs.Add(npc);
+            NPCs.Add(npc);
         }
 
         public NPC GetNPC(string name)
         {
             return this.NPCs
-                .Where(x => x.name == name || x.Identifiers.Contains(name))
+                .Where(x => x.Name.Equals(name) || x.Identifiers.Contains(name))
                 .SingleOrDefault();
         }
     }

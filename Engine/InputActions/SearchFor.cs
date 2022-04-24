@@ -21,6 +21,10 @@ namespace Text_Based_Adventure.Engine.InputActions
             {
                 controller.roomController.SearchForItems();
             }
+            else if(directoObject == "people") // TODO need synonyms and also a case for search everything. which is when the direct object is "Search" (and seperatedWords is only 1 long)
+            {
+                controller.roomController.SearchForCreatures();
+            }
             else {
                 Util.wl("Search for what now??");
             }

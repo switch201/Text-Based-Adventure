@@ -15,16 +15,10 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
 
         public string QuallityText;
 
-        public Item(string itemName) : base("void")
+        public Item(string itemName) : base(itemName)
         {
             //TODO move to Json
-            this.name = itemName;
-            
-            Item temp = JsonConvert.DeserializeObject<Item>(Readfile($"Content/TestLevel/JsonContent/GameObjects/Items/{itemName}Text.json"));
-            foreach (var property in GetType().GetProperties())
-            {
-                property.SetValue(this, property.GetValue(temp, null), null);
-            }
+            this.Name = itemName;
 
         }
 

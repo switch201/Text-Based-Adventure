@@ -9,25 +9,19 @@ namespace Text_Based_Adventure.Engine.GameObjects
 {
     public class NPC : GameObject
     {
-
-        public string Name;
         public List<string> Identifiers;
         public List<string> SmallTalk;
         public AttributeSet Attributes;
 
 
-        public NPC(string npcName) : base("void")
+        public NPC(string npcName) : base(npcName)
         {
-            NPC temp = JsonConvert.DeserializeObject<NPC>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/NPCs/{npcName}Text.json"));
-            foreach (var property in GetType().GetProperties())
-            {
-                property.SetValue(this, property.GetValue(temp, null), null);
-            }
+
         }
 
         public void SaySmallTalk()
         {
-            Util.RandomFromList(this.SmallTalk);
+            Util.wl(Util.RandomFromList(this.SmallTalk));
         }
     }
 }
