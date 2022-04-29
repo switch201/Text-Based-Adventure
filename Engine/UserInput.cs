@@ -4,12 +4,14 @@ using System.Text;
 using Text_Based_Adventure.Engine.GameStates;
 using Text_Based_Adventure.Engine.InputActions;
 using System.Linq;
+using Text_Based_Adventure.Engine.InputActions.BattleActions;
 
 namespace Text_Based_Adventure.Engine
 {
     public class UserInput
     {
         List<InputAction> gameActions;
+        private List<BattleAction> battleActions;
 
         public UserInput()
         {
@@ -22,6 +24,12 @@ namespace Text_Based_Adventure.Engine
                 new Take(),
                 new Drop(),
                 new TalkTo(),
+                new Attack(),
+            };
+
+            battleActions = new List<BattleAction>()
+            {
+                new Punch()
             };
         }
 
@@ -33,11 +41,24 @@ namespace Text_Based_Adventure.Engine
 
             List<string> seperatedInputWords = new List<string>(userInput.Split(' '));
 
-            foreach(InputAction action in gameActions)
+            if(gameController.gameState.currentGameState == States.Combat)
             {
-                if (action.keyWord.Contains(seperatedInputWords.First()))
+                foreach (BattleAction action in battleActions)
                 {
-                    action.RespondToInput(gameController, seperatedInputWords);
+                    if (action.keyWord.Contains(seperatedInputWords.First()))
+                    {
+                        action.RespondToInput(gameController.combatController, seperatedInputWords);
+                    }
+                }
+            }
+            else
+            {
+                foreach (InputAction action in gameActions)
+                {
+                    if (action.keyWord.Contains(seperatedInputWords.First()))
+                    {
+                        action.RespondToInput(gameController, seperatedInputWords);
+                    }
                 }
             }
         }

@@ -19,6 +19,7 @@ namespace Text_Based_Adventure.Engine
         public UserInput userInput;
         public Game game;
         public PlayerController playerController;
+        public CombatController combatController;
 
 
         List<string> actionLog = new List<string>();
@@ -30,12 +31,22 @@ namespace Text_Based_Adventure.Engine
             gameState = initialState;
             userInput = new UserInput();
             playerController = new PlayerController();
+            combatController = new CombatController();
             this.game = game;
         }
 
         public void StartGame()
         {
             this.roomController.currentRoom = game.Levels[0].StartingRoom.Enter();
+        }
+
+        public void StartCombat()
+        {
+            this.gameState.Combat();
+            this.combatController.setPlayer(playerController.player);
+            this.combatController.setEnemies(this.roomController.currentRoom.getNPCs()); // TODO filter out friendly NPCs
+            Util.wl("You Start Combat");
+
         }
 
         public void TakeUserInputForCharacter()
