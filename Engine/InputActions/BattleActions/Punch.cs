@@ -14,15 +14,21 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
 
         public override void RespondToInput(CombatController controller, List<string> seperatedWords)
         {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController gameController, List<string> seperatedWords)
+        {
+            CombatController controller = gameController.combatController;
             var enemies = controller.GetEnemies();
-            if(seperatedWords.Count == 1 && controller.GetEnemies().Count == 1)
+            if (seperatedWords.Count == 1 && controller.GetEnemies().Count == 1)
             {
                 NPC enemy = enemies.First();
                 int diceRoll = r.Next(1, 20);
                 int attackValue = controller.GetPlayer().attributes.getAttribute(Attribute.Strength) +
                     diceRoll -
                     enemy.Attributes.getAttribute(Attribute.Agility);
-                if(attackValue > 0)
+                if (attackValue > 0)
                 {
                     Util.wl($"you punch {Util.RandomFromList(enemy.Identifiers)}");
                 }
@@ -32,11 +38,6 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
                 }
 
             }
-        }
-
-        public override void RespondToInput(GameController controller, List<string> seperatedWords)
-        {
-            throw new NotImplementedException();
         }
     }
 }

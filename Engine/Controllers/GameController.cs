@@ -49,6 +49,14 @@ namespace Text_Based_Adventure.Engine
 
         }
 
+        public void RunAway()
+        {
+            this.gameState.RunGame();
+            this.combatController.setPlayer(null);
+            this.combatController.setEnemies(null);
+            Util.wl("You Run Away");
+        }
+
         public void TakeUserInputForCharacter()
         {
             var attributeSet = new AttributeSet();

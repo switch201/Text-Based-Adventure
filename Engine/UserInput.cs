@@ -29,7 +29,8 @@ namespace Text_Based_Adventure.Engine
 
             battleActions = new List<BattleAction>()
             {
-                new Punch()
+                new Punch(),
+                new RunAway()
             };
         }
 
@@ -47,7 +48,7 @@ namespace Text_Based_Adventure.Engine
                 {
                     if (action.keyWord.Contains(seperatedInputWords.First()))
                     {
-                        action.RespondToInput(gameController.combatController, seperatedInputWords);
+                        action.RespondToInput(gameController, seperatedInputWords);
                     }
                 }
             }
