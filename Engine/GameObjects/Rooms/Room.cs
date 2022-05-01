@@ -106,9 +106,7 @@ namespace Text_Based_Adventure.Rooms
 
         public NPC GetNPC(string name)
         {
-            return this.NPCs
-                .Where(x => x.Name.Equals(name) || x.Identifiers.Contains(name))
-                .SingleOrDefault();
+            return Util.NameOrIdentifier(this.NPCs, name);
         }
     }
 }

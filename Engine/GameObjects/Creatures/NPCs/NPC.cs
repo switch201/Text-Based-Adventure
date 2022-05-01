@@ -12,6 +12,7 @@ namespace Text_Based_Adventure.Engine.GameObjects
         public List<string> Identifiers;
         public List<string> SmallTalk;
         public AttributeSet Attributes;
+        public int Health;
 
 
         public NPC(string npcName) : base(npcName)

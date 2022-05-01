@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.Controllers;
 using System.Linq;
-using Text_Based_Adventure.Engine.GameObjects;
-using Attribute = Text_Based_Adventure.Engine.Player.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.InputActions.BattleActions
 {
@@ -19,24 +17,25 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
 
         public override void RespondToInput(GameController gameController, List<string> seperatedWords)
         {
-            CombatController controller = gameController.combatController;
-            var enemies = controller.GetEnemies();
-            if (seperatedWords.Count == 1 && controller.GetEnemies().Count == 1)
+            CombatResult result = gameController.combatController.ResolveMeleeAttack(null, seperatedWords.Count > 1 ? seperatedWords.Last() : null);
+            if (result.wasValid)
             {
-                NPC enemy = enemies.First();
-                int diceRoll = r.Next(1, 20);
-                int attackValue = controller.GetPlayer().attributes.getAttribute(Attribute.Strength) +
-                    diceRoll -
-                    enemy.Attributes.getAttribute(Attribute.Agility);
-                if (attackValue > 0)
+                if(result.attackValue > 0 && result.attackValue <= 5)
                 {
-                    Util.wl($"you punch {Util.RandomFromList(enemy.Identifiers)}");
+                    Util.wl("Your punch connects right in the gut. A good hit.");
                 }
-                else
+                else if (result.attackValue > 5)
                 {
-                    Util.wl("you punch misses!!");
+                    Util.wl("You land a solid blow right to the face");
                 }
-
+                else if (result.attackValue <= 0 && result.attackValue >= -5)
+                {
+                    Util.wl("Your punch connects but doesn't seem to do much of anything");
+                }
+                else if(result.attackValue < -5)
+                {
+                    Util.wl("You try to punch but you completely whiff");
+                }
             }
         }
     }
