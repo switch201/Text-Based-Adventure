@@ -108,5 +108,10 @@ namespace Text_Based_Adventure.Rooms
         {
             return Util.NameOrIdentifier(this.NPCs, name);
         }
+
+        public bool removeNPC(NPC npc)
+        {
+            return NPCs.Remove(npc);
+        }
     }
 }

@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
-    class Attack : InputAction
+    class TalkTo : GameAction
     {
-        public override List<string> keyWord => new List<string>() { "attack" };
+        public override List<string> keyWord => new List<string>() { "talk", "speak", };
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
-            //TODO check if there is an NPC that can be attacked
-            controller.StartCombat();
+            string directobject = seperatedWords.Last();
+            controller.roomController.TalkToNpc(directobject);
         }
     }
 }

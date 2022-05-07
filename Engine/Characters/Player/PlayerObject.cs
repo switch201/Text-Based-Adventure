@@ -24,5 +24,10 @@ namespace Text_Based_Adventure.Engine.Player
             this.health = 5 + attributes.getAttribute(Attribute.Strength);
         }
 
+
+        public void adjustHealth(int adjustment)
+        {
+            this.health += adjustment;
+        }
     }
 }

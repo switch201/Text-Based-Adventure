@@ -20,9 +20,19 @@ namespace Text_Based_Adventure.Engine.GameObjects
 
         }
 
+        public bool isAlive()
+        {
+            return Health > 0;
+        }
+
         public void SaySmallTalk()
         {
             Util.wl(Util.RandomFromList(this.SmallTalk));
+        }
+
+        public void adjustHealth(int adjustment)
+        {
+            this.Health += adjustment;
         }
     }
 }

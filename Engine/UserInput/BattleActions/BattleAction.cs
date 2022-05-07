@@ -5,8 +5,9 @@ using Text_Based_Adventure.Engine.Controllers;
 
 namespace Text_Based_Adventure.Engine.InputActions.BattleActions
 {
-    public abstract class BattleAction : InputAction
+    public abstract class BattleAction : Verb
     {
-        public abstract void RespondToInput(CombatController controller, List<string> seperatedWords);
+        public abstract void RespondToInput(GameController controller, List<string> seperatedWords);
+
     }
 }

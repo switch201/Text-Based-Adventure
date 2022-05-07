@@ -10,17 +10,16 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
     {
         public override List<string> keyWord => new List<string>() { "punch" };
 
-        public override void RespondToInput(CombatController controller, List<string> seperatedWords)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void RespondToInput(GameController gameController, List<string> seperatedWords)
         {
-            CombatResult result = gameController.combatController.ResolveMeleeAttack(null, seperatedWords.Count > 1 ? seperatedWords.Last() : null);
+            AttackResult result = gameController.combatController.ResolveMeleeAttack(null, seperatedWords.Count > 1 ? seperatedWords.Last() : null);
             if (result.wasValid)
             {
-                if(result.attackValue > 0 && result.attackValue <= 5)
+                if (result.killingBlow)
+                {
+                    Util.wl("Your Punch just blowed his head up");
+                }
+                else if(result.attackValue > 0 && result.attackValue <= 5)
                 {
                     Util.wl("Your punch connects right in the gut. A good hit.");
                 }

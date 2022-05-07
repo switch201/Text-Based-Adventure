@@ -7,6 +7,7 @@ using Text_Based_Adventure.Engine.Games;
 using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Engine.Controllers;
 using Text_Based_Adventure.Engine.Player.Attributes;
+using System.Linq;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -46,14 +47,32 @@ namespace Text_Based_Adventure.Engine
             this.combatController.setPlayer(playerController.player);
             this.combatController.setEnemies(this.roomController.currentRoom.getNPCs()); // TODO filter out friendly NPCs
             Util.wl("You Start Combat");
+        }
 
+        public void checkForCombatEnd()
+        {
+            CombatResult result = this.combatController.GetResult();
+            //Based on the results "Kill" the dead people
+            if (!result.moreEnemies)
+            {
+                EndCOmbat();
+            }
+        }
+
+        public void EndCOmbat()
+        {
+            this.gameState.RunGame();
+            this.combatController.setPlayer(null);
+            this.combatController.RemoveEnemies();
+            this.roomController.RemoveNPC("fred"); //TODO FIx this too
+            Util.wl("You Win");
         }
 
         public void RunAway()
         {
             this.gameState.RunGame();
             this.combatController.setPlayer(null);
-            this.combatController.setEnemies(null);
+            this.combatController.RemoveEnemies();
             Util.wl("You Run Away");
         }
 

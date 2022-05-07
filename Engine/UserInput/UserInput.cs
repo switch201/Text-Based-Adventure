@@ -10,12 +10,12 @@ namespace Text_Based_Adventure.Engine
 {
     public class UserInput
     {
-        List<InputAction> gameActions;
+        List<GameAction> gameActions;
         private List<BattleAction> battleActions;
 
         public UserInput()
         {
-            gameActions = new List<InputAction>()
+            gameActions = new List<GameAction>()
             {
                 new Go(),
                 new Exit(),
@@ -49,12 +49,13 @@ namespace Text_Based_Adventure.Engine
                     if (action.keyWord.Contains(seperatedInputWords.First()))
                     {
                         action.RespondToInput(gameController, seperatedInputWords);
+                        gameController.checkForCombatEnd();
                     }
                 }
             }
             else
             {
-                foreach (InputAction action in gameActions)
+                foreach (GameAction action in gameActions)
                 {
                     if (action.keyWord.Contains(seperatedInputWords.First()))
                     {

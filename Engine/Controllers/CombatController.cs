@@ -9,16 +9,24 @@ using System.Linq;
 
 namespace Text_Based_Adventure.Engine.Controllers
 {
-
     public class CombatResult
     {
         public int attackValue;
         public bool wasValid;
+        public bool killingBlow;
+        public bool moreEnemies;
+    }
+
+    public class AttackResult
+    {
+        public int attackValue;
+        public bool wasValid;
+        public bool killingBlow;
+        public bool moreEnemies;
     }
 
     public class CombatController
     {
-
         private PlayerObject player;
         private List<NPC> enemies;
 
@@ -28,7 +36,20 @@ namespace Text_Based_Adventure.Engine.Controllers
         }
         public void setEnemies(List<NPC> enemies)
         {
-            this.enemies = enemies;
+            this.enemies = new List<NPC>();
+            this.enemies.AddRange(enemies);
+        }
+
+        public void RemoveEnemies()
+        {
+            this.enemies.Clear();
+        }
+
+        public CombatResult GetResult()
+        {
+            return new CombatResult() {
+                killingBlow = this.enemies.Count == 0
+            };
         }
 
         public List<NPC> GetEnemies()
@@ -36,7 +57,7 @@ namespace Text_Based_Adventure.Engine.Controllers
             return this.enemies;
         }
 
-        private NPC getEnemy(string nameOrIdentifier)
+        private NPC GetEnemy(string nameOrIdentifier)
         {
             return Util.NameOrIdentifier(this.enemies, nameOrIdentifier);
         }
@@ -46,7 +67,7 @@ namespace Text_Based_Adventure.Engine.Controllers
             return this.player;
         }
 
-        public CombatResult ResolveMeleeAttack(Item item, string npcName) //TODO needs to be weapons, not all Items can be used in combat;
+        public AttackResult ResolveMeleeAttack(Item item, string npcName) //TODO needs to be weapons, not all Items can be used in combat;
         {
             NPC enemy = null;
             if (npcName == null)
@@ -54,15 +75,15 @@ namespace Text_Based_Adventure.Engine.Controllers
                 enemy = enemies.FirstOrDefault();
             }
             else {
-                enemy = getEnemy(npcName);
+                enemy = GetEnemy(npcName);
             }
 
             if(enemy == null)
             {
-                Util.wl("That Person is not here or otherwise can't be reached");
-                return new CombatResult() {
+                return new AttackResult() {
                     wasValid = false,
-                    attackValue = 0
+                    attackValue = 0,
+                    moreEnemies = false
                 };
             }
 
@@ -81,11 +102,37 @@ namespace Text_Based_Adventure.Engine.Controllers
                 enemy.Attributes.getAttribute(Attribute.Agility) -
                 baseDodge;
 
+            if(attackValue > 0)
+            {
+                enemy.adjustHealth(-attackValue);
+            }
+
             Util.log($"AttackValue: {attackValue}");
-            return new CombatResult()
+            Util.log($"Enemy Health After {enemy.Health}");
+
+            if (enemy.Health <= 0)
+            {
+                // drop loot
+
+                //kill enemy
+                enemies.Remove(enemy);
+
+                return new AttackResult()
+                {
+                    wasValid = true,
+                    attackValue = attackValue,
+                    killingBlow = true,
+                    moreEnemies = false
+                };
+
+            }
+
+            return new AttackResult()
             {
                 wasValid = true,
-                attackValue = attackValue
+                attackValue = attackValue,
+                killingBlow = false,
+                moreEnemies = false
             };
         }
     }

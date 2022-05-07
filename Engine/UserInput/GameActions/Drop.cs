@@ -6,7 +6,7 @@ using Text_Based_Adventure.Engine.GameObjects.Items;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
-    class Drop : InputAction
+    class Drop : GameAction
     {
         public override List<string> keyWord => new List<string>() { "drop", "place" };
 

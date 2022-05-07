@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Items;
+using System.Linq;
 
 namespace Text_Based_Adventure.Engine.Player
 {
@@ -28,6 +29,11 @@ namespace Text_Based_Adventure.Engine.Player
             Item item = this.getItem(name);
             this.Remove(name);
             return item;
+        }
+
+        public List<Item> getAllitems()
+        {
+            return this.Values.ToList();
         }
     }
 }

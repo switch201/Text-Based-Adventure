@@ -6,9 +6,9 @@ using Text_Based_Adventure.Rooms;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
-    public class Go : InputAction
+    public class Go : GameAction
     {
-        public override List<string> keyWord => new List<string>() { "go", "run",  };
+        public override List<string> keyWord => new List<string>() {"go"};
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
