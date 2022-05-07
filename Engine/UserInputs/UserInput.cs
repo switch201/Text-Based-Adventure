@@ -5,17 +5,19 @@ using Text_Based_Adventure.Engine.GameStates;
 using Text_Based_Adventure.Engine.InputActions;
 using System.Linq;
 using Text_Based_Adventure.Engine.InputActions.BattleActions;
+using Text_Based_Adventure.Engine.UserInputs.GameActions;
 
 namespace Text_Based_Adventure.Engine
 {
     public class UserInput
     {
-        List<GameAction> gameActions;
-        private List<BattleAction> battleActions;
+        private static List<BattleAction> battleActions = new List<BattleAction>()
+            {
+                new Punch(),
+                new RunAway()
+            };
 
-        public UserInput()
-        {
-            gameActions = new List<GameAction>()
+        private static List<GameAction> gameActions = new List<GameAction>()
             {
                 new Go(),
                 new Exit(),
@@ -25,14 +27,9 @@ namespace Text_Based_Adventure.Engine
                 new Drop(),
                 new TalkTo(),
                 new Attack(),
+                new Help()
             };
 
-            battleActions = new List<BattleAction>()
-            {
-                new Punch(),
-                new RunAway()
-            };
-        }
 
         public void AcceptStringInput(string userInput, GameController gameController)
         {
