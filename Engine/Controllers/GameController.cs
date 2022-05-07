@@ -7,6 +7,7 @@ using Text_Based_Adventure.Engine.Games;
 using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Engine.Controllers;
 using Text_Based_Adventure.Engine.Player.Attributes;
+using System.Linq;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -19,6 +20,7 @@ namespace Text_Based_Adventure.Engine
         public UserInput userInput;
         public Game game;
         public PlayerController playerController;
+        public CombatController combatController;
 
 
         List<string> actionLog = new List<string>();
@@ -30,12 +32,48 @@ namespace Text_Based_Adventure.Engine
             gameState = initialState;
             userInput = new UserInput();
             playerController = new PlayerController();
+            combatController = new CombatController();
             this.game = game;
         }
 
         public void StartGame()
         {
             this.roomController.currentRoom = game.Levels[0].StartingRoom.Enter();
+        }
+
+        public void StartCombat()
+        {
+            this.gameState.Combat();
+            this.combatController.setPlayer(playerController.player);
+            this.combatController.setEnemies(this.roomController.currentRoom.getNPCs()); // TODO filter out friendly NPCs
+            Util.wl("You Start Combat");
+        }
+
+        public void checkForCombatEnd()
+        {
+            CombatResult result = this.combatController.GetResult();
+            //Based on the results "Kill" the dead people
+            if (!result.moreEnemies)
+            {
+                EndCOmbat();
+            }
+        }
+
+        public void EndCOmbat()
+        {
+            this.gameState.RunGame();
+            this.combatController.setPlayer(null);
+            this.combatController.RemoveEnemies();
+            this.roomController.RemoveNPC("fred"); //TODO FIx this too
+            Util.wl("You Win");
+        }
+
+        public void RunAway()
+        {
+            this.gameState.RunGame();
+            this.combatController.setPlayer(null);
+            this.combatController.RemoveEnemies();
+            Util.wl("You Run Away");
         }
 
         public void TakeUserInputForCharacter()

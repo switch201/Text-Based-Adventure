@@ -31,9 +31,14 @@ namespace Text_Based_Adventure.Engine.Player.Attributes
             this.Add(attribute, value);
         }
 
-        public int getStat(Attribute stat)
+        public int getAttribute(Attribute stat)
         {
             return this.GetValueOrDefault(stat);
+        }
+
+        internal int getAttribute(object strength)
+        {
+            throw new NotImplementedException();
         }
     }
 }

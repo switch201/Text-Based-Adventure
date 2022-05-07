@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
-    class Inspect : InputAction
+    class Inspect : GameAction
     {
         public override List<string> keyWord => new List<string>() { "inspect", "examine" };
 

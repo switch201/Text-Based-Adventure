@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
-    class Exit : InputAction
+    class Exit : GameAction
     {
         public override List<string> keyWord => new List<string>() { "exit", "leave", };
 

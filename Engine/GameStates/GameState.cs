@@ -8,7 +8,8 @@ namespace Text_Based_Adventure.Engine.GameStates
         TitleScreen,
         GamePlay,
         Exit,
-        CharacterCreation
+        CharacterCreation,
+        Combat
     }
     public class GameState
     {
@@ -23,6 +24,11 @@ namespace Text_Based_Adventure.Engine.GameStates
         public void Exit()
         {
             currentGameState = States.Exit;
+        }
+
+        public void Combat()
+        {
+            currentGameState = States.Combat;
         }
 
         public void LoadTitle()

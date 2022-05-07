@@ -101,6 +101,16 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
+        public void RemoveNPC(string npcName)
+        {
+            this.RemoveNPC(currentRoom.GetNPC(npcName));
+        }
+
+        public void RemoveNPC(NPC npc)
+        {
+            this.currentRoom.removeNPC(npc);
+        }
+
         public Item AttemptToTakeItem(string itemName)
         {
             var item = currentRoom.getItem(itemName);
