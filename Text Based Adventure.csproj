@@ -46,6 +46,7 @@
 
   <ItemGroup>
     <Folder Include="Engine\GameObjects\Items\SmallItems\Equipables\" />
+    <Folder Include="Engine\HelpObjects\" />
     <Folder Include="Engine\UserInputs\InputResults\" />
   </ItemGroup>
 

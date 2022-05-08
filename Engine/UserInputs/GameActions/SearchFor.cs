@@ -9,6 +9,11 @@ namespace Text_Based_Adventure.Engine.InputActions
     {
         public override List<string> keyWord => new List<string>() { "search", "look", };
 
+        public override string HelpText()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             string directoObject = seperatedWords.Last();

@@ -11,13 +11,13 @@ namespace Text_Based_Adventure.Engine
 {
     public class UserInput
     {
-        private static List<BattleAction> battleActions = new List<BattleAction>()
+        public static List<BattleAction> battleActions = new List<BattleAction>()
             {
                 new Punch(),
                 new RunAway()
             };
 
-        private static List<GameAction> gameActions = new List<GameAction>()
+        public static List<GameAction> gameActions = new List<GameAction>()
             {
                 new Go(),
                 new Exit(),
@@ -29,6 +29,28 @@ namespace Text_Based_Adventure.Engine
                 new Attack(),
                 new Help()
             };
+
+        public List<string> getKeyWords()
+        {
+            var list = new List<string>();
+            foreach(GameAction action in gameActions)
+            {
+                list.Add(action.keyWord.First());
+            }
+            return list;
+        }
+
+        public GameAction GetGameAction(string keyWord)
+        {
+            foreach (GameAction action in gameActions)
+            {
+                if (action.keyWord.Contains(keyWord))
+                {
+                    return action;
+                }
+            }
+            return null;
+        }
 
 
         public void AcceptStringInput(string userInput, GameController gameController)
@@ -52,13 +74,7 @@ namespace Text_Based_Adventure.Engine
             }
             else
             {
-                foreach (GameAction action in gameActions)
-                {
-                    if (action.keyWord.Contains(seperatedInputWords.First()))
-                    {
-                        action.RespondToInput(gameController, seperatedInputWords);
-                    }
-                }
+               GetGameAction(seperatedInputWords.First()).RespondToInput(gameController, seperatedInputWords);
             }
         }
 
