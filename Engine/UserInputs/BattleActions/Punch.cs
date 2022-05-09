@@ -10,6 +10,11 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
     {
         public override List<string> keyWord => new List<string>() { "punch" };
 
+        public override string HelpText()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void RespondToInput(GameController gameController, List<string> seperatedWords)
         {
             AttackResult result = gameController.combatController.ResolveMeleeAttack(null, seperatedWords.Count > 1 ? seperatedWords.Last() : null);

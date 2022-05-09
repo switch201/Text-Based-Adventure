@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
-    public  abstract class Verb
+    public abstract class Verb
     {
+        public abstract string HelpText();
         public abstract List<string> keyWord { get; }
     }
 }

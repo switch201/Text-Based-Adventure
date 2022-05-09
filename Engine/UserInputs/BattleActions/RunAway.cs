@@ -9,6 +9,11 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
     {
         public override List<string> keyWord => new List<string>() { "run" };
 
+        public override string HelpText()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             //TODO FIX THIS WHOLE THING!

@@ -34,6 +34,12 @@ namespace Text_Based_Adventure
             }
         }
 
+        public static void fourthWall(string text)
+        {
+            Console.ForegroundColor= ConsoleColor.Blue;
+            Console.WriteLine(text);
+        }
+
         public static string Readfile(string fileName)
         {
             using (StreamReader r = new StreamReader(fileName))

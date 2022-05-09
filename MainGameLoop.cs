@@ -14,6 +14,7 @@ namespace Text_Based_Adventure
     {
         static void Main(string[] args)
         {
+            Console.Title = "Text Based Adventure";
 
             Level testLevel = new TestLevel();
 

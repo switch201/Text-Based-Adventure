@@ -10,6 +10,5 @@ namespace Text_Based_Adventure.Engine
     public abstract class GameAction : Verb
     {
         public abstract void RespondToInput(GameController controller, List<string> seperatedWords);
-
     }
 }
