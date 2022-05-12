@@ -30,10 +30,19 @@ namespace Text_Based_Adventure.Engine
                 new Help()
             };
 
-        public List<string> getKeyWords()
+        public List<string> getGameActionWords()
         {
             var list = new List<string>();
             foreach(GameAction action in gameActions)
+            {
+                list.Add(action.keyWord.First());
+            }
+            return list;
+        }
+        public List<string> getBAttleActionWords()
+        {
+            var list = new List<string>();
+            foreach (BattleAction action in battleActions)
             {
                 list.Add(action.keyWord.First());
             }
@@ -43,6 +52,18 @@ namespace Text_Based_Adventure.Engine
         public GameAction GetGameAction(string keyWord)
         {
             foreach (GameAction action in gameActions)
+            {
+                if (action.keyWord.Contains(keyWord))
+                {
+                    return action;
+                }
+            }
+            return null;
+        }
+
+        public BattleAction GetBattleActtion(string keyWord)
+        {
+            foreach (BattleAction action in battleActions)
             {
                 if (action.keyWord.Contains(keyWord))
                 {
@@ -63,18 +84,26 @@ namespace Text_Based_Adventure.Engine
 
             if(gameController.gameState.currentGameState == States.Combat)
             {
-                foreach (BattleAction action in battleActions)
+                BattleAction validAction = GetBattleActtion(seperatedInputWords.First());
+                if (validAction == null)
                 {
-                    if (action.keyWord.Contains(seperatedInputWords.First()))
-                    {
-                        action.RespondToInput(gameController, seperatedInputWords);
-                        gameController.checkForCombatEnd();
-                    }
+                    Util.wl("That is not a valid action. Type 'help actions' to see a list of valid actions");
+                }
+                else
+                {
+                    validAction.RespondToInput(gameController, seperatedInputWords);
                 }
             }
             else
             {
-               GetGameAction(seperatedInputWords.First()).RespondToInput(gameController, seperatedInputWords);
+                GameAction validAction = GetGameAction(seperatedInputWords.First());
+                if(validAction == null)
+                {
+                    Util.wl("That is not a valid action. Type 'help actions' to see a list of valid actions");
+                }
+                else{
+                    validAction.RespondToInput(gameController, seperatedInputWords);
+                }
             }
         }
 

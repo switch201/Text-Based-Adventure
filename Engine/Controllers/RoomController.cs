@@ -21,6 +21,10 @@ namespace Text_Based_Adventure.Engine
             {
                 currentRoom = currentRoom.Exit(direction);
             }
+            else
+            {
+                Util.wl("You can't go that way. type 'search exits' to see exits from this room.");
+            }
         }
 
         //TODO Make this skill based and have different exits be different levels of hidden

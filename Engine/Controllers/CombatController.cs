@@ -48,7 +48,7 @@ namespace Text_Based_Adventure.Engine.Controllers
         public CombatResult GetResult()
         {
             return new CombatResult() {
-                killingBlow = this.enemies.Count == 0
+                moreEnemies = this.GetEnemies().Count() > 0
             };
         }
 

@@ -83,7 +83,8 @@ namespace Text_Based_Adventure.Engine
             foreach (Player.Attributes.Attribute attribute in Enum.GetValues(typeof(Player.Attributes.Attribute)))
             {
                 Util.wl($"what is your {attribute} value");
-                attributeSet.setAttribute(attribute, Convert.ToInt32(Util.rl()));
+
+                attributeSet.setAttribute(attribute, Convert.ToInt32(Util.readNumber()));
             }
             this.playerController.player = new PlayerObject(name, attributeSet);
             this.gameState.RunGame();
@@ -93,6 +94,10 @@ namespace Text_Based_Adventure.Engine
         {
             string input = Util.rl();
             userInput.AcceptStringInput(input, this);
+            if(gameState.currentGameState == States.Combat)
+            {
+                checkForCombatEnd();
+            }
         }
 
         public void DisplayLoggedText()

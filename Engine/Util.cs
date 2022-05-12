@@ -19,6 +19,33 @@ namespace Text_Based_Adventure
             Console.WriteLine(line);
         }
 
+        public static int readNumber(bool positiveNumber = false)
+        {
+            bool inputAccepted = false;
+            int result = 0;
+            while (!inputAccepted)
+            {
+                try
+                {
+                    int number = Convert.ToInt32(rl());
+                    if (positiveNumber && number < 0)
+                    {
+                        Util.fourthWall("You have to input a positive number");
+                    }
+                    else
+                    {
+                        result = number;
+                        inputAccepted = true;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Util.fourthWall("You have to input a whole number");
+                }
+            }
+            return result;
+        }
+
         public static string rl()
         {
             Console.ForegroundColor = ConsoleColor.White;
