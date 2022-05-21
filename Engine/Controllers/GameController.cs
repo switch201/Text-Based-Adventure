@@ -94,10 +94,20 @@ namespace Text_Based_Adventure.Engine
 
         public void RunAway()
         {
-            this.gameState.RunGame();
-            this.combatController.setPlayer(null);
-            this.combatController.RemoveEnemies();
-            Util.wl("You Run Away");
+            if(this.combatController.getCombatRunChance() + this.roomController.currentRoom.runModifier > 0)
+            {
+                this.gameState.RunGame();
+                this.combatController.setPlayer(null);
+                this.combatController.RemoveEnemies();
+                Util.wl("You Run Away"); // TODO replace with custom room Text
+            }
+            else
+            {
+                // A Random Enemy gets an extra Attack on you!
+                this.combatController.ResolveEnemyAttack(Util.RandomFromList(this.combatController.GetEnemies()));
+            }
+            
+            
         }
 
         public void TakeUserInputForCharacter()

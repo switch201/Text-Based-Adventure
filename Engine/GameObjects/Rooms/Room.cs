@@ -25,6 +25,8 @@ namespace Text_Based_Adventure.Rooms
 
         public List<NPC> NPCs;
 
+        public int runModifier; // how easy is it to run away from a fight in this "Room"
+
          public Room(string roomName)
         {
             Items = new Dictionary<string, Item>() { };

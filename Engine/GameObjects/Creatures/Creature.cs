@@ -25,8 +25,8 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
 
         public int Attack(Item item = null)
         {
+            Util.log("AttackRoll");
             int diceRoll = Util.d20();
-            Util.log($"Attack DiceRoll: {diceRoll}");
 
             //This is where meat and potatoes of how items play into attributes and skills comes into play for now "punching" is generalize unarmed combat
             var result = this.attributes.getAttribute(Attribute.Strength) + diceRoll;

@@ -2,5 +2,6 @@
   "DescriptionText": "A dark dreary dungen. The inhabitents of which have long passed.",
   "EnterText": "As you walk in the door behind you slams shut. you look around for a way out, but there is no obvious escape.",
   "ExitText": "Some how some way you defined the laws of physics on get out of the room.",
-  "InspectionText": "You can't help but sense you may be stuck here...'"
+  "InspectionText": "You can't help but sense you may be stuck here...'",
+  "RunModifier": 10
 }

@@ -77,7 +77,9 @@ namespace Text_Based_Adventure
 
         public static int d20()
         {
-            return r.Next(1, 20);
+            var roll = r.Next(1, 20);
+            Util.log($"Dice Roll {r.Next(1, 20)}");
+            return roll;
         }
 
         public static T RandomFromList<T>(IEnumerable<T> list) {
