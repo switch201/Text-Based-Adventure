@@ -16,25 +16,33 @@ namespace Text_Based_Adventure
         {
             Console.Title = "Text Based Adventure";
 
-            Level testLevel = new TestLevel();
-
-            Game testGame = new Game(testLevel);
-
             GameState gameState = new GameState();
 
-            gameState.LoadTitle();
-
-            Util.wl("Enter your name...");
-
-            GameController gameController = new GameController(gameState, testGame);
-
-            gameController.TakeUserInputForCharacter();
-
-            gameController.StartGame();
+            GameController gameController = new GameController(gameState);
 
             while (gameController.gameState.currentGameState != States.Exit)
             {
-                gameController.TakeUserInputAndRespond();
+                Level testLevel = new TestLevel();
+
+                Game testGame = new Game(testLevel);
+
+                gameState.LoadTitle();
+
+                Util.wl("Enter your name...");
+
+                gameController.setGame(testGame);
+
+
+                gameController.TakeUserInputForCharacter();
+
+                gameController.StartGame();
+
+                while (gameController.gameState.currentGameState != States.Exit && gameController.gameState.currentGameState != States.GameOver)
+                {
+                    gameController.TakeUserInputAndRespond();
+                }
+                Util.wl("Type anything to continue");
+                Util.rl();
             }
 
         }

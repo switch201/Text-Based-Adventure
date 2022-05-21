@@ -1,0 +1,23 @@
+{
+  "Name": "skeletor",
+  "Health": 5,
+  "IsFinalBoss": false,
+  "Identifiers": [
+    "skeletor",
+    "skeleton",
+  ],
+  "SmallTalk": [
+    "He has no lungs how could you expect him to talk.",
+    "<skeleton noises>",
+  ],
+  "DescriptionText": "Skeletor, a rickty old skeleton",
+  "InspectionText": "Hes just bones",
+  "Attributes": {
+    "Strength": 3,
+    "Agility": 8,
+    "Intelligence": 3,
+    "Wisdom": 5,
+    "Perception": 3
+  }
+
+}

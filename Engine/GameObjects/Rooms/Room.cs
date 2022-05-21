@@ -25,7 +25,7 @@ namespace Text_Based_Adventure.Rooms
 
         public List<NPC> NPCs;
 
-         public Room(string roomName) : base(roomName)
+         public Room(string roomName)
         {
             Items = new Dictionary<string, Item>() { };
             Exits = new Dictionary<string, Room>() { };
@@ -112,6 +112,11 @@ namespace Text_Based_Adventure.Rooms
         public bool removeNPC(NPC npc)
         {
             return NPCs.Remove(npc);
+        }
+
+        public void removeNPCs()
+        {
+            NPCs.Clear();
         }
     }
 }

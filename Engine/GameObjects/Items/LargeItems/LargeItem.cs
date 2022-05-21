@@ -8,9 +8,5 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
     public abstract class LargeItem : Item
     {
 
-        public LargeItem(string itemName) : base(itemName)
-        {
-
-        }
     }
 }

@@ -7,9 +7,5 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables
     public class Consumable : SmallItem
     {
 
-        public Consumable(string itemName) : base(itemName)
-        {
-
-        }
     }
 }

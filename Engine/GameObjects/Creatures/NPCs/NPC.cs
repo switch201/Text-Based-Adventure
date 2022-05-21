@@ -2,23 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
+using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Engine.Player.Attributes;
 using Text_Based_Adventure.GameObjects;
+using Attribute = Text_Based_Adventure.Engine.Player.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.GameObjects
 {
-    public class NPC : GameObject
+    public class NPC : Creature
     {
         public List<string> Identifiers;
         public List<string> SmallTalk;
-        public AttributeSet Attributes;
-        public int Health;
-
-
-        public NPC(string npcName) : base(npcName)
-        {
-
-        }
+        public bool IsFinalBoss;
 
         public bool isAlive()
         {
@@ -28,11 +24,6 @@ namespace Text_Based_Adventure.Engine.GameObjects
         public void SaySmallTalk()
         {
             Util.wl(Util.RandomFromList(this.SmallTalk));
-        }
-
-        public void adjustHealth(int adjustment)
-        {
-            this.Health += adjustment;
         }
     }
 }

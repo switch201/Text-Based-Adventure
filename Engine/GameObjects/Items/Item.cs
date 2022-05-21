@@ -15,13 +15,6 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
 
         public string QuallityText;
 
-        public Item(string itemName) : base(itemName)
-        {
-            //TODO move to Json
-            this.Name = itemName;
-
-        }
-
         public void Discover()
         {
             Util.wl(this.DiscoverText);

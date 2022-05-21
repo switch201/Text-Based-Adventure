@@ -110,6 +110,12 @@ namespace Text_Based_Adventure.Engine
             this.RemoveNPC(currentRoom.GetNPC(npcName));
         }
 
+        //TODO change to remove enemies
+        public void RemoveNPCs()
+        {
+            this.currentRoom.removeNPCs();
+        }
+
         public void RemoveNPC(NPC npc)
         {
             this.currentRoom.removeNPC(npc);

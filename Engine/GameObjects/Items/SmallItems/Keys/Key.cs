@@ -6,9 +6,6 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Keys
 {
     public abstract class Key : SmallItem
     {
-        public Key(string itemName) : base(itemName)
-        {
 
-        }
     }
 }

@@ -85,6 +85,12 @@ namespace Text_Based_Adventure
             return list.ElementAt(index);
         }
 
+        public static string RandomIdentifier(NPC npc)
+        {
+            var nameList = npc.Identifiers;
+            return Util.RandomFromList(nameList);
+        }
+
         //TODO Items andd stuff too
         public static NPC NameOrIdentifier(List<NPC> npcs, string nameOrIdentifier)
         {

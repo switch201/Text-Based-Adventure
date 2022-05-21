@@ -35,10 +35,5 @@ namespace Text_Based_Adventure.Engine.Player.Attributes
         {
             return this.GetValueOrDefault(stat);
         }
-
-        internal int getAttribute(object strength)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

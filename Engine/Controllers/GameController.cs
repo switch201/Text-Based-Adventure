@@ -25,7 +25,7 @@ namespace Text_Based_Adventure.Engine
 
         List<string> actionLog = new List<string>();
 
-        public GameController(GameState initialState, Game game)
+        public GameController(GameState initialState)
         {
             roomController = new RoomController();
             levelController = new LevelController();
@@ -33,7 +33,16 @@ namespace Text_Based_Adventure.Engine
             userInput = new UserInput();
             playerController = new PlayerController();
             combatController = new CombatController();
+        }
+
+        public void setGame(Game game)
+        {
             this.game = game;
+        }
+
+        public void clearGame()
+        {
+            this.game = null;
         }
 
         public void StartGame()
@@ -46,7 +55,9 @@ namespace Text_Based_Adventure.Engine
             this.gameState.Combat();
             this.combatController.setPlayer(playerController.player);
             this.combatController.setEnemies(this.roomController.currentRoom.getNPCs()); // TODO filter out friendly NPCs
-            Util.wl("You Start Combat");
+
+            Util.wl($"You Start Combat against a");
+            this.roomController.currentRoom.getNPCs().ForEach(x => Util.wl(Util.RandomIdentifier(x)));
         }
 
         public void checkForCombatEnd()
@@ -55,16 +66,29 @@ namespace Text_Based_Adventure.Engine
             //Based on the results "Kill" the dead people
             if (!result.moreEnemies)
             {
-                EndCOmbat();
+                if (result.gameWon) //Final Boss Dead
+                {
+                    this.gameState.WinGame();
+                    this.clearGame();
+                }
+                else
+                {
+                    EndCombat();
+                }
+                
+            }
+            else if (result.playerKilled)
+            {
+                this.gameState.LoseGame();
+                this.clearGame();
             }
         }
 
-        public void EndCOmbat()
+        public void EndCombat()
         {
             this.gameState.RunGame();
             this.combatController.setPlayer(null);
-            this.combatController.RemoveEnemies();
-            this.roomController.RemoveNPC("fred"); //TODO FIx this too
+            this.roomController.RemoveNPCs(); //TODO FIx this too
             Util.wl("You Win");
         }
 

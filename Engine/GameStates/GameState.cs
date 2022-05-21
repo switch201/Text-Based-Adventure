@@ -9,7 +9,8 @@ namespace Text_Based_Adventure.Engine.GameStates
         GamePlay,
         Exit,
         CharacterCreation,
-        Combat
+        Combat,
+        GameOver
     }
     public class GameState
     {
@@ -38,6 +39,18 @@ namespace Text_Based_Adventure.Engine.GameStates
             Util.wl(Figgle.FiggleFonts.Epic.Render("To Your"));
 
             Util.wl(Figgle.FiggleFonts.Gothic.Render("DOOM!!"));
+        }
+
+        public void LoseGame()
+        {
+            Util.wl(Figgle.FiggleFonts.ScriptSlant.Render("YOU MET YOUR DOOOM!"));
+            currentGameState = States.GameOver;
+        }
+
+        public void WinGame()
+        {
+            Util.wl(Figgle.FiggleFonts.Pawp.Render("You Beat The Game"));
+            currentGameState = States.GameOver;
         }
 
         public void RunGame()

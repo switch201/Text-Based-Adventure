@@ -1,6 +1,7 @@
 {
   "Name": "fred",
   "Health": 11,
+  "IsFinalBoss": true,
   "Identifiers": [
     "man",
     "guy",
