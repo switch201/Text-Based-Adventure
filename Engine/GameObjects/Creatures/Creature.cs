@@ -33,19 +33,19 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
 
             if (result > 10 && result <= 15)
             {
-                Util.wl("A Good Punch");
+                Util.wl("A Good Attack");
             }
             else if (result > 15)
             {
-                Util.wl("A Great Punch");
+                Util.wl("A Great Attack");
             }
             else if (result <= 10 && result >= 5)
             {
-                Util.wl("A Bad Punch");
+                Util.wl("A Bad Attack");
             }
             else if (result < 5)
             {
-                Util.wl("A Terrible Punch");
+                Util.wl("A Terrible Attack");
             }
 
             return result;
