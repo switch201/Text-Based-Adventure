@@ -33,7 +33,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
 
             if (result > 10 && result <= 15)
             {
-                Util.wl("A Good Bunch");
+                Util.wl("A Good Punch");
             }
             else if (result > 15)
             {
