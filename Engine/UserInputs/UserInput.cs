@@ -27,7 +27,8 @@ namespace Text_Based_Adventure.Engine
                 new Drop(),
                 new TalkTo(),
                 new Attack(),
-                new Help()
+                new Help(),
+                new Eat()
             };
 
         public List<string> getGameActionWords()

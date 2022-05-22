@@ -18,7 +18,7 @@
     <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\ItemText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\pumpkinpieText.json">
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\Comsumables\pumpkinpieText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel\JsonContent\GameObjects\NPCs\fredText.json">
@@ -46,7 +46,6 @@
 
   <ItemGroup>
     <Folder Include="Engine\GameObjects\Items\SmallItems\Equipables\" />
-    <Folder Include="Engine\HelpObjects\" />
     <Folder Include="Engine\UserInputs\InputResults\" />
   </ItemGroup>
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Items;
+using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.Engine.Player;
 
 namespace Text_Based_Adventure.Engine.Controllers
@@ -15,6 +16,20 @@ namespace Text_Based_Adventure.Engine.Controllers
         {
             player.inventory.addItem(item);
             Util.wl($"You take the {item.Name}");
+        }
+
+        //TODO What happens when it is not a consumable?
+        public void AttemptToEatConsumable(string itemName)
+        {
+            Consumable item = (Consumable)player.inventory.getItem(itemName);
+            if (item == null)
+            {
+                Util.wl($"You aren't carrying a {itemName}");
+                return;
+            }
+
+            Util.wl($"You eat the {item.Name}");
+            player.Eat((Consumable)player.inventory.removeItem(itemName));
         }
 
         public Item DropItem(string itemName)

@@ -15,6 +15,10 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
 
         public string QuallityText;
 
+        public int hiddenModifier = 0;
+
+
+
         public void Discover()
         {
             Util.wl(this.DiscoverText);

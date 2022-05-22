@@ -1,0 +1,11 @@
+{
+  "DescriptionText": "A Freshly Baked Pumpkin Pie.... mmmmmmmm",
+  "InspectionText": "Is that a hint of nutmeg?",
+  "QuallityText": "This is the most perfect pumkin I have ever seen",
+  "Duration": 5,
+  "HealingValue": 3,
+  "AttributeModifer": {
+    "Agility": -2,
+    "Strength": 1
+  }
+}

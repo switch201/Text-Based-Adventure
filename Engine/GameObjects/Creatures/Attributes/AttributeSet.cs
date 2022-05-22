@@ -21,7 +21,7 @@ namespace Text_Based_Adventure.Engine.Player.Attributes
         {
             foreach (Attribute attribute in Enum.GetValues(typeof(Attribute)))
             {
-                this.Add(attribute, 5);
+                this.Add(attribute, 0);
             }
         }
 

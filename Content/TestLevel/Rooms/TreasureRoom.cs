@@ -16,7 +16,7 @@ namespace Text_Based_Adventure.Content
     {
         public TreasureRoom(string roomName) : base(roomName)
         {
-            var item = ItemFactory.MakeItem("pumpkinpie");
+            var item = ItemFactory.MakeConsumable("pumpkinpie");
             this.addItem(item);
         }
     }
