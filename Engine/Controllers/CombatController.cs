@@ -74,9 +74,15 @@ namespace Text_Based_Adventure.Engine.Controllers
         public int getCombatRunChance()
         {
             var diceRoll = Util.d20();
-            var value = this.player.attributes.getAttribute(Attribute.Agility) - // Player Agility
-                this.enemies.Sum(x => x.attributes.getAttribute(Attribute.Perception)) + //Sum of Enemy Perception
-                diceRoll; 
+            var enemyValue = (
+                    this.enemies.Sum(x => x.attributes.getAttribute(Attribute.Agility)) + //Sum of Enemy Agility More Enemies means harder to run away
+                    (Util.Round(this.enemies.Sum(x => x.attributes.getAttribute(Attribute.Perception)) / 2)) // Half of Each enemies Perception Summed
+                );
+            var playerValue = this.player.attributes.getAttribute(Attribute.Agility); // Player Agility
+            Util.log($"Enemy Run Value {enemyValue}");
+            Util.log($"Player Run Value {playerValue}");
+            var value = playerValue + diceRoll - enemyValue;
+            Util.log($"Run Chance Value {value}");
 
             return value;
         }

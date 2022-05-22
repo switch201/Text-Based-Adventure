@@ -8,6 +8,7 @@ using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Engine.Controllers;
 using Text_Based_Adventure.Engine.Player.Attributes;
 using System.Linq;
+using Text_Based_Adventure.Engine.GameObjects;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -73,7 +74,7 @@ namespace Text_Based_Adventure.Engine
                 }
                 else
                 {
-                    EndCombat();
+                    WinCombat();
                 }
                 
             }
@@ -84,30 +85,37 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
-        public void EndCombat()
+        private void WinCombat()
         {
-            this.gameState.RunGame();
+            
             this.combatController.setPlayer(null);
             this.roomController.RemoveNPCs(); //TODO FIx this too
             Util.wl("You Win");
         }
 
+        private void EndCombat()
+        {
+            this.gameState.RunGame();
+            this.combatController.setPlayer(null);
+            this.combatController.RemoveEnemies();
+        }
+
         public void RunAway()
         {
-            if(this.combatController.getCombatRunChance() + this.roomController.currentRoom.runModifier > 0)
+            var runModifier = this.roomController.currentRoom.runModifier;
+            Util.log($"Room Run Modifier: {runModifier}");
+            if (this.combatController.getCombatRunChance() - this.roomController.currentRoom.runModifier > 0)
             {
-                this.gameState.RunGame();
-                this.combatController.setPlayer(null);
-                this.combatController.RemoveEnemies();
+                EndCombat();
                 Util.wl("You Run Away"); // TODO replace with custom room Text
             }
             else
             {
+                NPC randomEnemy = Util.RandomFromList(this.combatController.GetEnemies());
+                Util.wl($"You try to run, But {randomEnemy.Name} stops you!");
                 // A Random Enemy gets an extra Attack on you!
-                this.combatController.ResolveEnemyAttack(Util.RandomFromList(this.combatController.GetEnemies()));
+                this.combatController.ResolveEnemyAttack(randomEnemy);
             }
-            
-            
         }
 
         public void TakeUserInputForCharacter()

@@ -78,7 +78,7 @@ namespace Text_Based_Adventure
         public static int d20()
         {
             var roll = r.Next(1, 20);
-            Util.log($"Dice Roll {r.Next(1, 20)}");
+            Util.log($"Dice Roll {roll}");
             return roll;
         }
 
@@ -99,6 +99,11 @@ namespace Text_Based_Adventure
             return npcs
                 .Where(x => x.Name.Equals(nameOrIdentifier) || x.Identifiers.Contains(nameOrIdentifier))
                 .SingleOrDefault();
+        }
+
+        public static int Round(double number)
+        {
+            return (int)Math.Round(number);
         }
     }
 }
