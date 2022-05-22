@@ -67,7 +67,7 @@ namespace Text_Based_Adventure.Engine
             //Based on the results "Kill" the dead people
             if (!result.moreEnemies)
             {
-                if (result.gameWon) //Final Boss Dead
+                if (result.gameWon) //Final Bosds Dead
                 {
                     this.gameState.WinGame();
                     this.clearGame();
@@ -87,9 +87,8 @@ namespace Text_Based_Adventure.Engine
 
         private void WinCombat()
         {
-            
-            this.combatController.setPlayer(null);
             this.roomController.RemoveNPCs(); //TODO FIx this too
+            EndCombat();
             Util.wl("You Win");
         }
 
