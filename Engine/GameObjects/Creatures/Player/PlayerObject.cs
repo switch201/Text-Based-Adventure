@@ -17,12 +17,12 @@ namespace Text_Based_Adventure.Engine.Player
             this.stats = new StatsSet();
             this.attributes = attributes;
             this.Name = name;
-            this.Health = 5 + attributes.getAttribute(Attribute.Strength);
+            this.Health = this.MaxHealth = 5 + attributes.getAttribute(Attribute.Strength);
         }
 
         private void AdjustAttribute(Attribute attribute, int ammount)
         {
-            Util.log("Adjusting Attribute");
+            Util.log($"Adjusting Attribute {attribute} by {ammount}");
             this.attributes.setAttribute(attribute, this.attributes.getAttribute(attribute) + ammount);
         }
 

@@ -15,12 +15,17 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public AttributeSet attributes;
         public Inventory inventory;
         public int Health;
+        public int MaxHealth;
 
 
 
         public void adjustHealth(int adjustment)
         {
             this.Health += adjustment;
+            if (this.Health > MaxHealth)
+            {
+                this.Health = MaxHealth;
+            }
         }
 
         public int Attack(Item item = null)
