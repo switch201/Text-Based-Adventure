@@ -9,6 +9,8 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
     {
         public override List<string> keyWord => new List<string>(){"eat"};
 
+        public override int duration => 2;
+
         public override string HelpText()
         {
             return "You can eat consumable items from your pack by saying 'eat <itemName>'\n" +

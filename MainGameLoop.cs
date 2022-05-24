@@ -40,6 +40,7 @@ namespace Text_Based_Adventure
                 while (gameController.gameState.currentGameState != States.Exit && gameController.gameState.currentGameState != States.GameOver)
                 {
                     gameController.TakeUserInputAndRespond();
+                    Util.log($"Current GameTime {gameController.gameState.getGameTime()}");
                 }
                 Util.wl("Type anything to continue");
                 Util.rl();

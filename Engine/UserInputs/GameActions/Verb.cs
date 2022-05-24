@@ -8,5 +8,8 @@ namespace Text_Based_Adventure.Engine.InputActions
     {
         public abstract string HelpText();
         public abstract List<string> keyWord { get; }
+
+        public abstract int duration { get; }
+
     }
 }

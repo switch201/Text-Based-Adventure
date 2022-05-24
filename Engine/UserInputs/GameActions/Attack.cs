@@ -8,6 +8,8 @@ namespace Text_Based_Adventure.Engine.InputActions
     {
         public override List<string> keyWord => new List<string>() { "attack" };
 
+        public override int duration => 0;
+
         public override string HelpText()
         {
             return "Use Attack to Start Combat";

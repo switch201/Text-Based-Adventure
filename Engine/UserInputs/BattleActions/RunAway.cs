@@ -9,6 +9,8 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
     {
         public override List<string> keyWord => new List<string>() { "run" };
 
+        public override int duration => 1;
+
         public override string HelpText()
         {
             throw new NotImplementedException();

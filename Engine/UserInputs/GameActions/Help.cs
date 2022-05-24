@@ -9,6 +9,8 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
     {
         public override List<string> keyWord => new List<string> { "help" };
 
+        public override int duration => 0;
+
         public override string HelpText()
         {
             return "Welcome to the help section of the game.\n" +

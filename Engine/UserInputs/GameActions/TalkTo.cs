@@ -9,6 +9,8 @@ namespace Text_Based_Adventure.Engine.InputActions
     {
         public override List<string> keyWord => new List<string>() { "talk", "speak", };
 
+        public override int duration => 1;
+
         public override string HelpText()
         {
             throw new NotImplementedException();

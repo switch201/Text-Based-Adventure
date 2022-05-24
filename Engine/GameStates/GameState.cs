@@ -15,6 +15,18 @@ namespace Text_Based_Adventure.Engine.GameStates
     public class GameState
     {
 
+        private int gameClock;
+
+        public int getGameTime()
+        {
+            return this.gameClock;
+        }
+
+        public void adjustGameClock(int value)
+        {
+            this.gameClock += value;
+        }
+
         public GameState()
         {
             currentGameState = States.TitleScreen;

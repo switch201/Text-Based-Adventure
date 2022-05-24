@@ -100,10 +100,12 @@ namespace Text_Based_Adventure.Engine
                 GameAction validAction = GetGameAction(seperatedInputWords.First());
                 if(validAction == null)
                 {
-                    Util.wl("That is not a valid action. Type 'help actions' to see a list of valid actions");
+                    Util.wl("That is not a valid action. Type 'help action' to see a list of valid actions");
                 }
                 else{
+
                     validAction.RespondToInput(gameController, seperatedInputWords);
+                    gameController.gameState.adjustGameClock(validAction.duration);
                 }
             }
         }

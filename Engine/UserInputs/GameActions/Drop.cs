@@ -10,6 +10,8 @@ namespace Text_Based_Adventure.Engine.InputActions
     {
         public override List<string> keyWord => new List<string>() { "drop", "place" };
 
+        public override int duration => 0;
+
         public override string HelpText()
         {
             throw new NotImplementedException();
