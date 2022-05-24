@@ -43,6 +43,7 @@ namespace Text_Based_Adventure.Engine
         public void clearGame()
         {
             this.game = null;
+            this.combatController = new CombatController();
         }
 
         public void StartGame()
