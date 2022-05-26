@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Engine\GameObjects\Items\SmallItems\Equipables\**" />
+    <EmbeddedResource Remove="Engine\GameObjects\Items\SmallItems\Equipables\**" />
+    <None Remove="Engine\GameObjects\Items\SmallItems\Equipables\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Items\ItemText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Items\PumpkinpieText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\NPCs\FredText.json" />
@@ -45,7 +51,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Engine\GameObjects\Items\SmallItems\Equipables\" />
     <Folder Include="Engine\UserInputs\InputResults\" />
   </ItemGroup>
 

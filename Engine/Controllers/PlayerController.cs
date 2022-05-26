@@ -18,8 +18,13 @@ namespace Text_Based_Adventure.Engine.Controllers
             Util.wl($"You take the {item.Name}");
         }
 
+        public void CheckConsumableTime(int gameTime)
+        {
+            this.player.CheckConsumableTimeAndRemove(gameTime);
+        }
+
         //TODO What happens when it is not a consumable?
-        public void AttemptToEatConsumable(string itemName)
+        public void AttemptToEatConsumable(string itemName, int gameTime)
         {
             Consumable item = (Consumable)player.inventory.getItem(itemName);
             if (item == null)
@@ -29,7 +34,7 @@ namespace Text_Based_Adventure.Engine.Controllers
             }
 
             Util.wl($"You eat the {item.Name}");
-            player.Eat((Consumable)player.inventory.removeItem(itemName));
+            player.Eat((Consumable)player.inventory.removeItem(itemName), gameTime);
         }
 
         public Item DropItem(string itemName)

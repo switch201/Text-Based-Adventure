@@ -4,8 +4,8 @@ using System.Text;
 using Text_Based_Adventure.Engine.GameObjects;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.Player;
-using Attribute = Text_Based_Adventure.Engine.Player.Attributes.Attribute;
 using System.Linq;
+using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.Controllers
 {

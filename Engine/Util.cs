@@ -63,7 +63,7 @@ namespace Text_Based_Adventure
 
         public static void fourthWall(string text)
         {
-            Console.ForegroundColor= ConsoleColor.Blue;
+            Console.ForegroundColor= ConsoleColor.Cyan;
             Console.WriteLine(text);
         }
 

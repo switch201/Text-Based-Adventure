@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.Player.Stats;
 
-namespace Text_Based_Adventure.Engine.Player.Attributes
+namespace Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes
 {
     public enum Attribute
     {

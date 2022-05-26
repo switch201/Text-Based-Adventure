@@ -5,9 +5,10 @@ using Text_Based_Adventure.Engine.GameStates;
 using Text_Based_Adventure.Engine.Games;
 using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Engine.Controllers;
-using Text_Based_Adventure.Engine.Player.Attributes;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
+using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -40,10 +41,17 @@ namespace Text_Based_Adventure.Engine
             this.game = game;
         }
 
+
+        // Does all the things the constructor does to reset the game
         public void clearGame()
         {
+            roomController = new RoomController();
+            levelController = new LevelController();
+            gameState = new GameState();
+            userInput = new UserInput();
+            playerController = new PlayerController();
+            combatController = new CombatController();
             this.game = null;
-            this.combatController = new CombatController();
         }
 
         public void StartGame()
@@ -61,7 +69,13 @@ namespace Text_Based_Adventure.Engine
             this.roomController.currentRoom.getNPCs().ForEach(x => Util.wl(Util.RandomIdentifier(x)));
         }
 
-        public void checkForCombatEnd()
+        private void checkTimedEvents()
+        {
+            var currentTime = this.gameState.getGameTime();
+            this.playerController.CheckConsumableTime(currentTime);
+        }
+
+        private void checkForCombatEnd()
         {
             CombatResult result = this.combatController.GetResult();
             //Based on the results "Kill" the dead people
@@ -121,7 +135,7 @@ namespace Text_Based_Adventure.Engine
         {
             var attributeSet = new AttributeSet();
             string name = Util.rl();
-            foreach (Player.Attributes.Attribute attribute in Enum.GetValues(typeof(Player.Attributes.Attribute)))
+            foreach (Attribute attribute in Enum.GetValues(typeof(Attribute)))
             {
                 Util.wl($"what is your {attribute} value");
 
@@ -135,6 +149,7 @@ namespace Text_Based_Adventure.Engine
         {
             string input = Util.rl();
             userInput.AcceptStringInput(input, this);
+            checkTimedEvents();
             if(gameState.currentGameState == States.Combat)
             {
                 checkForCombatEnd();
