@@ -18,7 +18,7 @@ namespace Text_Based_Adventure.Engine.Controllers
 
     public class AttackResult
     {
-        public int attackValue;
+        public int damage;
         public int enemyAttackValue;
         public bool wasValid;
         public bool killingBlow;
@@ -75,10 +75,10 @@ namespace Text_Based_Adventure.Engine.Controllers
         {
             var diceRoll = Util.d20();
             var enemyValue = (
-                    this.enemies.Sum(x => x.attributes.getAttribute(Attribute.Agility)) + //Sum of Enemy Agility More Enemies means harder to run away
-                    (Util.Round(this.enemies.Sum(x => x.attributes.getAttribute(Attribute.Perception)) / 2)) // Half of Each enemies Perception Summed
+                    this.enemies.Sum(x => x.getFullMod(Attribute.Agility)) + //Sum of Enemy Agility More Enemies means harder to run away
+                    (Util.Round(this.enemies.Sum(x => x.getFullMod(Attribute.Perception)) / 2)) // Half of Each enemies Perception Summed
                 );
-            var playerValue = this.player.attributes.getAttribute(Attribute.Agility); // Player Agility
+            var playerValue = this.player.getFullMod(Attribute.Agility); // Player Agility
             Util.log($"Enemy Run Value {enemyValue}");
             Util.log($"Player Run Value {playerValue}");
             var value = playerValue + diceRoll - enemyValue;
@@ -92,22 +92,7 @@ namespace Text_Based_Adventure.Engine.Controllers
             //TODO since this can be called from anywhere needs to check if valid
 
             // Enemy Attacks Back
-            Util.wl("<insert Identifier Here> attacks back.");
-
-            int enemyAttackValue = npc.Attack() - player.Dodge();
-
-            if (enemyAttackValue > 0)
-            {
-                Util.wl("He Hits you!");
-                player.adjustHealth(-enemyAttackValue);
-            }
-            else
-            {
-                Util.wl("You Dodge out of the way.");
-            }
-
-            Util.log($"EnemyAttackValue: {enemyAttackValue}");
-            Util.log($"Player Health After {player.Health}");
+            int damage = npc.Attack(player, null);
 
             if (player.Health <= 0)
             {
@@ -115,7 +100,7 @@ namespace Text_Based_Adventure.Engine.Controllers
                 //Remove player so game knows hes dead
                 this.player = null;
             }
-            return enemyAttackValue;
+            return damage;
         }
 
         private bool isEnemyInCombat(NPC npc)
@@ -123,29 +108,15 @@ namespace Text_Based_Adventure.Engine.Controllers
             return this.enemies.Contains(npc);
         }
 
+
+        //TODO combine with Resolve Enemy Attack
         public int ResolvePlayerAttack(NPC enemy)
         {
-            //TODO since this can be called from anywhere needs to check if valid
-            Util.wl("You attack with a <fill in item>");
-            int attackValue = player.Attack() - enemy.Dodge();
-
-            if (attackValue > 0)
-            {
-                Util.wl("You land a hit");
-                enemy.adjustHealth(-attackValue);
-            }
-            else
-            {
-                Util.wl("He Dodges your attack!");
-            }
-
-            Util.log($"AttackValue: {attackValue}");
-            Util.log($"Enemy Health After {enemy.Health}");
-
+            int damage = player.Attack(enemy, null);
             if (enemy.Health <= 0)
             {
                 // drop loot
-
+                //TODO so unbeleiveably broken
                 //finalBoss
                 if (enemy.Name == "fred")
                 {
@@ -154,9 +125,9 @@ namespace Text_Based_Adventure.Engine.Controllers
 
                 //kill enemy
                 enemies.Remove(enemy);
-
             }
-            return attackValue;
+
+            return damage;
         }
 
 
@@ -180,7 +151,10 @@ namespace Text_Based_Adventure.Engine.Controllers
                 };
             }
 
-            attackResult.attackValue = this.ResolvePlayerAttack(enemy);
+
+
+            attackResult.damage = this.ResolvePlayerAttack(enemy);
+
 
             if (isEnemyInCombat(enemy))
             {

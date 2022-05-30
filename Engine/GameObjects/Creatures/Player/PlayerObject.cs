@@ -52,7 +52,7 @@ namespace Text_Based_Adventure.Engine.Player
                 foreach (Attribute attribute in Enum.GetValues(typeof(Attribute)))
                 {
                     int modValue = mod.Attributes.getAttribute(attribute);
-                    if (mod.Attributes.getAttribute(attribute) != 0)
+                    if (modValue != 0)
                     {
                         Util.fourthWall($"{modValue} {attribute}");
                     }

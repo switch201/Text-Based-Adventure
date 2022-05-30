@@ -17,6 +17,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public Inventory inventory;
         public int Health;
         public int MaxHealth;
+        public int chanceToHit; //Inherent Chance to Hit
 
         public Creature()
         {
@@ -35,39 +36,59 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             Util.log($"Health now at {this.Health}");
         }
 
-        public int Attack(Item item = null)
+        public int Attack(Creature defender, Item item = null)
         {
-            Util.log("AttackRoll");
+            //TODO since this can be called from anywhere needs to check if valid
+            Util.wl("You attack with a <fill in item>");
+
+            //Calculate Hit Chance 
+            Util.log("HitRoll");
             int diceRoll = Util.d20();
 
-            //This is where meat and potatoes of how items play into attributes and skills comes into play for now "punching" is generalize unarmed combat
-            var result = this.attributes.getAttribute(Attribute.Strength) + diceRoll;
+            int attackerValue = diceRoll + this.chanceToHit;
 
-            if (result > 10 && result <= 15)
+            int defenderValue = defender.Dodge();
+
+            int damage = 0;
+
+            if (attackerValue > defenderValue)
             {
-                Util.wl("A Good Attack");
+                Util.wl($"{Name} land a hit");
+                // Check for item here if null then just punch
+                damage = 1 + this.getFullMod(Attribute.Strength);
             }
-            else if (result > 15)
+            else
             {
-                Util.wl("A Great Attack");
-            }
-            else if (result <= 10 && result >= 5)
-            {
-                Util.wl("A Bad Attack");
-            }
-            else if (result < 5)
-            {
-                Util.wl("A Terrible Attack");
+                Util.wl("Your attack misses!");
             }
 
-            return result;
+            defender.adjustHealth(-damage);
+
+            Util.log($"DamageValue: {damage}");
+            Util.log($"Enemy Health After {defender.Health}");
+            return damage;
 
         }
 
         public int Dodge()
         {
             //This is where meat and potatoes of how items play into attributes and skills comes into play for now "punching" is generalize unarmed combat
-            return this.attributes.getAttribute(Attribute.Agility) + 10; //base dodge;
+            return this.getFullMod(Attribute.Agility) + 10; //base dodge;
+        }
+
+        public int getFullAttribute(Attribute stat)
+        {
+            int baseValue = attributes.getAttribute(stat);
+            foreach(var attributemod in this.attributeMods)
+            {
+                baseValue += attributemod.Attributes.getAttribute(stat);
+            }
+            return baseValue;
+        }
+
+        public int getFullMod(Attribute stat)
+        {
+            return (int)Math.Floor((decimal)(this.getFullAttribute(stat) / 2));
         }
 
     }
