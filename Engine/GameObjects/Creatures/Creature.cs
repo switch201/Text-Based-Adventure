@@ -13,16 +13,16 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
     public abstract class Creature : GameObject
     {
         public AttributeSet attributes;
-        public List<AttributeModifierSet> attributeMods; //list because multiple effects at once
+        public List<AttributeModifierSet> attributeMods = new List<AttributeModifierSet>(); //list because multiple effects at once
         public Inventory inventory;
         public int Health;
         public int MaxHealth;
         public int chanceToHit; //Inherent Chance to Hit
 
-        public Creature()
-        {
-            attributeMods = new List<AttributeModifierSet>();
-        }
+        //public Creature()
+        //{
+        //    attributeMods = 
+        //}
 
 
         public void adjustHealth(int adjustment)
@@ -39,7 +39,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public int Attack(Creature defender, Item item = null)
         {
             //TODO since this can be called from anywhere needs to check if valid
-            Util.wl("You attack with a <fill in item>");
+            Util.wl($"{this.Name} attacks with a <fill in item>");
 
             //Calculate Hit Chance 
             Util.log("HitRoll");
@@ -53,13 +53,13 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
 
             if (attackerValue > defenderValue)
             {
-                Util.wl($"{Name} land a hit");
+                Util.wl($"{Name} lands a hit");
                 // Check for item here if null then just punch
                 damage = 1 + this.getFullMod(Attribute.Strength);
             }
             else
             {
-                Util.wl("Your attack misses!");
+                Util.wl($"{this.Name}'s attack misses!");
             }
 
             defender.adjustHealth(-damage);

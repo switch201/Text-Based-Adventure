@@ -1,6 +1,7 @@
 {
   "Name": "skeletor",
   "Health": 5,
+  "MaxHealth": 5,
   "IsFinalBoss": false,
   "Identifiers": [
     "skeletor",
