@@ -26,7 +26,16 @@ namespace Text_Based_Adventure.Engine.Controllers
         //TODO What happens when it is not a consumable?
         public void AttemptToEatConsumable(string itemName, int gameTime)
         {
-            Consumable item = (Consumable)player.inventory.getItem(itemName);
+            Consumable item = null;
+            try
+            {
+                item = (Consumable)player.inventory.getItem(itemName);
+            }
+            catch (InvalidCastException e)
+            {
+                Util.wl($"You can't eat a {itemName}. It's not good for you.");
+                return;
+            }
             if (item == null)
             {
                 Util.wl($"You aren't carrying a {itemName}");

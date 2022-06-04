@@ -14,7 +14,6 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes
         Wisdom,
         Charisma,
         Constitution,
-
     }
 
     public class AttributeSet : Dictionary<Attribute, int>

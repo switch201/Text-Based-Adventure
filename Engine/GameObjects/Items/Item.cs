@@ -6,6 +6,8 @@ using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Items
 {
+
+
     public class Item : GameObject
     {
 
@@ -16,6 +18,10 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
         public string QuallityText;
 
         public int hiddenModifier = 0;
+
+        public int Cost; //TODO UOM
+
+        public int Weight; //TODO UOM
 
 
 

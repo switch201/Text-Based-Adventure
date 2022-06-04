@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
+using Text_Based_Adventure.Engine.GameObjects.Items.Weapons;
 using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine.Factories
@@ -19,9 +20,16 @@ namespace Text_Based_Adventure.Engine.Factories
 
         public static Consumable MakeConsumable(string consumableName)
         {
-            Consumable item = JsonConvert.DeserializeObject<Consumable>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/Items/Comsumables/{consumableName}Text.json"));
+            Consumable item = JsonConvert.DeserializeObject<Consumable>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/Items/Consumables/{consumableName}Text.json"));
             item.Name = consumableName;
             return item;
+        }
+
+        public static Weapon MakeWeapon(string weaponName)
+        {
+            Weapon weapon = JsonConvert.DeserializeObject<Weapon>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/Items/Weapons/{weaponName}Text.json"));
+            weapon.Name = weaponName;
+            return weapon;
         }
     }
 }
