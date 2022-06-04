@@ -75,10 +75,9 @@ namespace Text_Based_Adventure.Engine.Controllers
         {
             var diceRoll = Util.d20();
             var enemyValue = (
-                    this.enemies.Sum(x => x.getFullMod(Attribute.Agility)) + //Sum of Enemy Agility More Enemies means harder to run away
-                    (Util.Round(this.enemies.Sum(x => x.getFullMod(Attribute.Perception)) / 2)) // Half of Each enemies Perception Summed
+                    this.enemies.Sum(x => x.getFullMod(Attribute.Dexterity)) //Sum of Enemy Agility More Enemies means harder to run away
                 );
-            var playerValue = this.player.getFullMod(Attribute.Agility); // Player Agility
+            var playerValue = this.player.getFullMod(Attribute.Dexterity); // Player Agility
             Util.log($"Enemy Run Value {enemyValue}");
             Util.log($"Player Run Value {playerValue}");
             var value = playerValue + diceRoll - enemyValue;

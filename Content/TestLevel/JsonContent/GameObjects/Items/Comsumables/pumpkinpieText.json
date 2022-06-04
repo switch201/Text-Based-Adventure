@@ -8,7 +8,7 @@
       "Name": "Pie Belly",
       "Duration": 5,
       "Attributes": {
-        "Agility": -2,
+        "Dexterity": -2,
         "Strength": 1
       }
     }

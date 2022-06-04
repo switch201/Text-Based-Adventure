@@ -18,6 +18,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public int Health;
         public int MaxHealth;
         public int chanceToHit; //Inherent Chance to Hit
+        public int? AC; //Armor Class
 
         //public Creature()
         //{
@@ -65,15 +66,20 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             defender.adjustHealth(-damage);
 
             Util.log($"DamageValue: {damage}");
-            Util.log($"Enemy Health After {defender.Health}");
+            Util.log($"Defender Health After {defender.Health}");
             return damage;
 
         }
 
         public int Dodge()
         {
+            //TODO always use AC and make sure to keep it up to date
+            if(AC != null)
+            {
+                return (int)AC;
+            }
             //This is where meat and potatoes of how items play into attributes and skills comes into play for now "punching" is generalize unarmed combat
-            return this.getFullMod(Attribute.Agility) + 10; //base dodge;
+            return this.getFullMod(Attribute.Dexterity) + 10; //base dodge;
         }
 
         public int getFullAttribute(Attribute stat)

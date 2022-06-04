@@ -9,10 +9,12 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes
     public enum Attribute
     {
         Strength,
-        Agility,
+        Dexterity,
         Intelligence,
         Wisdom,
-        Perception
+        Charisma,
+        Constitution,
+
     }
 
     public class AttributeSet : Dictionary<Attribute, int>

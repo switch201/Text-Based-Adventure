@@ -1,8 +1,9 @@
 {
   "Name": "skeletor",
-  "Health": 5,
-  "MaxHealth": 5,
+  "Health": 25,
+  "MaxHealth": 25,
   "IsFinalBoss": false,
+  "AC":  13,
   "Identifiers": [
     "skeletor",
     "skeleton",
@@ -14,11 +15,12 @@
   "DescriptionText": "Skeletor, a rickty old skeleton",
   "InspectionText": "Hes just bones",
   "Attributes": {
-    "Strength": 3,
-    "Agility": 8,
-    "Intelligence": 3,
-    "Wisdom": 5,
-    "Perception": 3
+    "Strength": 10,
+    "Dexterity": 14,
+    "Intelligence": 6,
+    "Wisdom": 8,
+    "charisma": 5,
+    "Constitution": 15
   }
 
 }
