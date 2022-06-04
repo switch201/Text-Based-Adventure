@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Items;
+using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.Engine.Player;
 
@@ -16,6 +17,32 @@ namespace Text_Based_Adventure.Engine.Controllers
         {
             player.inventory.addItem(item);
             Util.wl($"You take the {item.Name}");
+        }
+
+        public void AttemptToEquipItem(Equipable item){
+
+        }
+
+        public void AttemptToEquiItem(string itemName)
+        {
+            // TODO need to make Equipable class. Not all items are equipable
+            Equipable item;
+            try
+            {
+                item = (Equipable)player.inventory.getItem(itemName);
+            }
+            catch(InvalidCastException e)
+            {
+                Util.wl($"You can't equip a {itemName}");
+                return;
+            }
+            if(item == null)
+            {
+                Util.wl($"You aren't carrying a {itemName}");
+                return;
+            }
+            Util.wl($"You equip the {itemName}");
+            this.player.Equip(item);
         }
 
         public void CheckConsumableTime(int gameTime)

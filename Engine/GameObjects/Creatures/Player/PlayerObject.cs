@@ -5,6 +5,7 @@ using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.Engine.Player.Stats;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 using System.Linq;
+using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 
 namespace Text_Based_Adventure.Engine.Player
 {
@@ -68,6 +69,13 @@ namespace Text_Based_Adventure.Engine.Player
             adjustHealth(item.HealingValue);
             item.AttributeModifers.ForEach(x => x.StartTime = gameTime + 2); //+2 is to offset the fact Eating takes 2 units of time.
             attributeMods.AddRange(item.AttributeModifers);
+        }
+
+        //TODO need checks for if item is already equiped
+        //TODO need to specify right hand left hand etc.
+        public void Equip(Equipable item)
+        {
+
         }
 }
 }
