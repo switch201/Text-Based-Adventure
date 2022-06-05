@@ -19,12 +19,12 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public int MaxHealth;
         public int chanceToHit; //Inherent Chance to Hit
         public int? AC; //Armor Class
-
-        //public Creature()
-        //{
-        //    attributeMods = 
-        //}
-
+        public ArmorSlots armorSlots;
+        public WeaponSlots weaponSlots;
+        public string DamageVulnerabilities;
+        public string DamageImmunities;
+        public string ConditionImmunities;
+        public int XP;
 
         public void adjustHealth(int adjustment)
         {

@@ -3,14 +3,18 @@
   "Health": 25,
   "MaxHealth": 25,
   "IsFinalBoss": false,
-  "AC":  13,
+  "AC": 13,
+  "DamageVulnerabilities": "Bludgeoning",
+  "DamageImmunities": "Poison",
+  "ConditionImmunities": "Exhaustion, Poisoned",
+  "XP":  50,
   "Identifiers": [
     "skeletor",
-    "skeleton",
+    "skeleton"
   ],
   "SmallTalk": [
     "He has no lungs how could you expect him to talk.",
-    "<skeleton noises>",
+    "<skeleton noises>"
   ],
   "DescriptionText": "Skeletor, a rickty old skeleton",
   "InspectionText": "Hes just bones",

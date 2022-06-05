@@ -14,7 +14,8 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         RightArm,
         LeftArm
     }
-    class AmorSlots : Dictionary<ArmorSlot, Armor>
+    public class ArmorSlots : Dictionary<ArmorSlot, Armor>
     {
+
     }
 }
