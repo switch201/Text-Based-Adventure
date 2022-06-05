@@ -13,6 +13,7 @@ namespace Text_Based_Adventure.Engine.Player
     public class PlayerObject : Creature
     {
         public StatsSet stats;
+        public int XP;
 
         public PlayerObject(string name, AttributeSet attributes)
         {
@@ -23,6 +24,8 @@ namespace Text_Based_Adventure.Engine.Player
             this.Health = this.MaxHealth = 5 + attributes.getAttribute(Attribute.Strength);
             this.weaponSlots = new WeaponSlots();
             this.armorSlots = new ArmorSlots();
+            this.XP = 0;
+            this.ProficiencyBonus = 0;
         }
 
         private void AdjustAttribute(Attribute attribute, int ammount)

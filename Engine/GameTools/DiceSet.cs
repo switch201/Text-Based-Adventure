@@ -9,5 +9,15 @@ namespace Text_Based_Adventure.Engine.GameTools
     {
         public int Count;
         public int Sides;
+
+        public int roll()
+        {
+            int result = 0;
+            for(int x = 0; x < Count; x++)
+            {
+                result += Util.d(Sides);
+            }
+            return result;
+        }
     }
 }

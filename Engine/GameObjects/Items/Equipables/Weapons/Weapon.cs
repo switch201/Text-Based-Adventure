@@ -11,8 +11,15 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items.Weapons
     {
         MartialMeleeWeapon
     }
+
+    public enum DamageType
+    {
+        Piercing,
+        Slashing
+    }
     public class Weapon : Equipable
     {
-        public DiceSet Damage;
+        public DiceSet DiceSet;
+        public DamageType DamageType; // TODO will I need a list?
     }
 }

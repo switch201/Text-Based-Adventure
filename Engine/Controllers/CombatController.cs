@@ -6,6 +6,7 @@ using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.Player;
 using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
+using Text_Based_Adventure.Engine.GameObjects.Items.Weapons;
 
 namespace Text_Based_Adventure.Engine.Controllers
 {
@@ -109,9 +110,9 @@ namespace Text_Based_Adventure.Engine.Controllers
 
 
         //TODO combine with Resolve Enemy Attack
-        public int ResolvePlayerAttack(NPC enemy)
+        public int ResolvePlayerAttack(NPC enemy, Weapon weapon)
         {
-            int damage = player.Attack(enemy, null);
+            int damage = player.Attack(enemy, weapon);
             if (enemy.Health <= 0)
             {
                 // drop loot
@@ -130,7 +131,7 @@ namespace Text_Based_Adventure.Engine.Controllers
         }
 
 
-            public AttackResult ResolveMeleeAttack(Item item, string npcName) //TODO needs to be weapons, not all Items can be used in combat;
+            public AttackResult ResolveMeleeAttack(Weapon weapon, string npcName) //TODO needs to be weapons, not all Items can be used in combat;
         {
             var attackResult = new AttackResult();
 
@@ -152,7 +153,7 @@ namespace Text_Based_Adventure.Engine.Controllers
 
 
 
-            attackResult.damage = this.ResolvePlayerAttack(enemy);
+            attackResult.damage = this.ResolvePlayerAttack(enemy, weapon);
 
 
             if (isEnemyInCombat(enemy))

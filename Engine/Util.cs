@@ -78,7 +78,14 @@ namespace Text_Based_Adventure
         public static int d20()
         {
             var roll = r.Next(1, 20);
-            Util.log($"Dice Roll {roll}");
+            Util.log($"D20 Dice Roll {roll}");
+            return roll;
+        }
+
+        public static int d(int sides)
+        {
+            var roll = r.Next(1, sides);
+            Util.log($"D{sides}, Dice Roll {roll}");
             return roll;
         }
 

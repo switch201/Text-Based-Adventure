@@ -1,7 +1,7 @@
 ﻿{
-  "Damage": {
+  "DiceSet": {
     "Count": 1,
-    "Sides": 6,
-    "Weight": 2,
-  }
+    "Sides": 6
+  },
+  "Weight": 2
 }

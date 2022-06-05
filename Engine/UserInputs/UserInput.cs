@@ -14,7 +14,8 @@ namespace Text_Based_Adventure.Engine
         public static List<BattleAction> battleActions = new List<BattleAction>()
             {
                 new Punch(),
-                new RunAway()
+                new RunAway(),
+                new AttackWith()
             };
 
         public static List<GameAction> gameActions = new List<GameAction>()
@@ -94,6 +95,7 @@ namespace Text_Based_Adventure.Engine
                 else
                 {
                     validAction.RespondToInput(gameController, seperatedInputWords);
+                    gameController.gameState.adjustGameClock(validAction.duration);
                 }
             }
             else

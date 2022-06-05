@@ -5,6 +5,7 @@ using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.GameObjects;
+using Weapon = Text_Based_Adventure.Engine.GameObjects.Items.Weapons.Weapon;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Creatures
@@ -17,7 +18,6 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public Inventory inventory;
         public int Health;
         public int MaxHealth;
-        public int chanceToHit; //Inherent Chance to Hit
         public int? AC; //Armor Class
         public ArmorSlots armorSlots;
         public WeaponSlots weaponSlots;
@@ -25,6 +25,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public string DamageImmunities;
         public string ConditionImmunities;
         public int XP;
+        public int ProficiencyBonus;
 
         public void adjustHealth(int adjustment)
         {
@@ -37,33 +38,68 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             Util.log($"Health now at {this.Health}");
         }
 
-        public int Attack(Creature defender, Item item = null)
+        public int Attack(Creature defender, Weapon weapon = null)
         {
             //TODO since this can be called from anywhere needs to check if valid
-            Util.wl($"{this.Name} attacks with a <fill in item>");
+            if(weapon == null)
+            {
+                Util.wl($"{this.Name} attacks with fists");
+            }
+            else
+            {
+                Util.wl($"{this.Name} attacks with a {weapon.Name}");
+            }
 
+            int strengthMod = this.getFullMod(Attribute.Strength);
+            int dexterityMod = this.getFullMod(Attribute.Dexterity);
+
+            Util.log($"Attacker ProficiencyBonus {ProficiencyBonus}");
+            Util.log($"Attacker Strength Mod: {strengthMod}");
+            Util.log($"Attacker Dex Mod: {dexterityMod}");
             //Calculate Hit Chance 
             Util.log("HitRoll");
             int diceRoll = Util.d20();
 
-            int attackerValue = diceRoll + this.chanceToHit;
-
+            // TODO Finese and weapon types
+            // Chance to hit is d20 + proficiencyBonus + mod
+            int attackerValue = diceRoll + this.ProficiencyBonus + strengthMod;
             int defenderValue = defender.Dodge();
+
+            Util.log($"Attacker hit value {attackerValue}");
+            Util.log($"Defender AC: {defenderValue}");
 
             int damage = 0;
 
             if (attackerValue > defenderValue)
             {
                 Util.wl($"{Name} lands a hit");
-                // Check for item here if null then just punch
-                damage = 1 + this.getFullMod(Attribute.Strength);
+                if(weapon != null)
+                {
+                    int damageRoll = weapon.DiceSet.roll();
+                    Util.log($"Damage roll: {damageRoll}");
+                    // TODO if weapon has finesse can use strength or dex
+                    // TODO if ranged weapon then us dex for melee weapons use strength
+                    // TODO I think Damage bonus is only for NPCs.....
+                    // Damage is damage dice + mod
+                    damage = strengthMod + damageRoll;
+                }
+                else
+                {
+                    // Punch
+                    damage = 1 + strengthMod;
+                }
+                
+                
             }
             else
             {
                 Util.wl($"{this.Name}'s attack misses!");
             }
 
-            defender.adjustHealth(-damage);
+            if(damage > 0)
+            {
+                defender.adjustHealth(-damage);
+            }
 
             Util.log($"DamageValue: {damage}");
             Util.log($"Defender Health After {defender.Health}");
@@ -94,7 +130,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
 
         public int getFullMod(Attribute stat)
         {
-            return (int)Math.Floor((decimal)(this.getFullAttribute(stat) / 2));
+            return (int)Math.Floor((decimal)((this.getFullAttribute(stat) - 10) / 2));
         }
 
     }

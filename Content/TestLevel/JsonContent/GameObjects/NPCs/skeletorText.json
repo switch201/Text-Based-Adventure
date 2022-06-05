@@ -7,7 +7,8 @@
   "DamageVulnerabilities": "Bludgeoning",
   "DamageImmunities": "Poison",
   "ConditionImmunities": "Exhaustion, Poisoned",
-  "XP":  50,
+  "XP": 50,
+  "ProficiencyBonus": 2,
   "Identifiers": [
     "skeletor",
     "skeleton"
