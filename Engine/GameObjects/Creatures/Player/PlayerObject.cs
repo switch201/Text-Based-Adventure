@@ -15,15 +15,12 @@ namespace Text_Based_Adventure.Engine.Player
         public StatsSet stats;
         public int XP;
 
-        public PlayerObject(string name, AttributeSet attributes)
+        public PlayerObject(string name, AttributeSet attributes) : base()
         {
-            this.inventory = new Inventory();
             this.stats = new StatsSet();
             this.attributes = attributes;
             this.Name = name;
             this.Health = this.MaxHealth = 5 + attributes.getAttribute(Attribute.Strength);
-            this.weaponSlots = new WeaponSlots();
-            this.armorSlots = new ArmorSlots();
             this.XP = 0;
             this.ProficiencyBonus = 0;
         }
@@ -88,22 +85,9 @@ namespace Text_Based_Adventure.Engine.Player
         }
 
         
-        public void Equip(Equipable item, string hand = null)
+        public new void Equip(Equipable item, string hand = null)
         {
-            // Assume right hand sorry left handers.
-            if(hand == null)
-            {
-                if(item is Weapon)
-                {
-                    this.weaponSlots.setWeapon(WeaponSlot.RightHand, (Weapon)item);
-                }
-                else
-                {
-                    // Player should not need to specify slot for armor since it can only go one spot
-                    Util.wl("Don't know how to do this yet");
-                }
-                
-            }
+            base.Equip(item, hand);
         }
 }
 }

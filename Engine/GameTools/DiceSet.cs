@@ -10,6 +10,12 @@ namespace Text_Based_Adventure.Engine.GameTools
         public int Count;
         public int Sides;
 
+        public DiceSet(int count, int sides)
+        {
+            this.Count = count;
+            this.Sides = sides;
+        }
+
         public int roll()
         {
             int result = 0;

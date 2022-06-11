@@ -12,7 +12,7 @@ namespace Text_Based_Adventure.Content.TestLevel.Rooms
     {
         public Prison(string roomName) : base(roomName)
         {
-            this.addNPC(NPCFactory.MakeNPC("fred"));
+            //this.addNPC(NPCFactory.MakeNPC("fred"));
         }
     }
 }

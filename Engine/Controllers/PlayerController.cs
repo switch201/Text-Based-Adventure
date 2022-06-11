@@ -28,7 +28,10 @@ namespace Text_Based_Adventure.Engine.Controllers
 
         public void CheckConsumableTime(int gameTime)
         {
-            this.player.CheckConsumableTimeAndRemove(gameTime);
+            if(this.player != null)
+            {
+                this.player.CheckConsumableTimeAndRemove(gameTime);
+            }
         }
 
         //TODO What happens when it is not a consumable?

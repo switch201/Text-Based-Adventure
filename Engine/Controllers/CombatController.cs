@@ -7,6 +7,7 @@ using Text_Based_Adventure.Engine.Player;
 using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 using Text_Based_Adventure.Engine.GameObjects.Items.Weapons;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
 namespace Text_Based_Adventure.Engine.Controllers
 {
@@ -92,7 +93,7 @@ namespace Text_Based_Adventure.Engine.Controllers
             //TODO since this can be called from anywhere needs to check if valid
 
             // Enemy Attacks Back
-            int damage = npc.Attack(player, null);
+            int damage = npc.Attack(player, npc.weaponSlots.getWeapon(WeaponSlot.RightHand));
 
             if (player.Health <= 0)
             {

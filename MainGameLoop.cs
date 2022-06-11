@@ -32,8 +32,9 @@ namespace Text_Based_Adventure
 
                 gameController.setGame(testGame);
 
+                gameController.TakeUserInputForClass();
 
-                gameController.TakeUserInputForCharacter();
+                //gameController.TakeUserInputForCharacter();
 
                 gameController.StartGame();
 

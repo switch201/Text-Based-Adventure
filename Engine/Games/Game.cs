@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_Based_Adventure.Engine.Factories;
+using Text_Based_Adventure.Engine.GameClasses;
 using Text_Based_Adventure.Engine.Levels;
 
 namespace Text_Based_Adventure.Engine.Games
@@ -9,8 +11,11 @@ namespace Text_Based_Adventure.Engine.Games
     {
         public List<Level> Levels;
 
+        public List<GameClass> AvailableGameClasses;
+
         public Game() {
             Levels = new List<Level>() { };
+            AvailableGameClasses.Add(GameClassFactory.MakeBarbarianClass());
         }
 
         public Game(Level level)

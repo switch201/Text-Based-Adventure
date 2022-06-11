@@ -3,14 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects;
+using System.Linq;
+using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 
 namespace Text_Based_Adventure.Engine.Factories
 {
-    class NPCFactory
+    class NPCFactory : Factory
     {
         public static NPC MakeNPC(string npcName)
         {
-            return JsonConvert.DeserializeObject<NPC>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/NPCs/{npcName}Text.json"));
+            var npc = JsonConvert.DeserializeObject<NPC>(Util.Readfile($"{basePath}/GameObjects/NPCs/{npcName}Text.json"));
+            foreach(string weapon in npc.Weapons)
+            {
+                npc.inventory.addItem(ItemFactory.MakeWeapon(weapon));
+            }
+            npc.Equip((Equipable)Util.RandomFromDictionary(npc.inventory));
+            return npc;
         }
     }
 }

@@ -7,6 +7,7 @@ using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.GameObjects;
 using Weapon = Text_Based_Adventure.Engine.GameObjects.Items.Weapons.Weapon;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
+using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Creatures
 {
@@ -21,11 +22,20 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public int? AC; //Armor Class
         public ArmorSlots armorSlots;
         public WeaponSlots weaponSlots;
-        public string DamageVulnerabilities;
-        public string DamageImmunities;
-        public string ConditionImmunities;
+        //public string DamageVulnerabilities;
+        //public string DamageImmunities;
+        //public string ConditionImmunities;
         public int XP;
         public int ProficiencyBonus;
+
+        public Creature()
+        {
+            this.inventory = new Inventory();
+            this.weaponSlots = new WeaponSlots();
+            this.armorSlots = new ArmorSlots();
+        }
+
+
 
         public void adjustHealth(int adjustment)
         {
@@ -131,6 +141,24 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public int getFullMod(Attribute stat)
         {
             return (int)Math.Floor((decimal)((this.getFullAttribute(stat) - 10) / 2));
+        }
+
+        public void Equip(Equipable item, string hand = null)
+        {
+            // Assume right hand sorry left handers.
+            if (hand == null)
+            {
+                if (item is Weapon)
+                {
+                    this.weaponSlots.setWeapon(WeaponSlot.RightHand, (Weapon)item);
+                }
+                else
+                {
+                    // Player should not need to specify slot for armor since it can only go one spot
+                    Util.wl("Don't know how to do this yet");
+                }
+
+            }
         }
 
     }

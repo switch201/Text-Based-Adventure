@@ -9,6 +9,7 @@ using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
 using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
+using Text_Based_Adventure.Engine.GameClasses;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -128,6 +129,25 @@ namespace Text_Based_Adventure.Engine
                 Util.wl($"You try to run, But {randomEnemy.Name} stops you!");
                 // A Random Enemy gets an extra Attack on you!
                 this.combatController.ResolveEnemyAttack(randomEnemy);
+            }
+        }
+
+        public void TakeUserInputForClass()
+        {
+            GameClass selectedClass = null;
+            while(selectedClass == null)
+            {
+                Util.wl("Select one of the following Classes:");
+                foreach (var gameClass in this.game.AvailableGameClasses)
+                {
+                    Util.wl(gameClass.Name);
+                }
+                string userInput = Util.rl().ToLower();
+                selectedClass = this.game.AvailableGameClasses.Where(x => x.Name == userInput).SingleOrDefault();
+                if(selectedClass == null)
+                {
+                    Util.wl("You gotta pick one...");
+                }
             }
         }
 

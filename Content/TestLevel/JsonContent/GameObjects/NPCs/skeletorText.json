@@ -4,16 +4,16 @@
   "MaxHealth": 25,
   "IsFinalBoss": false,
   "AC": 13,
-  "DamageVulnerabilities": [
-    "Bludgeoning"
-  ],
-  "DamageImmunities": [
-    "Poison"
-  ],
-  "ConditionImmunities": [
-    "Exhaustion",
-    "Poisoned"
-  ],
+  //"DamageVulnerabilities": [
+  //  "Bludgeoning"
+  //],
+  //"DamageImmunities": [
+  //  "Poison"
+  //],
+  //"ConditionImmunities": [
+  //  "Exhaustion",
+  //  "Poisoned"
+  //],
   "XP": 50,
   "ProficiencyBonus": 2,
   "Identifiers": [
@@ -33,6 +33,8 @@
     "Wisdom": 8,
     "charisma": 5,
     "Constitution": 15
-  }
-
+  },
+  "Weapons": [
+    "shortsword"
+  ]
 }

@@ -13,7 +13,7 @@ namespace Text_Based_Adventure.Engine.Factories
     {
         public static Item MakeItem(string itemName)
         {
-            Item item = JsonConvert.DeserializeObject<Item>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/Items/{itemName}Text.json"));
+            Item item = JsonConvert.DeserializeObject<Item>(Util.Readfile($"{basePath}/GameObjects/Items/{itemName}Text.json"));
             item.Name = itemName;
             return item;
         }

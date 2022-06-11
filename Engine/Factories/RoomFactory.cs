@@ -13,17 +13,17 @@ namespace Text_Based_Adventure.Engine.Factories
     {
         public static Room MakeRoom(string roomName)
         {
-            return JsonConvert.DeserializeObject<Room>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{roomName}Text.json"));
+            return JsonConvert.DeserializeObject<Room>(Util.Readfile($"{basePath}/GameObjects/Rooms/{roomName}Text.json"));
         }
 
         public static TreasureRoom MakeTresureRoom(string roomName)
         {
-            return JsonConvert.DeserializeObject<TreasureRoom>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{roomName}Text.json"));
+            return JsonConvert.DeserializeObject<TreasureRoom>(Util.Readfile($"{basePath}/GameObjects/Rooms/{roomName}Text.json"));
         }
 
         public static Prison MakePrison(string roomName)
         {
-            return JsonConvert.DeserializeObject<Prison>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{roomName}Text.json"));
+            return JsonConvert.DeserializeObject<Prison>(Util.Readfile($"{basePath}/GameObjects/Rooms/{roomName}Text.json"));
         }
     }
 }

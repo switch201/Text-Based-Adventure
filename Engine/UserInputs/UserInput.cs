@@ -81,6 +81,8 @@ namespace Text_Based_Adventure.Engine
         {
             userInput = userInput.ToLower();
 
+            
+
             string userOutput;
 
             List<string> seperatedInputWords = new List<string>(userInput.Split(' '));

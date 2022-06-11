@@ -8,9 +8,11 @@ namespace Text_Based_Adventure.Engine.Factories
 {
     public abstract class Factory
     {
+
+        protected static string basePath = "Content/TestLevel/JsonContent";
         public static GameObject MakeGameObject(string itemname)
         {
-            return JsonConvert.DeserializeObject<GameObject>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/Rooms/{itemname}Text.json"));
+            return JsonConvert.DeserializeObject<GameObject>(Util.Readfile($"{basePath}/GameObjects/Rooms/{itemname}Text.json"));
         }
     }
 }
