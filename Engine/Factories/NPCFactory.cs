@@ -17,7 +17,7 @@ namespace Text_Based_Adventure.Engine.Factories
             {
                 npc.inventory.addItem(ItemFactory.MakeWeapon(weapon));
             }
-            npc.Equip((Equipable)Util.RandomFromDictionary(npc.inventory));
+            npc.Equip((Equipable)Util.RandomFromList(npc.inventory));
             return npc;
         }
     }

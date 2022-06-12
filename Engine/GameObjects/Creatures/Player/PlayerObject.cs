@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects.Creatures;
 using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
@@ -7,6 +8,7 @@ using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.A
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.GameObjects.Items.Weapons;
+using Text_Based_Adventure.Engine.GameClasses;
 
 namespace Text_Based_Adventure.Engine.Player
 {
@@ -14,6 +16,7 @@ namespace Text_Based_Adventure.Engine.Player
     {
         public StatsSet stats;
         public int XP;
+        public GameClass playerClass;
 
         public PlayerObject(string name, AttributeSet attributes) : base()
         {
@@ -23,6 +26,18 @@ namespace Text_Based_Adventure.Engine.Player
             this.Health = this.MaxHealth = 5 + attributes.getAttribute(Attribute.Strength);
             this.XP = 0;
             this.ProficiencyBonus = 0;
+        }
+
+        public PlayerObject(string name, AttributeSet attributes, GameClass playerClass ) : base()
+        {
+            this.playerClass = playerClass;
+            this.stats = new StatsSet();
+            this.attributes = attributes;
+            this.Name = name;
+            this.Health = playerClass.HitDice.Count * playerClass.HitDice.Sides;
+            this.XP = 0;
+            this.ProficiencyBonus = playerClass.ProficencyBonus.First();
+            this.inventory.AddRange(playerClass.StartingInventory);
         }
 
         private void AdjustAttribute(Attribute attribute, int ammount)

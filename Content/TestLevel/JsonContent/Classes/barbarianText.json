@@ -1,6 +1,6 @@
 {
   "Name": "barbarian",
-  "Proficiency Bonus": [
+  "ProficencyBonus": [
     2,
     2,
     2,
@@ -26,12 +26,11 @@
     "Sides": 12,
     "Count": 1
   },
-  "StartingInventory": {
-    "greataxe": 1,
-    "handaxe": 2,
-    "javalin": 4
-
-  }
+  "StartingWeaponsText": {
+    "greataxe": 1
+    //"handaxe": 2,
+    //"javalin": 4
+  },
   "Proficiencies": [
     "LightArmor",
     "MediumArmor",

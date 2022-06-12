@@ -134,6 +134,7 @@ namespace Text_Based_Adventure.Engine
 
         public void TakeUserInputForClass()
         {
+            string name = Util.rl();
             GameClass selectedClass = null;
             while(selectedClass == null)
             {
@@ -149,21 +150,27 @@ namespace Text_Based_Adventure.Engine
                     Util.wl("You gotta pick one...");
                 }
             }
-
+            var attributeSet = new AttributeSet();
             foreach (Attribute attribute in Enum.GetValues(typeof(Attribute)))
             {
                 Util.wl($"Lets roll for your {attribute} value");
-                List<int> diceSet = new List<int>(new int[4]);
-                diceSet.ForEach(dice => {
-                    Util.wl(")
-                    dice = Util.d(6);
-                });
+                List<int> diceSet = new List<int>();
+                for(int x = 0; x < 4; x++)
+                {
+                    int roll = Util.d(6);
+                    Util.wl($"You rolled a {roll}");
+                    diceSet.Add(roll);
+                }
                 
                 diceSet = diceSet.OrderByDescending(x => x).Take(diceSet.Count() - 1).ToList(); // Remove the lowest of the 4 dice
+                int sum  = diceSet.Sum();
+                Util.log($"attribute sum: {sum}");
+
+                attributeSet.setAttribute(attribute, sum);
             }
             
 
-            this.playerController.player = new PlayerObject(name, attributeSet);
+            this.playerController.player = new PlayerObject(name, attributeSet, selectedClass);
             this.gameState.RunGame();
         }
 

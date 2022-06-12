@@ -23,6 +23,12 @@ namespace Text_Based_Adventure.Engine.GameClasses
         public int Level;
         public List<string> Features; // TODO make features class
         public List<Item> StartingInventory;
+        public Dictionary<string, int> StartingWeaponsText;
         public List<Proficiencies> Proficiencies;
+
+        public GameClass()
+        {
+            this.StartingInventory = new List<Item>() { };
+        }
     }
 }

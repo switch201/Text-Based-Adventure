@@ -6,17 +6,17 @@ using System.Linq;
 
 namespace Text_Based_Adventure.Engine.Player
 {
-    public class Inventory : Dictionary<string, Item>
+    public class Inventory : List<Item>
     {
 
         public void addItem(Item item)
         {
-            this.Add(item.Name, item);
+            this.Add(item);
         }
 
         public Item getItem(string name)
         {
-            return this.GetValueOrDefault(name);
+            return this.Where(x => x.Name == name).SingleOrDefault();
         }
 
         /// <summary>
@@ -27,13 +27,13 @@ namespace Text_Based_Adventure.Engine.Player
         public Item removeItem(string name)
         {
             Item item = this.getItem(name);
-            this.Remove(name);
+            this.Remove(item);
             return item;
         }
 
         public List<Item> getAllitems()
         {
-            return this.Values.ToList();
+            return this.ToList();
         }
     }
 }

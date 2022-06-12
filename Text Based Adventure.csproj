@@ -16,6 +16,7 @@
     <None Remove="Content\TestLevel\JsonContent\Classes\barbarianText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Items\ItemText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Items\PumpkinpieText.json" />
+    <None Remove="Content\TestLevel\JsonContent\GameObjects\Items\Weapons\greataxeText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Items\Weapons\ShortSwordText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\NPCs\FredText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\PrisonText.json" />
@@ -33,6 +34,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\Consumables\pumpkinpieText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\Weapons\greataxeText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel\JsonContent\GameObjects\NPCs\fredText.json">

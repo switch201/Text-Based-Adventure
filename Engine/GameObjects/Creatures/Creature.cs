@@ -66,7 +66,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             Util.log($"Attacker ProficiencyBonus {ProficiencyBonus}");
             Util.log($"Attacker Strength Mod: {strengthMod}");
             Util.log($"Attacker Dex Mod: {dexterityMod}");
-            //Calculate Hit Chance 
+            //Calcul(int)it Chance 
             Util.log("HitRoll");
             int diceRoll = Util.d20();
 

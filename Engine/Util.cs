@@ -12,7 +12,7 @@ namespace Text_Based_Adventure
     {
         public static bool debugMode = true;
 
-        public static Random r = new Random();
+        public static Random r = new Random(8919811);
         public static void wl(string line)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;

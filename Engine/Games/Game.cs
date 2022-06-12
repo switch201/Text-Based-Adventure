@@ -15,11 +15,14 @@ namespace Text_Based_Adventure.Engine.Games
 
         public Game() {
             Levels = new List<Level>() { };
+            AvailableGameClasses = new List<GameClass>() { };
             AvailableGameClasses.Add(GameClassFactory.MakeBarbarianClass());
         }
 
         public Game(Level level)
         {
+            AvailableGameClasses = new List<GameClass>() { };
+            AvailableGameClasses.Add(GameClassFactory.MakeBarbarianClass());
             Levels = new List<Level>() { };
             Levels.Add(level);
         }
