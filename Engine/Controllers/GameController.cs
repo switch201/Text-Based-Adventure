@@ -149,6 +149,22 @@ namespace Text_Based_Adventure.Engine
                     Util.wl("You gotta pick one...");
                 }
             }
+
+            foreach (Attribute attribute in Enum.GetValues(typeof(Attribute)))
+            {
+                Util.wl($"Lets roll for your {attribute} value");
+                List<int> diceSet = new List<int>(new int[4]);
+                diceSet.ForEach(dice => {
+                    Util.wl(")
+                    dice = Util.d(6);
+                });
+                
+                diceSet = diceSet.OrderByDescending(x => x).Take(diceSet.Count() - 1).ToList(); // Remove the lowest of the 4 dice
+            }
+            
+
+            this.playerController.player = new PlayerObject(name, attributeSet);
+            this.gameState.RunGame();
         }
 
         public void TakeUserInputForCharacter()
