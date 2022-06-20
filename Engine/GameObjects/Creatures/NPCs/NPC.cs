@@ -14,6 +14,7 @@ namespace Text_Based_Adventure.Engine.GameObjects
         public List<string> SmallTalk;
         public bool IsFinalBoss;
         public List<string> Weapons;
+        public int XP;
 
         public bool isAlive()
         {

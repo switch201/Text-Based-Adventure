@@ -125,7 +125,9 @@ namespace Text_Based_Adventure.Engine.Controllers
                 }
 
                 //kill enemy
+                player.AddXp(enemy.XP);
                 enemies.Remove(enemy);
+                
             }
 
             return damage;

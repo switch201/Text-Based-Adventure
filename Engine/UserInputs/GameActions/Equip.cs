@@ -23,7 +23,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             Equipable item;
             try
             {
-                item = (Equipable)controller.playerController.player.inventory.getItem(directObject);
+                item = (Equipable)controller.playerController.player.Inventory.getItem(directObject);
             }
             catch (InvalidCastException)
             {

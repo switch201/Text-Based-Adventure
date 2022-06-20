@@ -16,7 +16,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
     {
         public AttributeSet attributes;
         public List<AttributeModifierSet> attributeMods = new List<AttributeModifierSet>(); //list because multiple effects at once
-        public Inventory inventory;
+        public Inventory Inventory;
         public int Health;
         public int MaxHealth;
         public int? AC; //Armor Class
@@ -25,12 +25,11 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         //public string DamageVulnerabilities;
         //public string DamageImmunities;
         //public string ConditionImmunities;
-        public int XP;
         public int ProficiencyBonus;
 
         public Creature()
         {
-            this.inventory = new Inventory();
+            this.Inventory = new Inventory();
             this.weaponSlots = new WeaponSlots();
             this.armorSlots = new ArmorSlots();
         }

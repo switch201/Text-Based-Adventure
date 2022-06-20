@@ -27,6 +27,12 @@ namespace Text_Based_Adventure.Engine.Player
             this.XP = 0;
             this.ProficiencyBonus = 0;
         }
+        public void AddXp(int xp)
+        {
+            this.XP += xp;
+        }
+
+
 
         public PlayerObject(string name, AttributeSet attributes, GameClass playerClass ) : base()
         {
@@ -34,10 +40,10 @@ namespace Text_Based_Adventure.Engine.Player
             this.stats = new StatsSet();
             this.attributes = attributes;
             this.Name = name;
-            this.Health = playerClass.HitDice.Count * playerClass.HitDice.Sides;
+            this.Health = this.MaxHealth = playerClass.HitDice.Count * playerClass.HitDice.Sides;
             this.XP = 0;
             this.ProficiencyBonus = playerClass.ProficencyBonus.First();
-            this.inventory.AddRange(playerClass.StartingInventory);
+            this.Inventory.AddRange(playerClass.StartingInventory);
         }
 
         private void AdjustAttribute(Attribute attribute, int ammount)
@@ -87,6 +93,16 @@ namespace Text_Based_Adventure.Engine.Player
                 {
                     Util.fourthWall($"You are holding a {weapon.Name} in your {hand} hand");
                 }
+            }
+            Util.fourthWall($"You have {this.XP} XP");
+        }
+
+        public void InspectInventory()
+        {
+            Util.fourthWall("You are carrying...");
+            foreach(var inventory in this.Inventory)
+            {
+                Util.wl(inventory.Name);
             }
         }
 

@@ -15,9 +15,9 @@ namespace Text_Based_Adventure.Engine.Factories
             var npc = JsonConvert.DeserializeObject<NPC>(Util.Readfile($"{basePath}/GameObjects/NPCs/{npcName}Text.json"));
             foreach(string weapon in npc.Weapons)
             {
-                npc.inventory.addItem(ItemFactory.MakeWeapon(weapon));
+                npc.Inventory.addItem(ItemFactory.MakeWeapon(weapon));
             }
-            npc.Equip((Equipable)Util.RandomFromList(npc.inventory));
+            npc.Equip((Equipable)Util.RandomFromList(npc.Inventory));
             return npc;
         }
     }

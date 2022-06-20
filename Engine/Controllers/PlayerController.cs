@@ -15,9 +15,11 @@ namespace Text_Based_Adventure.Engine.Controllers
         //Attempt here is for player based checks of can this item be taken
         public void AttemptToTakeItem(Item item)
         {
-            player.inventory.addItem(item);
+            player.Inventory.addItem(item);
             Util.wl($"You take the {item.Name}");
         }
+
+
 
         //TODO need checks for if item is already equiped
         //TODO need to specify right hand left hand etc.
@@ -40,7 +42,7 @@ namespace Text_Based_Adventure.Engine.Controllers
             Consumable item = null;
             try
             {
-                item = (Consumable)player.inventory.getItem(itemName);
+                item = (Consumable)player.Inventory.getItem(itemName);
             }
             catch (InvalidCastException e)
             {
@@ -54,19 +56,19 @@ namespace Text_Based_Adventure.Engine.Controllers
             }
 
             Util.wl($"You eat the {item.Name}");
-            player.Eat((Consumable)player.inventory.removeItem(itemName), gameTime);
+            player.Eat((Consumable)player.Inventory.removeItem(itemName), gameTime);
         }
 
         public Item DropItem(string itemName)
         {
-            Item item = player.inventory.getItem(itemName);
+            Item item = player.Inventory.getItem(itemName);
             if(item == null)
             {
                 Util.wl($"You aren't carrying a {itemName}");
                 return null;
             }
             Util.wl($"You drop the {item.Name}");
-            return player.inventory.removeItem(itemName);
+            return player.Inventory.removeItem(itemName);
         }
     }
 }

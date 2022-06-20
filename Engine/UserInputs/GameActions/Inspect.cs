@@ -27,6 +27,10 @@ namespace Text_Based_Adventure.Engine.InputActions
             {
                 controller.playerController.player.InspectSelf();
             }
+            else if (directObject == "inventoy")
+            {
+                controller.playerController.player.InspectInventory();
+            }
             else
             {
                 controller.roomController.InspectItem(directObject);
