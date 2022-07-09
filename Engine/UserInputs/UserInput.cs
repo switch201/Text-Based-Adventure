@@ -30,7 +30,8 @@ namespace Text_Based_Adventure.Engine
                 new Attack(),
                 new Help(),
                 new Eat(),
-                new Equip()
+                new Equip(),
+                new Open()
             };
 
         public List<string> getGameActionWords()

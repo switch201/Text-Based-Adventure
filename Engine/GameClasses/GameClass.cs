@@ -18,6 +18,7 @@ namespace Text_Based_Adventure.Engine.GameClasses
     {
         public string Name;
         public List<int> ProficencyBonus; // Current Proficency Bonus
+        public List<int> LevelAmmounts;
         public DiceSet HitDice;
         public int Health;
         public int Level;

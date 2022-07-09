@@ -7,6 +7,7 @@ using System.Linq;
 using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Engine.Controllers;
 using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.Containers;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -132,6 +133,20 @@ namespace Text_Based_Adventure.Engine
             else
             {
                 return currentRoom.removeItem(itemName);
+            }
+        }
+
+        public List<Item> AttemptToOpenItem(string itemName)
+        {
+            var item = currentRoom.getItem(itemName);
+            if(item is Container)
+            {
+                return ((Container)item).Open();
+            }
+            else
+            {
+                Util.wl("You can't open that");
+                return new List<Item>();
             }
         }
 

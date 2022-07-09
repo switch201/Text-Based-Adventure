@@ -49,7 +49,7 @@ namespace Text_Based_Adventure
         public static string rl()
         {
             Console.ForegroundColor = ConsoleColor.White;
-            return Console.ReadLine();
+            return Console.ReadLine().ToLower();
         }
 
         public static void log(string text)

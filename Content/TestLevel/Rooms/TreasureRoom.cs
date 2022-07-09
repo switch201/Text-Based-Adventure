@@ -5,6 +5,7 @@ using System.Text;
 using Text_Based_Adventure.Doors;
 using Text_Based_Adventure.Engine.Factories;
 using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.Containers;
 using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
@@ -21,8 +22,10 @@ namespace Text_Based_Adventure.Content
         {
             Consumable item = ItemFactory.MakeConsumable("pumpkinpie");
             Weapon shortSword = ItemFactory.MakeWeapon("shortsword");
+            Container container = ItemFactory.MakeContainer("treasurechest");
             this.addItem(item);
             this.addItem(shortSword);
+            this.addItem(container);
         }
     }
 }
