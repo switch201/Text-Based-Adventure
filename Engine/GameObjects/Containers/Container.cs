@@ -12,14 +12,19 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
         public LockObject LockObject;
         public List<string> ItemStrings;
 
+        public Container()
+        {
+            Items = new List<Item>() { };
+        }
+
         public List<Item> Open()
         {
             Util.fourthWall("Type 'take all' to take all.");
             Util.fourthWall("'take <itemName>' to take a specific item");
-            Util.fourthWall("'exit' to exit");
+            Util.fourthWall("'leave' to exit the chest screen.");
             string userInput = null;
             List<Item> returnedItems = new List<Item>();
-            while(userInput != "exit")
+            while(userInput != "leave")
             {
                 if(Items.Count == 0)
                 {
@@ -39,8 +44,8 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
                     foreach (var item in Items)
                     {
                         returnedItems.Add(item);
-                        Items.Remove(item);
                     }
+                    Items.Clear();
                 }
             }
             return returnedItems;

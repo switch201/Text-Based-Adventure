@@ -77,19 +77,37 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
-        public void InspectItem(string name)
+        public void InspectSomething(string name, int checkResult)
         {
+            //check for items
             Item item = currentRoom.Items.GetValueOrDefault(name);
-            if(item == null)
+            if(item != null)
             {
-                Util.wl("You can't inspect that.");
+                InspectItem(item, checkResult);
+                return;
+            }
+            //check for creatures
+            NPC npc = currentRoom.NPCs.Find(npc => npc.Name == name);
+            if(npc != null)
+            {
+                InspectNpc(npc, checkResult);
+                return;
             }
             else
             {
-                item.Inspect();
-                item.getQuality();
+                Util.wl("You can't inspect that.");
             }
-            
+        }
+
+        public void InspectNpc(NPC npc, int checkResult)
+        {
+            npc.Inspect(checkResult);
+        }
+
+        public void InspectItem(Item item, int checkResult)
+        {
+            item.Inspect();
+            item.getQuality();
         }
 
         public void TalkToNpc(string nameOrIdentifier)

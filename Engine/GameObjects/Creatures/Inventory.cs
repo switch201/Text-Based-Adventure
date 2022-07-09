@@ -16,7 +16,7 @@ namespace Text_Based_Adventure.Engine.Player
 
         public Item getItem(string name)
         {
-            return this.Where(x => x.Name == name).SingleOrDefault();
+            return this.Where(x => x.Name == name).FirstOrDefault();
         }
 
         /// <summary>

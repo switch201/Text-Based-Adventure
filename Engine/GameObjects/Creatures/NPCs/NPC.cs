@@ -25,5 +25,31 @@ namespace Text_Based_Adventure.Engine.GameObjects
         {
             Util.wl(Util.RandomFromList(this.SmallTalk));
         }
+
+        public void Inspect(int checkValue)
+        {
+            base.Inspect();
+            if(checkValue > 10)
+            {
+                var heldWeapon = this.weaponSlots.getWeapon(WeaponSlot.RightHand);
+                if (heldWeapon != null)
+                {
+                    Util.wl($"{this.Name} is holding a {heldWeapon.Name}.");
+                }
+                else
+                {
+                    Util.wl($"{this.Name} is not holding anything.");
+                }
+            }
+            if(checkValue > 15)
+            {
+
+            }
+            if(checkValue > 20)
+            {
+
+            }
+
+        }
     }
 }

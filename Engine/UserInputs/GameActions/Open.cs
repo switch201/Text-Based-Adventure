@@ -9,7 +9,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
     {
         public override List<string> keyWord => new List<string>() { "open" };
 
-        public override int duration => throw new NotImplementedException();
+        public override int duration => 1;
 
         public override string HelpText()
         {

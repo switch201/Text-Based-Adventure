@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
@@ -27,13 +28,14 @@ namespace Text_Based_Adventure.Engine.InputActions
             {
                 controller.playerController.player.InspectSelf();
             }
-            else if (directObject == "inventoy")
+            else if (directObject == "inventory")
             {
                 controller.playerController.player.InspectInventory();
             }
             else
             {
-                controller.roomController.InspectItem(directObject);
+                int checkResult = controller.playerController.AttributeCheck(Attribute.Wisdom);
+                controller.roomController.InspectSomething(directObject, checkResult);
             }
             
         }

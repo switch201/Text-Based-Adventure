@@ -1,8 +1,9 @@
 {
   "ItemStrings": [
-    "pumkinpie"
+    "pumpkinpie"
   ],
   "DescriptionText": "A worn old brown chest",
   "InspectionText": "It looks unsecured",
-  "QuallityText": "Its the best chest you have ever seen..... almost."
+  "QuallityText": "Its the best chest you have ever seen..... almost.",
+  "Name": "treasurechest"
 }

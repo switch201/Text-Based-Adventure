@@ -160,5 +160,9 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             }
         }
 
+        public int AttributeCheck(Attribute attr)
+        {
+            return Util.d20() + (int)this.getFullMod(attr);
+        }
     }
 }

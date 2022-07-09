@@ -100,9 +100,19 @@ namespace Text_Based_Adventure.Engine.Player
         public void InspectInventory()
         {
             Util.fourthWall("You are carrying...");
-            foreach(var inventory in this.Inventory)
+            var inventoryGroups = this.Inventory.GroupBy(x => x.Name);
+            foreach(var inventoryGroup in inventoryGroups)
             {
-                Util.wl(inventory.Name);
+                var itemCount = inventoryGroup.Count();
+                if (itemCount > 1)
+                {
+                    Util.wl($"{inventoryGroup.First().Name} ({itemCount})");
+                }
+                else
+                {
+                    Util.wl(inventoryGroup.First().Name);
+                }
+                
             }
         }
 

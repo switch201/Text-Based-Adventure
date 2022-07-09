@@ -5,6 +5,7 @@ using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.Engine.Player;
+using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.Controllers
 {
@@ -69,6 +70,11 @@ namespace Text_Based_Adventure.Engine.Controllers
             }
             Util.wl($"You drop the {item.Name}");
             return player.Inventory.removeItem(itemName);
+        }
+
+        public int AttributeCheck(Attribute attr)
+        {
+            return player.AttributeCheck(attr);
         }
     }
 }
