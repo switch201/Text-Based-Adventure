@@ -9,7 +9,6 @@ Figgle Font is really the only dependency
 * the game currently is just 3 rooms strung together in the following grid pattern you start in the top right room:
 
 [][]
-
 []
 
 * you can type help for some help and that should get you on your way. in general though you can walk around open chests inspect things take items equip items
