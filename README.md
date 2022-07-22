@@ -8,7 +8,7 @@ Figgle Font is really the only dependency
 * When the game starts you will be prompted to enter a name, and then select a class. the game will then roll for your attributes and you are on your way
 * the game currently is just 3 rooms strung together in the following grid pattern you start in the top right room:
 
-[][]
+[][] \n
 []
 
 * you can type help for some help and that should get you on your way. in general though you can walk around open chests inspect things take items equip items
