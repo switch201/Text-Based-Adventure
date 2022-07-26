@@ -43,7 +43,7 @@
     <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\Weapons\greataxeText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel\JsonContent\GameObjects\NPCs\fredText.json">
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\NPCs\FredText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel\JsonContent\GameObjects\Rooms\PrisonText.json">
