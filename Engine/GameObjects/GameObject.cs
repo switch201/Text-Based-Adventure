@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
 
 namespace Text_Based_Adventure.GameObjects
 {
@@ -15,6 +15,12 @@ namespace Text_Based_Adventure.GameObjects
 
         public string InspectionText;
 
+        public List<SkillCheck> SkillCheck;
+
+        public GameObject()
+        {
+            SkillCheck = new List<SkillCheck>();
+        }
 
         protected string Readfile(string fileName = "Engine/GameObjects/ObjectText.json")
         {

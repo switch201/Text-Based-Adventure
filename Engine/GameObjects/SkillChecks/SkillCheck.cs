@@ -5,12 +5,16 @@ using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Text_Based_Adventure.Engine.InputActions;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
-namespace Text_Based_Adventure.Engine.GameObjects
+namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 {
     public abstract class SkillCheck
     {
-        Verb Verb;
+        public abstract Verb AttemptedAction { get; }
+        public abstract Verb SkillAction { get; }
         AttributeSet AttributeSet;
+
+        public bool Locked;
+        public bool Broken;
 
         public abstract void BestOutcome();
 
