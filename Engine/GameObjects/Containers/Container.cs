@@ -9,7 +9,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
     public class Container : Item
     {
         public List<Item> Items;
-        public LockObject LockObject;
+        public SkillCheck Lock;
         public List<string> ItemStrings;
 
         public Container()
