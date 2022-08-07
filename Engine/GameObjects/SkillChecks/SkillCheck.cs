@@ -9,12 +9,12 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 {
     public abstract class SkillCheck
     {
-        public abstract Verb AttemptedAction { get; }
-        public abstract Verb SkillAction { get; }
-        AttributeSet AttributeSet;
+        AttributeSet AttributeSet; // The Attributes checks you need to pass for this skill check (can be a combo)
 
-        public bool Locked;
-        public bool Broken;
+        // The action that cause the skill check to happen
+        // The thing you are trying to do  For passive skills it happens automatically
+        // For action skills its the thing you are trying to do.
+        public abstract Verb TriggerAction { get; } 
 
         public abstract void BestOutcome();
 

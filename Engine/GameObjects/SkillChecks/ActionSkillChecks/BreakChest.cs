@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks;
 using Text_Based_Adventure.Engine.InputActions;
 using Text_Based_Adventure.Engine.UserInputs.GameActions;
 
 namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 {
-    public class BreakChest : SkillCheck
+    public class BreakChest : ActionSkillCheck
     {
         public override Verb AttemptedAction => new Open();
 
