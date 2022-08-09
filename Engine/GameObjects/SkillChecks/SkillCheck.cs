@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Text_Based_Adventure.Engine.InputActions;
+using Text_Based_Adventure.Engine.Player;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
@@ -17,5 +18,10 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
         public Verb TriggerAction;
 
         public string TriggerWord; // looks up Trigger action durring Factory Creation
+
+        public int PerformSkillCheck(PlayerObject player, Attribute attribute)
+        {
+            return 0;
+        }
     }
 }

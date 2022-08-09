@@ -1,11 +1,13 @@
 ﻿{
   "Attributes": {
-    "Strength": 10,
-    "Dexterity": 14,
-    "Intelligence": 6,
-    "Wisdom": 8,
-    "charisma": 5,
-    "Constitution": 15
+    "Strength": 5,
+    "Dexterity": 0,
+    "Intelligence": 0,
+    "Wisdom": 0,
+    "charisma": 0,
+    "Constitution": 0
   },
-  "TriggerWord": "break"
+  "TriggerWord": "open",
+  "SkillWord": "break",
+  "Locked": true
 }

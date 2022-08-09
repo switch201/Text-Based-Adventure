@@ -154,20 +154,6 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
-        public List<Item> AttemptToOpenItem(string itemName)
-        {
-            var item = currentRoom.getItem(itemName);
-            if(item is Container)
-            {
-                return ((Container)item).Open();
-            }
-            else
-            {
-                Util.wl("You can't open that");
-                return new List<Item>();
-            }
-        }
-
         public void AddItemToRoom(Item item)
         {
             currentRoom.addItem(item);

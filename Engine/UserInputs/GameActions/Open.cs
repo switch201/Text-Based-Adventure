@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Text_Based_Adventure.Engine.GameObjects.Containers;
 
 namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 {
@@ -18,8 +19,24 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
-            string directObject = seperatedWords.Last();
-            controller.playerController.player.Inventory.AddRange(controller.roomController.AttemptToOpenItem(directObject));
+            string itemName = seperatedWords.Last();
+            var item = controller.roomController.currentRoom.getItem(itemName);
+            if(item == null)
+            {
+                Util.wl("You don't see that"); // TODO put in a shared place.
+            }
+            else if (item.isLocked(this))
+            {
+                Util.wl($"{item.Name} is Locked");
+            }
+            else if (item is Container)
+            {
+                controller.playerController.player.Inventory.AddRange(((Container)item).Open());
+            }
+            else
+            {
+                Util.wl("You can't open that");
+            }
         }
     }
 }

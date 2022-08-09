@@ -98,7 +98,7 @@ namespace Text_Based_Adventure.Engine
         public static Verb? GetVerb(string keyWord)
         {
             Verb? verb = GetGameAction(keyWord);
-            return verb == null ? verb : GetBattleActtion(keyWord); 
+            return verb != null ? verb : GetBattleActtion(keyWord); 
 
         }
 
@@ -106,8 +106,6 @@ namespace Text_Based_Adventure.Engine
         public void AcceptStringInput(string userInput, GameController gameController)
         {
             userInput = userInput.ToLower();
-
-            
 
             string userOutput;
 

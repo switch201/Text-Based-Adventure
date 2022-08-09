@@ -5,6 +5,9 @@ using System.IO;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
 using Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks;
+using Text_Based_Adventure.Engine.InputActions;
+using System.Linq;
+using Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions;
 
 namespace Text_Based_Adventure.GameObjects
 {
@@ -39,6 +42,17 @@ namespace Text_Based_Adventure.GameObjects
         public void Inspect()
         {
             Util.wl(this.InspectionText);
+        }
+
+        // Checks to see if the given action can be performed on this game object
+        public bool isLocked(Verb action)
+        {
+            return this.SkillChecks.Where(x => x.Locked && x.TriggerAction == action).Count() > 0;
+        }
+
+        public SkillCheck getLock(SkillAction action)
+        {
+            return this.SkillChecks.Where(x => x.Locked && x.SkillAction == action).SingleOrDefault();
         }
     }
 }
