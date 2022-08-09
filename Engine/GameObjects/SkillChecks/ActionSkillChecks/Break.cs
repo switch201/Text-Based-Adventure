@@ -7,7 +7,8 @@ using Text_Based_Adventure.Engine.UserInputs.GameActions;
 
 namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 {
-    public class BreakChest : ActionSkillCheck
+    // Attach this skill check to game object if the player can break something (Strength Check or Attack)
+    public class Break : ActionSkillCheck
     {
         public override Verb AttemptedAction => new Open();
 
