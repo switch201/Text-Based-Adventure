@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
+using Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks;
 
 namespace Text_Based_Adventure.GameObjects
 {
@@ -15,11 +16,14 @@ namespace Text_Based_Adventure.GameObjects
 
         public string InspectionText;
 
-        public List<SkillCheck> SkillCheck;
+        public List<ActionSkillCheck> SkillChecks;
+
+        public List<string> SkillCheckNames;
 
         public GameObject()
         {
-            SkillCheck = new List<SkillCheck>();
+            SkillChecks = new List<ActionSkillCheck>();
+            SkillCheckNames = new List<string>();
         }
 
         protected string Readfile(string fileName = "Engine/GameObjects/ObjectText.json")

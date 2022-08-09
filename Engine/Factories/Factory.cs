@@ -14,5 +14,14 @@ namespace Text_Based_Adventure.Engine.Factories
         {
             return JsonConvert.DeserializeObject<GameObject>(Util.Readfile($"{basePath}/GameObjects/Rooms/{itemname}Text.json"));
         }
+
+        protected static GameObject AttachSkillCheck(GameObject gameObject)
+        {
+            foreach(string name in gameObject.SkillCheckNames)
+            {
+                gameObject.SkillChecks.Add(SkillCheckFactory.MakeActionSkillCheck(name));
+            }
+            return gameObject;
+        }
     }
 }

@@ -6,11 +6,17 @@ using Text_Based_Adventure.Engine.InputActions;
 using System.Linq;
 using Text_Based_Adventure.Engine.InputActions.BattleActions;
 using Text_Based_Adventure.Engine.UserInputs.GameActions;
+using Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions;
 
 namespace Text_Based_Adventure.Engine
 {
     public class UserInput
     {
+        public static List<SkillAction> skillActions = new List<SkillAction>()
+        {
+            new Break()
+        };
+
         public static List<BattleAction> battleActions = new List<BattleAction>()
             {
                 new Punch(),
@@ -34,7 +40,7 @@ namespace Text_Based_Adventure.Engine
                 new Open()
             };
 
-        public List<string> getGameActionWords()
+        public static List<string> getGameActionWords()
         {
             var list = new List<string>();
             foreach(GameAction action in gameActions)
@@ -43,7 +49,7 @@ namespace Text_Based_Adventure.Engine
             }
             return list;
         }
-        public List<string> getBAttleActionWords()
+        public static List<string> getBattleActionWords()
         {
             var list = new List<string>();
             foreach (BattleAction action in battleActions)
@@ -53,7 +59,7 @@ namespace Text_Based_Adventure.Engine
             return list;
         }
 
-        public GameAction GetGameAction(string keyWord)
+        public static GameAction? GetGameAction(string keyWord)
         {
             foreach (GameAction action in gameActions)
             {
@@ -65,7 +71,7 @@ namespace Text_Based_Adventure.Engine
             return null;
         }
 
-        public BattleAction GetBattleActtion(string keyWord)
+        public static BattleAction? GetBattleActtion(string keyWord)
         {
             foreach (BattleAction action in battleActions)
             {
@@ -75,6 +81,25 @@ namespace Text_Based_Adventure.Engine
                 }
             }
             return null;
+        }
+
+        public static SkillAction? GetSkillAction(string keyWord)
+        {
+            foreach (SkillAction action in skillActions)
+            {
+                if (action.keyWord.Contains(keyWord))
+                {
+                    return action;
+                }
+            }
+            return null;
+        }
+
+        public static Verb? GetVerb(string keyWord)
+        {
+            Verb? verb = GetGameAction(keyWord);
+            return verb == null ? verb : GetBattleActtion(keyWord); 
+
         }
 
 

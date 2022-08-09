@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Text_Based_Adventure</RootNamespace>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
     <None Remove="Content\TestLevel\JsonContent\GameObjects\NPCs\FredText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\PrisonText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\TreasureRoomText.json" />
+    <None Remove="Content\TestLevel\JsonContent\GameObjects\SkillChecks\breakEasyText.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,6 +64,9 @@
 
   <ItemGroup>
     <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\Weapons\shortswordText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\SkillChecks\breakEasyText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

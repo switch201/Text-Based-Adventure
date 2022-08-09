@@ -1,0 +1,11 @@
+﻿{
+  "Attributes": {
+    "Strength": 10,
+    "Dexterity": 14,
+    "Intelligence": 6,
+    "Wisdom": 8,
+    "charisma": 5,
+    "Constitution": 15
+  },
+  "TriggerWord": "break"
+}

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks.PassiveSkillChecks
 {
-    public abstract class PassiveSkillCheck : SkillCheck
+    public class PassiveSkillCheck : SkillCheck
     {
     }
 }

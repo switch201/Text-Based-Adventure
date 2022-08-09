@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Text_Based_Adventure.Engine.Factories
 {
-    class GameClassFactory : Factory
+    class GameClassFactory : Factory //TODO only thing it gets from base class is basePath
     {
 
         public static GameClass MakeClass(string itemName)

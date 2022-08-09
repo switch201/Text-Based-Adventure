@@ -29,7 +29,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             else if (seperatedWords.Last() == "action")
             {
                 Util.fourthWall("Here are a list of available actions");
-                foreach(string keyWord in controller.userInput.getGameActionWords())
+                foreach(string keyWord in UserInput.getGameActionWords())
                 {
                     Util.fourthWall(keyWord);
                 }
@@ -37,7 +37,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             }
             else
             {
-                var action = controller.userInput.GetGameAction(seperatedWords.Last());
+                var action = UserInput.GetGameAction(seperatedWords.Last());
                 if(action != null)
                 {
                     Util.fourthWall(action.HelpText());

@@ -7,21 +7,15 @@ using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.A
 
 namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 {
-    public abstract class SkillCheck
+    public class SkillCheck
     {
-        AttributeSet AttributeSet; // The Attributes checks you need to pass for this skill check (can be a combo)
+        AttributeSet Attributes; // The Attributes checks you need to pass for this skill check (can be a combo)
 
         // The action that cause the skill check to happen
         // The thing you are trying to do  For passive skills it happens automatically
         // For action skills its the thing you are trying to do.
-        public abstract Verb TriggerAction { get; } 
+        public Verb TriggerAction;
 
-        public abstract void BestOutcome();
-
-        public abstract void GoodOutcome();
-
-        public abstract void BadOutcome();
-
-        public abstract void WorstOutcome();
+        public string TriggerWord; // looks up Trigger action durring Factory Creation
     }
 }

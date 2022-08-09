@@ -38,8 +38,10 @@ namespace Text_Based_Adventure.Engine.Factories
             Container container = JsonConvert.DeserializeObject<Container>(Util.Readfile($"Content/TestLevel/JsonContent/GameObjects/Items/Containers/{itemName}Text.json"));
             foreach (var item in container.ItemStrings)
             {
+                //TODO SO BROKEN!!
                 container.Items.Add(ItemFactory.MakeConsumable(item));
             }
+            Factory.AttachSkillCheck(container);
             return container;
         }
     }
