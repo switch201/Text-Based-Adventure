@@ -126,7 +126,7 @@ namespace Text_Based_Adventure.Engine
             }
             else
             {
-                GameAction validAction = GetGameAction(seperatedInputWords.First());
+                GameAction validAction = GetGameAction(seperatedInputWords.First()) ?? GetSkillAction(seperatedInputWords.First());
                 if(validAction == null)
                 {
                     Util.wl("That is not a valid action. Type 'help action' to see a list of valid actions");

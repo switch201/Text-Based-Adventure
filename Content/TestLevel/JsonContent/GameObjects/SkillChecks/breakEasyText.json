@@ -7,6 +7,9 @@
     "charisma": 0,
     "Constitution": 0
   },
+  "BestTarget": 5,
+  "GoodTarget": 0,
+  "BadTarget":  -5,
   "TriggerWord": "open",
   "SkillWord": "break",
   "Locked": true

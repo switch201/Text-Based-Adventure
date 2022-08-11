@@ -15,6 +15,8 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
     public abstract class Creature : GameObject
     {
         public AttributeSet attributes;
+
+        // List of things that might be modifying your attributes like food or spells
         public List<AttributeModifierSet> attributeMods = new List<AttributeModifierSet>(); //list because multiple effects at once
         public Inventory Inventory;
         public int Health;
@@ -127,6 +129,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             return this.getFullMod(Attribute.Dexterity) + 10; //base dodge;
         }
 
+        // used for Attribute mod calculation on the fly
         public int getFullAttribute(Attribute stat)
         {
             int baseValue = attributes.getAttribute(stat);
@@ -137,6 +140,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             return baseValue;
         }
 
+        // Gets the attribute mod for the given attribute with bonues applied
         public int getFullMod(Attribute stat)
         {
             return (int)Math.Floor((decimal)((this.getFullAttribute(stat) - 10) / 2));

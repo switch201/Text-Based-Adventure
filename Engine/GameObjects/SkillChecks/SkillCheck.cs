@@ -10,7 +10,13 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 {
     public class SkillCheck
     {
-        AttributeSet Attributes; // The Attributes checks you need to pass for this skill check (can be a combo)
+        public string Name;
+
+        public int BestTarget;
+        public int GoodTarget;
+        public int BadTarget;
+
+        public AttributeSet Attributes; // The Attributes checks you need to pass for this skill check (can be a combo)
 
         // The action that cause the skill check to happen
         // The thing you are trying to do  For passive skills it happens automatically
@@ -21,7 +27,12 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 
         public int PerformSkillCheck(PlayerObject player, Attribute attribute)
         {
-            return 0;
+            int target = this.Attributes.getAttribute(attribute);
+            int attempt = player.getFullMod(attribute) + Util.d20();
+            Util.log($"Attribute Check for {attribute} need a {target} or above");
+            Util.log($"Player Total {attempt}");
+            return target - attempt;
+
         }
     }
 }

@@ -8,6 +8,7 @@ using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.Engine.Controllers;
 using Text_Based_Adventure.Engine.GameObjects;
 using Text_Based_Adventure.Engine.GameObjects.Containers;
+using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -59,7 +60,7 @@ namespace Text_Based_Adventure.Engine
         public void SearchForItems()
         {
             
-            Dictionary<string, Item> items = currentRoom.getItems();
+            List<Item> items = currentRoom.getItems();
 
             if (items.Count == 0)
             {
@@ -67,20 +68,20 @@ namespace Text_Based_Adventure.Engine
             }
 
             int totalItems = items.Count;
-            foreach (var (name, item) in items)
+            foreach (var item in items)
             {
                 if (item.HasDiscoverText())
                 {
                     item.Discover();
                 }
-                Util.wl($"You see a {name}");
+                Util.wl($"You see a {item.Name}");
             }
         }
 
         public void InspectSomething(string name, int checkResult)
         {
             //check for items
-            Item item = currentRoom.Items.GetValueOrDefault(name);
+            Item item = currentRoom.getItem(name);
             if(item != null)
             {
                 InspectItem(item, checkResult);
@@ -165,6 +166,16 @@ namespace Text_Based_Adventure.Engine
         public void InspectRoom()
         {
             currentRoom.Inspect();
+        }
+
+        // Will search all gameobject in a room to find match including the room itself.
+        public GameObject GetGameObject(string name)
+        {
+            List<GameObject> searchList = new List<GameObject>();
+            searchList.AddRange(this.currentRoom.getItems());
+            searchList.AddRange(this.currentRoom.getNPCs());
+            return searchList.FirstOrDefault(x => x.Name == name);
+
         }
     }
 }

@@ -32,6 +32,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes
             this.Add(attribute, value);
         }
 
+        // Gets raw attribute Value
         public int getAttribute(Attribute stat)
         {
             return this.GetValueOrDefault(stat);

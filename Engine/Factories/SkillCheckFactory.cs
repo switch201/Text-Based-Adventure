@@ -21,6 +21,7 @@ namespace Text_Based_Adventure.Engine.Factories
             ActionSkillCheck item = JsonConvert.DeserializeObject<ActionSkillCheck>(Util.Readfile($"{basePath}/GameObjects/SkillChecks/{itemName}Text.json"));
             item.TriggerAction = UserInput.GetVerb(item.TriggerWord);
             item.SkillAction = UserInput.GetSkillAction(item.SkillWord);
+            item.Name = itemName;
             return item;
         }
     }

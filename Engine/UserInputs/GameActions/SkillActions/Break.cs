@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
+using Text_Based_Adventure.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks;
 
 namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
 {
@@ -18,47 +20,30 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                 "type 'break <itemName>' to try to over come something like a locked door or chest.";
         }
 
-        public override void RespondToInput(GameController controller, List<string> seperatedWords)
+
+        // TODO I CAN MAKE THIS WHOLE METHOD ONE LEVEL HIGHER SORRY FOR THE CAPS
+        
+
+        public override void BadOutcome(GameController? gameController, GameObject? gameObject)
         {
-            string itemName = seperatedWords.Last();
-            var item = controller.roomController.currentRoom.getItem(itemName);
-            if(item == null)
-            {
-                Util.wl("You can't break that"); //TODO make this generic
-            }
-            else
-            {
-                var gameLock = item.getLock(this);
-                if(gameLock == null)
-                {
-                    Util.wl($"{item.Name} can't be broken like that");
-                }
-                else
-                {
-                    // TODO THIS IS WHERE THE PLAYER DOES THE SKILL CHECK
-                    int result = gameLock.PerformSkillCheck(controller.playerController.player, Attribute.Strength);
-                }
-            }
+            Util.wl($"You give the {gameObject.Name} a hardy smack but it seems unsaved");
         }
 
-        public override void BadOutcome(GameController? gameController)
+        public override void BestOutcome(GameController? gameController, GameObject? gameObject)
         {
-            throw new NotImplementedException();
+            this.GoodOutcome(gameController, gameObject);
         }
 
-        public override void BestOutcome(GameController? gameController)
+        public override void GoodOutcome(GameController? gameController, GameObject? gameObject)
         {
-            throw new NotImplementedException();
+            Util.wl($"You are able to break the {gameObject.Name}");
+            ((ActionSkillCheck)gameObject.getLock(this)).Locked = false;
         }
 
-        public override void GoodOutcome(GameController? gameController)
+        public override void WorstOutcome(GameController? gameController, GameObject? gameObject)
         {
-            throw new NotImplementedException();
-        }
-
-        public override void WorstOutcome(GameController? gameController)
-        {
-            throw new NotImplementedException();
+            Util.wl($"You messed up so bad I can describe it {gameObject.Name}");
+            ((ActionSkillCheck)gameObject.getLock(this)).Broken = true;
         }
     }
 }
