@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using Text_Based_Adventure.Engine.GameObjects;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
@@ -17,8 +19,33 @@ namespace Text_Based_Adventure.Engine.InputActions
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
+            string directObject;
+            List<NPC> npcs = controller.roomController.currentRoom.NPCs;
+            if (seperatedWords.Count > 1)
+            {
+                directObject = seperatedWords.Last();
+                NPC npc = Util.NameOrIdentifier(npcs, directObject);
+                if(npc != null)
+                {
+                    controller.StartCombat(); // TODO specific person combat
+                }
+                else
+                {
+                    Util.wl($"You don't see or can't attack a {directObject}");
+                    return;
+                }
+            }
             //TODO check if there is an NPC that can be attacked
-            controller.StartCombat();
+            else if (npcs.Count == 1)
+            {
+                controller.StartCombat();
+            }
+            else
+            {
+                Util.wl("There is no one to attack");
+            }
+            
+            
         }
     }
 }

@@ -12,5 +12,7 @@
   "BadTarget":  -5,
   "TriggerWord": "open",
   "SkillWord": "break",
-  "Locked": true
+  "Locked": true,
+  "LockedText": "The chest is sealed shut with a lock. Looks Flimsy...",
+  "BrokenText": "You can't do it the chest is compeltly busted"
 }

@@ -20,13 +20,13 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
             else
             {
                 var gameLock = targetGameObject.getLock(this);
-                if (gameLock == null)
+                if (gameLock == null || !gameLock.Locked)
                 {
                     Util.wl($"no need to {this.keyWord.First()} the {targetGameObject.Name}");
                 }
-                else
+                else if(gameLock.Locked)
                 {
-                    // TODO THIS IS WHERE THE PLAYER DOES THE SKILL CHECK
+                    // THIS IS WHERE THE PLAYER DOES THE SKILL CHECK
                     int result = gameLock.PerformSkillCheck(controller.playerController.player, Attribute.Strength);
 
                     if (gameLock.BestTarget > 5)
@@ -45,6 +45,11 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                     {
                         this.WorstOutcome(controller, targetGameObject);
                     }
+                }
+                else if (gameLock.Broken)
+                {
+                    var brokenText = gameLock.BrokenText;
+                    Util.wl(brokenText ?? $"You can't {this.keyWord.First()} this {targetGameObject.Name}");
                 }
             }
         }

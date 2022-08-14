@@ -12,6 +12,8 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
     {
         public string Name;
 
+        public bool Broken; // When true skill check can no longer be attempted or occur
+
         public int BestTarget;
         public int GoodTarget;
         public int BadTarget;
@@ -31,7 +33,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
             int attempt = player.getFullMod(attribute) + Util.d20();
             Util.log($"Attribute Check for {attribute} need a {target} or above");
             Util.log($"Player Total {attempt}");
-            return target - attempt;
+            return attempt - target;
 
         }
     }

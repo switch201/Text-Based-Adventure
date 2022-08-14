@@ -9,10 +9,13 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks
     public class ActionSkillCheck : SkillCheck
     {
         public bool Locked;
-        public bool Broken; // When true skill check can no longer be attempted
 
         public SkillAction SkillAction;
 
         public string SkillWord;
+
+        public string BrokenText;
+
+        public string LockedText;
     }
 }

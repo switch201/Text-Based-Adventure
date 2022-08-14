@@ -17,6 +17,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             return "you can open containers by typing 'open <containerName>'";
         }
 
+        //TODO something does't feel right here I think I need to simplify this pattern.
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             string itemName = seperatedWords.Last();
@@ -27,7 +28,8 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             }
             else if (item.isLocked(this))
             {
-                Util.wl($"{item.Name} is Locked");
+                var text = item.getLock(this).LockedText;
+                Util.wl(text ?? $"The {item.Name} is Locked");
             }
             else if (item is Container)
             {

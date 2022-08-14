@@ -50,7 +50,12 @@ namespace Text_Based_Adventure.GameObjects
             return this.SkillChecks.Where(x => x.Locked && x.TriggerAction == action).Count() > 0;
         }
 
-        public SkillCheck getLock(SkillAction action)
+        public ActionSkillCheck getLock(Verb action)
+        {
+            return this.SkillChecks.Where(x => x.Locked && x.TriggerAction == action).SingleOrDefault();
+        }
+
+        public ActionSkillCheck getLock(SkillAction action)
         {
             return this.SkillChecks.Where(x => x.Locked && x.SkillAction == action).SingleOrDefault();
         }

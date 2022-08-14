@@ -74,6 +74,11 @@ namespace Text_Based_Adventure.Rooms
             Items.Add(item);
         }
 
+        public void addItems(List<Item> items)
+        {
+            this.Items.AddRange(items);
+        }
+
         public Item getItem(string name)
         {
             return Items.Where(x => x.Name == name).FirstOrDefault();

@@ -18,6 +18,17 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
             Items = new List<Item>() { };
         }
 
+        public List<Item> UnloadAllItems()
+        {
+            List<Item> returnedItems = new List<Item>();
+            foreach (var item in Items)
+            {
+                returnedItems.Add(item);
+            }
+            Items.Clear();
+            return returnedItems;
+        }
+
         public List<Item> Open()
         {
             Util.fourthWall("Type 'take all' to take all.");
@@ -42,11 +53,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
                 if (userInput == "take all")
                 {
                     Util.wl("You take all the items");
-                    foreach (var item in Items)
-                    {
-                        returnedItems.Add(item);
-                    }
-                    Items.Clear();
+                    returnedItems = UnloadAllItems();
                 }
             }
             return returnedItems;
