@@ -19,13 +19,13 @@ namespace Text_Based_Adventure.GameObjects
 
         public string InspectionText;
 
-        public List<ActionSkillCheck> SkillChecks;
+        public List<SkillCheckGroup> SkillChecks; // TODO maybe make Item only
 
         public List<string> SkillCheckNames;
 
         public GameObject()
         {
-            SkillChecks = new List<ActionSkillCheck>();
+            SkillChecks = new List<SkillCheckGroup>();
             SkillCheckNames = new List<string>();
         }
 
@@ -47,17 +47,22 @@ namespace Text_Based_Adventure.GameObjects
         // Checks to see if the given action can be performed on this game object
         public bool isLocked(Verb action)
         {
-            return this.SkillChecks.Where(x => x.Locked && x.TriggerAction == action).Count() > 0;
+            return this.SkillChecks.Where(x => x.IsLocked() && x.getTriggerAction() == action).Count() > 0;
         }
 
-        public ActionSkillCheck getLock(Verb action)
+        public SkillCheckGroup getSkillCheckGroup(Verb action)
         {
-            return this.SkillChecks.Where(x => x.Locked && x.TriggerAction == action).SingleOrDefault();
+            return this.SkillChecks.FirstOrDefault(x => x.IsLocked() && x.getTriggerAction() == action);
         }
 
-        public ActionSkillCheck getLock(SkillAction action)
+        public ActionSkillCheck getActionSkillCheck(SkillAction action)
         {
-            return this.SkillChecks.Where(x => x.Locked && x.SkillAction == action).SingleOrDefault();
+            var lockedGroup = this.SkillChecks.SingleOrDefault(x => x.IsLocked());
+            if(lockedGroup != null)
+            {
+                return lockedGroup.SingleOrDefault(x => x.SkillAction == action);
+            }
+            return null;
         }
     }
 }

@@ -59,5 +59,12 @@
     "Shields",
     "SimpleWeapons",
     "MartialWeapons"
-  ]
+  ],
+  "SkillChoices": [
+    "Intimidation",
+    "Nature",
+    "Perception",
+    "Survival"
+  ],
+  "SkillCount": 2
 }

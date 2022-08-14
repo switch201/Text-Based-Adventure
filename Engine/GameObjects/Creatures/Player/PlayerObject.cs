@@ -9,6 +9,7 @@ using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.GameObjects.Items.Weapons;
 using Text_Based_Adventure.Engine.GameClasses;
+using System.Collections.Generic;
 
 namespace Text_Based_Adventure.Engine.Player
 {
@@ -18,7 +19,7 @@ namespace Text_Based_Adventure.Engine.Player
         public int XP;
         public GameClass playerClass;
 
-        public PlayerObject(string name, AttributeSet attributes) : base()
+        public PlayerObject(string name, AttributeSet attributes, List<Skill> skills) : base()
         {
             this.stats = new StatsSet();
             this.attributes = attributes;
@@ -26,6 +27,7 @@ namespace Text_Based_Adventure.Engine.Player
             this.Health = this.MaxHealth = 5 + attributes.getAttribute(Attribute.Strength);
             this.XP = 0;
             this.ProficiencyBonus = 0;
+            this.skills = skills;
         }
         public void AddXp(int xp)
         {
@@ -34,7 +36,7 @@ namespace Text_Based_Adventure.Engine.Player
 
 
 
-        public PlayerObject(string name, AttributeSet attributes, GameClass playerClass ) : base()
+        public PlayerObject(string name, AttributeSet attributes, GameClass playerClass, List<Skill> selectedSkills ) : base()
         {
             this.playerClass = playerClass;
             this.stats = new StatsSet();
@@ -44,6 +46,7 @@ namespace Text_Based_Adventure.Engine.Player
             this.XP = 0;
             this.ProficiencyBonus = playerClass.ProficencyBonus.First();
             this.Inventory.AddRange(playerClass.StartingInventory);
+            this.skills = selectedSkills;
         }
 
         private void AdjustAttribute(Attribute attribute, int ammount)

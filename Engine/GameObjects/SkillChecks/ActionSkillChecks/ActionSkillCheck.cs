@@ -11,7 +11,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks
         public bool Locked;
 
         public SkillAction SkillAction;
-
+        
         public string SkillWord;
 
         public string BrokenText;

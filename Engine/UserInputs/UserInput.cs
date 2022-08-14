@@ -14,7 +14,8 @@ namespace Text_Based_Adventure.Engine
     {
         public static List<SkillAction> skillActions = new List<SkillAction>()
         {
-            new Break()
+            new Break(),
+            new PickLock()
         };
 
         public static List<BattleAction> battleActions = new List<BattleAction>()
@@ -40,14 +41,13 @@ namespace Text_Based_Adventure.Engine
                 new Open()
             };
 
+        public static List<string> GetSkillActionWords()
+        {
+            return skillActions.Select(x => x.keyWord.First()).ToList();
+        }
         public static List<string> getGameActionWords()
         {
-            var list = new List<string>();
-            foreach(GameAction action in gameActions)
-            {
-                list.Add(action.keyWord.First());
-            }
-            return list;
+            return gameActions.Select(x => x.keyWord.First()).ToList();
         }
         public static List<string> getBattleActionWords()
         {

@@ -6,5 +6,5 @@
   "InspectionText": "It looks unsecured",
   "QuallityText": "Its the best chest you have ever seen..... almost.",
   "Name": "treasurechest",
-  "SkillCheckNames": [ "breakEasy" ]
+  "SkillCheckNames": [ "easyChest" ]
 }

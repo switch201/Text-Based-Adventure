@@ -28,7 +28,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             }
             else if (item.isLocked(this))
             {
-                var text = item.getLock(this).LockedText;
+                var text = item.getSkillCheckGroup(this).LockedText;
                 Util.wl(text ?? $"The {item.Name} is Locked");
             }
             else if (item is Container)

@@ -139,10 +139,7 @@ namespace Text_Based_Adventure.Engine
             while(selectedClass == null)
             {
                 Util.wl("Select one of the following Classes:");
-                foreach (var gameClass in this.game.AvailableGameClasses)
-                {
-                    Util.wl(gameClass.Name);
-                }
+                Util.writeList(this.game.AvailableGameClasses.Select(x => x.Name).ToList());
                 string userInput = Util.rl().ToLower();
                 selectedClass = this.game.AvailableGameClasses.Where(x => x.Name == userInput).SingleOrDefault();
                 if(selectedClass == null)
@@ -168,26 +165,46 @@ namespace Text_Based_Adventure.Engine
 
                 attributeSet.setAttribute(attribute, sum);
             }
-            
-
-            this.playerController.player = new PlayerObject(name, attributeSet, selectedClass);
-            this.gameState.RunGame();
-        }
-
-        public void TakeUserInputForCharacter()
-        {
-            var attributeSet = new AttributeSet();
-            string name = Util.rl();
-            foreach (Attribute attribute in Enum.GetValues(typeof(Attribute)))
+            List<Skill> selectedSkills = new List<Skill>() { };
+            List<Skill> availableSkills = selectedClass.SkillChoices;
+            while (selectedSkills.Count < selectedClass.SkillCount)
             {
-                Util.wl($"what is your {attribute} value");
+                Util.wl($"Pick {selectedClass.SkillCount - selectedSkills.Count} skils from the following list of skills to be good at");
+                Util.writeList(selectedClass.SkillChoices.Select(x => x.ToString()).ToList());
+                string userInput = Util.rl().ToLower();
+                var selectedSkill = availableSkills.SingleOrDefault(x => x.ToString().ToLower() == userInput);
+                if(selectedSkill != Skill.None)
+                {
+                    selectedSkills.Add(selectedSkill);
+                    availableSkills.Remove(selectedSkill);
+                }
+                else
+                {
+                    Util.wl("You gott pick em");
+                }
 
-                attributeSet.setAttribute(attribute, Convert.ToInt32(Util.readNumber()));
             }
-            this.playerController.player = new PlayerObject(name, attributeSet);
-            this.gameState.RunGame();
 
+
+
+            this.playerController.player = new PlayerObject(name, attributeSet, selectedClass, selectedSkills);
+            this.gameState.RunGame();
         }
+
+        //public void TakeUserInputForCharacter()
+        //{
+        //    var attributeSet = new AttributeSet();
+        //    string name = Util.rl();
+        //    foreach (Attribute attribute in Enum.GetValues(typeof(Attribute)))
+        //    {
+        //        Util.wl($"what is your {attribute} value");
+
+        //        attributeSet.setAttribute(attribute, Convert.ToInt32(Util.readNumber()));
+        //    }
+        //    this.playerController.player = new PlayerObject(name, attributeSet);
+        //    this.gameState.RunGame();
+
+        //}
         public void TakeUserInputAndRespond()
         {
             string input = Util.rl();
