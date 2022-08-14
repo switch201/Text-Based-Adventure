@@ -15,6 +15,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
     public abstract class Creature : GameObject
     {
         public AttributeSet attributes;
+        public List<Skill> skills;
 
         // List of things that might be modifying your attributes like food or spells
         public List<AttributeModifierSet> attributeMods = new List<AttributeModifierSet>(); //list because multiple effects at once
@@ -34,6 +35,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             this.Inventory = new Inventory();
             this.weaponSlots = new WeaponSlots();
             this.armorSlots = new ArmorSlots();
+            this.skills = new List<Skill>() { };
         }
 
 
