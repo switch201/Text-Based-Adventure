@@ -191,20 +191,6 @@ namespace Text_Based_Adventure.Engine
             this.gameState.RunGame();
         }
 
-        //public void TakeUserInputForCharacter()
-        //{
-        //    var attributeSet = new AttributeSet();
-        //    string name = Util.rl();
-        //    foreach (Attribute attribute in Enum.GetValues(typeof(Attribute)))
-        //    {
-        //        Util.wl($"what is your {attribute} value");
-
-        //        attributeSet.setAttribute(attribute, Convert.ToInt32(Util.readNumber()));
-        //    }
-        //    this.playerController.player = new PlayerObject(name, attributeSet);
-        //    this.gameState.RunGame();
-
-        //}
         public void TakeUserInputAndRespond()
         {
             string input = Util.rl();
