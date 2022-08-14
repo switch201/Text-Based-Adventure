@@ -38,9 +38,13 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
         }
 
         // SKill is implied
+        //TODO check for hidden vs announced?
         public int PerformSkillCheck(PlayerObject player) 
         {
-            return 0;
+            int attempt = (player.hasSkill(Skill) ? player.ProficiencyBonus : 0) + Util.d20();
+            Util.log($"Attribute Check for {Skill} need a {GoodTarget} or above");
+            Util.log($"Player Total {attempt}");
+            return attempt;
         }
     }
 }

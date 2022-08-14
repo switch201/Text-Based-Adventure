@@ -23,7 +23,7 @@
     <None Remove="Content\TestLevel\JsonContent\GameObjects\NPCs\FredText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\PrisonText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\TreasureRoomText.json" />
-    <None Remove="Content\TestLevel\JsonContent\GameObjects\SkillChecks\breakEasyText.json" />
+    <None Remove="Content\TestLevel\JsonContent\GameObjects\SkillChecks\easyChestText.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,7 +66,7 @@
     <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\Weapons\shortswordText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel\JsonContent\GameObjects\SkillChecks\breakEasyText.json">
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\SkillChecks\easyChestText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

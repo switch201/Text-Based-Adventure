@@ -16,13 +16,18 @@ namespace Text_Based_Adventure.Engine.Factories
             return item;
         }
 
-        public static ActionSkillCheck MakeActionSkillCheck(string itemName)
+        public static SkillCheckGroup MakeActionSkillCheck(string itemName)
         {
-            ActionSkillCheck item = JsonConvert.DeserializeObject<ActionSkillCheck>(Util.Readfile($"{basePath}/GameObjects/SkillChecks/{itemName}Text.json"));
-            item.TriggerAction = UserInput.GetVerb(item.TriggerWord);
-            item.SkillAction = UserInput.GetSkillAction(item.SkillWord);
-            item.Name = itemName;
-            return item;
+            SkillCheckGroup group = JsonConvert.DeserializeObject<SkillCheckGroup>(Util.Readfile($"{basePath}/GameObjects/SkillChecks/{itemName}Text.json"));
+            foreach(ActionSkillCheck check in group)
+            {
+                check.TriggerAction = UserInput.GetVerb(check.TriggerWord);
+                check.SkillAction = UserInput.GetSkillAction(check.SkillWord);
+            }
+            
+            
+            group.Name = itemName;
+            return group;
         }
     }
 }

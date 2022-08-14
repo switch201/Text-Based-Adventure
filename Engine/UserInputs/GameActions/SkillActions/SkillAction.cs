@@ -19,17 +19,26 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
             }
             else
             {
-                var gameLock = targetGameObject.getLock(this);
+                var gameLock = targetGameObject.getActionSkillCheck(this);
                 if (gameLock == null || !gameLock.Locked)
                 {
                     Util.wl($"no need to {this.keyWord.First()} the {targetGameObject.Name}");
                 }
                 else if(gameLock.Locked)
                 {
-                    // THIS IS WHERE THE PLAYER DOES THE SKILL CHECK
-                    int result = gameLock.PerformSkillCheck(controller.playerController.player, Attribute.Strength);
+                    int result;
+                    //TODO Combo attribute + skill rolls?
+                    if (gameLock.Attribute != Attribute.None)
+                    {
+                        result = gameLock.PerformSkillCheck(controller.playerController.player, gameLock.Attribute);
+                    }
+                    else
+                    {
+                        result = gameLock.PerformSkillCheck(controller.playerController.player);
+                    }
+                    
 
-                    if (gameLock.BestTarget > 5)
+                    if (gameLock.BestTarget > gameLock.BestTarget)
                     {
                         this.BestOutcome(controller, targetGameObject);
                     }

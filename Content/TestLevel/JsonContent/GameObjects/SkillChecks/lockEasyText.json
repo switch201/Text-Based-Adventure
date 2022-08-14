@@ -1,9 +1,0 @@
-{
-  "Skill": "SlightOfHand",
-  "BestTarget": 15,
-  "GoodTarget": 10,
-  "BadTarget": 5,
-  "TriggerWord": "open",
-  "SkillWord": "pick",
-  "Locked": true
-}

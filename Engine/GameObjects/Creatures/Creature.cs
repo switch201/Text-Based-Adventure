@@ -38,7 +38,10 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             this.skills = new List<Skill>() { };
         }
 
-
+        public bool hasSkill(Skill skill)
+        {
+            return this.skills.Contains(skill);
+        }
 
         public void adjustHealth(int adjustment)
         {

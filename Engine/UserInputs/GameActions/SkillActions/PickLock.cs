@@ -13,17 +13,20 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
 
         public override void BadOutcome(GameController? gameController, GameObject? directObject)
         {
-            throw new NotImplementedException();
+            Util.wl("You try to pick the lock but it keeps reseting");
         }
 
         public override void BestOutcome(GameController? gameController, GameObject? directObject)
         {
-            throw new NotImplementedException();
+            Util.wl("You get the lock open Fast!");
+            gameController.gameState.adjustGameClock(-1); // Is this big brain or tiny brain?
+            directObject.getActionSkillCheck(this).Locked = false;
         }
 
         public override void GoodOutcome(GameController? gameController, GameObject? directObject)
         {
-            throw new NotImplementedException();
+            Util.wl("You get the Lock open");
+            directObject.getActionSkillCheck(this).Locked = false;
         }
 
         public override string HelpText()
@@ -34,7 +37,8 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
 
         public override void WorstOutcome(GameController? gameController, GameObject? directObject)
         {
-            throw new NotImplementedException();
+            Util.wl("*ping* the lock is comprtly broken.");
+            directObject.getActionSkillCheck(this).Broken = true;
         }
     }
 }

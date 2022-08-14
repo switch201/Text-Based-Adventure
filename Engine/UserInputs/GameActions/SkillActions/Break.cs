@@ -36,7 +36,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
         public override void GoodOutcome(GameController? gameController, GameObject? gameObject)
         {
             Util.wl($"You are able to break the {gameObject.Name}");
-            ((ActionSkillCheck)gameObject.getLock(this)).Locked = false;
+            ((ActionSkillCheck)gameObject.getActionSkillCheck(this)).Locked = false;
             if(gameObject is Container){
                 var returnedItems = ((Container)gameObject).UnloadAllItems();
                 if (returnedItems.Count() == 0)
@@ -57,7 +57,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
         public override void WorstOutcome(GameController? gameController, GameObject? gameObject)
         {
             Util.wl($"You messed up so bad I can describe it {gameObject.Name}");
-            ((ActionSkillCheck)gameObject.getLock(this)).Broken = true;
+            ((ActionSkillCheck)gameObject.getActionSkillCheck(this)).Broken = true;
         }
     }
 }
