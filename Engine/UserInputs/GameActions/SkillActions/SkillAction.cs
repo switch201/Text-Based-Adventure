@@ -24,7 +24,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                 {
                     Util.wl($"no need to {this.keyWord.First()} the {targetGameObject.Name}");
                 }
-                else if(gameLock.Locked)
+                else if(gameLock.Locked && !gameLock.Broken)
                 {
                     int result;
                     //TODO Combo attribute + skill rolls?
@@ -38,7 +38,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                     }
                     
 
-                    if (gameLock.BestTarget > gameLock.BestTarget)
+                    if (result > gameLock.BestTarget)
                     {
                         this.BestOutcome(controller, targetGameObject);
                     }
