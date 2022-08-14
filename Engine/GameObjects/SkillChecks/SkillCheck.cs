@@ -12,7 +12,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
     {
         public string Name;
 
-        public bool Broken; // When true skill check can no longer be attempted or occur
+        public bool Broken; // When true skill check can no longer be attempted or occurrrrr
 
         // how hard is this thing?
         public int BestTarget;
