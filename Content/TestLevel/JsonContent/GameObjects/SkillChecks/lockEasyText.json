@@ -1,9 +1,9 @@
-﻿{
-  "Attribute": "Strength",
+{
+  "Skill": "SlightOfHand",
   "BestTarget": 15,
   "GoodTarget": 10,
   "BadTarget": 5,
   "TriggerWord": "open",
-  "SkillWord": "break",
-  "Locked": true,
+  "SkillWord": "pick",
+  "Locked": true
 }
