@@ -19,7 +19,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
-            controller.playerController.AttemptToEatConsumable(seperatedWords.Last(), controller.gameState.getGameTime());
+            controller.playerController.TryEatConsumable(seperatedWords.Last(), controller.gameState.getGameTime());
         }
     }
 }

@@ -20,22 +20,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             string directObject = seperatedWords.Last();
-            Equipable item;
-            try
-            {
-                item = (Equipable)controller.playerController.player.Inventory.getItem(directObject);
-            }
-            catch (InvalidCastException)
-            {
-                Util.wl($"You can't equip a {directObject}");
-                return;
-            }
-            if (item == null)
-            {
-                Util.wl($"You aren't carrying a {directObject}");
-                return;
-            }
-            controller.playerController.AttemptToEquipItem(item);
+            controller.playerController.TryEquipItem(directObject);
         }
     }
 }

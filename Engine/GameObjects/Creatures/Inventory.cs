@@ -9,12 +9,12 @@ namespace Text_Based_Adventure.Engine.Player
     public class Inventory : List<Item>
     {
 
-        public void addItem(Item item)
+        public void AddItem(Item item)
         {
             this.Add(item);
         }
 
-        public Item getItem(string name)
+        public Item GetItem(string name)
         {
             return this.Where(x => x.Name == name).FirstOrDefault();
         }
@@ -24,16 +24,21 @@ namespace Text_Based_Adventure.Engine.Player
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Item removeItem(string name)
+        public Item RemoveItem(string name)
         {
-            Item item = this.getItem(name);
+            Item item = this.GetItem(name);
             this.Remove(item);
             return item;
         }
 
-        public List<Item> getAllitems()
+        public List<Item> GetAllitems()
         {
             return this.ToList();
+        }
+
+        public bool IsItemInInventory(string itemName)
+        {
+            return GetItem(itemName) != null;
         }
     }
 }

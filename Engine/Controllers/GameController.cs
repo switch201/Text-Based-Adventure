@@ -132,15 +132,15 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
-        public void TakeUserInputForClass()
+        public void TakeUserInputForClass(bool debug = false)
         {
-            string name = Util.rl();
+            string name = debug ? "testman" : Util.rl();
             GameClass selectedClass = null;
             while(selectedClass == null)
             {
                 Util.wl("Select one of the following Classes:");
                 Util.writeList(this.game.AvailableGameClasses.Select(x => x.Name).ToList());
-                string userInput = Util.rl().ToLower();
+                string userInput = debug ? "barbarian" : Util.rl().ToLower();
                 selectedClass = this.game.AvailableGameClasses.Where(x => x.Name == userInput).SingleOrDefault();
                 if(selectedClass == null)
                 {
@@ -169,9 +169,10 @@ namespace Text_Based_Adventure.Engine
             List<Skill> availableSkills = selectedClass.SkillChoices;
             while (selectedSkills.Count < selectedClass.SkillCount)
             {
+                var debugSkillList = new List<string>() { "nature", "perception" };
                 Util.wl($"Pick {selectedClass.SkillCount - selectedSkills.Count} skils from the following list of skills to be good at");
                 Util.writeList(selectedClass.SkillChoices.Select(x => x.ToString()).ToList());
-                string userInput = Util.rl().ToLower();
+                string userInput = debug ? debugSkillList[selectedSkills.Count] : Util.rl().ToLower();
                 var selectedSkill = availableSkills.SingleOrDefault(x => x.ToString().ToLower() == userInput);
                 if(selectedSkill != Skill.None)
                 {

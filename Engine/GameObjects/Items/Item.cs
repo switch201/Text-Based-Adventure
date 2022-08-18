@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
+using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Items
@@ -43,6 +45,16 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
         public void Grab()
         {
             Util.wl(this.GrabText);
+        }
+
+        public bool IsConsumable()
+        {
+            return this is Consumable;
+        }
+
+        public bool IsEquipable()
+        {
+            return this is Equipable;
         }
     }
 }

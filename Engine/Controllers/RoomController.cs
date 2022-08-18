@@ -157,7 +157,10 @@ namespace Text_Based_Adventure.Engine
 
         public void AddItemToRoom(Item item)
         {
-            currentRoom.addItem(item);
+            if(item != null)
+            {
+                currentRoom.addItem(item);
+            }
         }
 
 
