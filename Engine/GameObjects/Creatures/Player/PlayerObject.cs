@@ -5,7 +5,6 @@ using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.Engine.Player.Stats;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
-using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.GameObjects.Items.Weapons;
 using Text_Based_Adventure.Engine.GameClasses;
@@ -129,7 +128,7 @@ namespace Text_Based_Adventure.Engine.Player
         }
 
         
-        public new void Equip(Equipable item, string hand = null)
+        public new void Equip(Equipable item, WeaponSlot hand)
         {
             base.Equip(item, hand);
         }

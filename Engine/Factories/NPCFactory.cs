@@ -5,6 +5,7 @@ using System.Text;
 using Text_Based_Adventure.Engine.GameObjects;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
 namespace Text_Based_Adventure.Engine.Factories
 {
@@ -17,7 +18,8 @@ namespace Text_Based_Adventure.Engine.Factories
             {
                 npc.Inventory.AddItem(ItemFactory.MakeWeapon(weapon));
             }
-            npc.Equip((Equipable)Util.RandomFromList(npc.Inventory));
+            //TODO Bugs Here
+            npc.Equip((Equipable)Util.RandomFromList(npc.Inventory), WeaponSlot.RightHand);
             return npc;
         }
     }

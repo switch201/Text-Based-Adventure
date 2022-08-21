@@ -1,4 +1,5 @@
-﻿using Text_Based_Adventure.Engine.GameObjects.Items;
+﻿using Text_Based_Adventure.Engine.GameObjects.Creatures;
+using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.Engine.Player;
@@ -27,7 +28,7 @@ namespace Text_Based_Adventure.Engine.Controllers
                 var item = player.Inventory.GetItem(itemName);
                 if (item.IsEquipable())
                 {
-                    this.player.Equip((Equipable)item);
+                    this.player.Equip((Equipable)item, WeaponSlot.RightHand);
                     Util.wl($"You equip the {item.Name}");
                 }
                 else

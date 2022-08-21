@@ -8,6 +8,9 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks
 {
     public class SkillCheckGroup : List<ActionSkillCheck>
     {
+        // All Locks in a SkillCheck Group need to be unlocked before the whole group is considered unlocked.
+        // This is to group skill checks in series like jumping off a cliff and grabing a rope. which might combine Athletasism
+        // and strength
         public string Name;
         public string LockedText;
         public bool IsLocked()

@@ -105,13 +105,6 @@ namespace Text_Based_Adventure
             return list.ElementAt(index);
         }
 
-        public static T RandomFromDictionary<K, T>(IDictionary<K, T> dict)
-        {
-            Random rand = new Random();
-            IEnumerable<T> values = dict.Values.ToList();
-            return Util.RandomFromList(dict.Values.ToList());
-        }
-
         public static string RandomIdentifier(NPC npc)
         {
             var nameList = npc.Identifiers;
