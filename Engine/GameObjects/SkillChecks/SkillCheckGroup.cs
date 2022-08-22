@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 using Text_Based_Adventure.Engine.InputActions;
 
-namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks
+namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 {
     public class SkillCheckGroup : List<ActionSkillCheck>
     {
@@ -22,7 +22,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks
         public Verb getTriggerAction()
         {
             var skill = this.FirstOrDefault();
-            if(skill != null)
+            if (skill != null)
             {
                 return skill.TriggerAction;
             }

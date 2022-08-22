@@ -81,7 +81,8 @@ namespace Text_Based_Adventure.Rooms
 
         public Item getItem(string name)
         {
-            return Items.Where(x => x.Name == name).FirstOrDefault();
+            return Items.Where(x => x.Name.Equals(name) || x.Identifiers.Contains(name))
+                .SingleOrDefault();
         }
 
         public void setItems(List<Item> items)

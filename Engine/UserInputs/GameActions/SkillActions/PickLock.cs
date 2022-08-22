@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
 using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
@@ -11,23 +12,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
 
         public override int duration => 2;
 
-        public override void BadOutcome(GameController? gameController, GameObject? directObject)
-        {
-            Util.wl("You try to pick the lock but it keeps reseting");
-        }
-
-        public override void BestOutcome(GameController? gameController, GameObject? directObject)
-        {
-            Util.wl("You get the lock open Fast!");
-            gameController.gameState.adjustGameClock(-1); // Is this big brain or tiny brain?
-            directObject.getActionSkillCheck(this).Locked = false;
-        }
-
-        public override void GoodOutcome(GameController? gameController, GameObject? directObject)
-        {
-            Util.wl("You get the Lock open");
-            directObject.getActionSkillCheck(this).Locked = false;
-        }
+        public override SkillCheckOutcome SkillCheckOutcome => new LockOutCome();
 
         public override string HelpText()
         {
@@ -35,10 +20,33 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                 "type 'pick <itemName>' to give it a try";
         }
 
-        public override void WorstOutcome(GameController? gameController, GameObject? directObject)
+        internal class LockOutCome : SkillCheckOutcome
         {
-            Util.wl("*ping* the lock is comprtly broken.");
-            directObject.getActionSkillCheck(this).Broken = true;
+
+            
+            public override void BadOutcome(GameController? gameController, GameObject? directObject)
+            {
+                Util.wl("You try to pick the lock but it keeps reseting");
+            }
+
+            public override void BestOutcome(GameController? gameController, GameObject? directObject)
+            {
+                Util.wl("You get the lock open Fast!");
+                gameController.gameState.adjustGameClock(-1); // Is this big brain or tiny brain?
+                directObject.getActionSkillCheck(UserInput.GetSkillAction("pick")).Locked = false;
+            }
+
+            public override void GoodOutcome(GameController? gameController, GameObject? directObject)
+            {
+                Util.wl("You get the Lock open");
+                directObject.getActionSkillCheck(UserInput.GetSkillAction("pick")).Locked = false;
+            }
+
+            public override void WorstOutcome(GameController? gameController, GameObject? directObject)
+            {
+                Util.wl("*ping* the lock is comprtly broken.");
+                directObject.getActionSkillCheck(UserInput.GetSkillAction("pick")).Broken = true;
+            }
         }
     }
 }

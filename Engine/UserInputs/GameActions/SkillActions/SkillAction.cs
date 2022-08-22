@@ -4,6 +4,7 @@ using System.Text;
 using Text_Based_Adventure.GameObjects;
 using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
+using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
 
 namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
 {
@@ -12,10 +13,10 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             string directObject = seperatedWords.Last();
-            var targetGameObject = controller.roomController.GetGameObject(directObject);
+            var targetGameObject = controller.roomController.TryGetGameObject(directObject);
             if (targetGameObject == null)
             {
-                Util.wl($"You can't {this.keyWord.First()} that"); //TODO make this generic
+                Util.wl($"You can't {this.keyWord.First()} that");
             }
             else
             {
@@ -40,19 +41,19 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
 
                     if (result > gameLock.BestTarget)
                     {
-                        this.BestOutcome(controller, targetGameObject);
+                        SkillCheckOutcome.BestOutcome(controller, targetGameObject);
                     }
                     else if (result > gameLock.GoodTarget)
                     {
-                        this.GoodOutcome(controller, targetGameObject);
+                        SkillCheckOutcome.GoodOutcome(controller, targetGameObject);
                     }
                     else if (result > gameLock.BadTarget)
                     {
-                        this.BadOutcome(controller, targetGameObject);
+                        SkillCheckOutcome.BadOutcome(controller, targetGameObject);
                     }
                     else
                     {
-                        this.WorstOutcome(controller, targetGameObject);
+                        SkillCheckOutcome.WorstOutcome(controller, targetGameObject);
                     }
                 }
                 else if (gameLock.Broken)
@@ -62,12 +63,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                 }
             }
         }
-        public abstract void BestOutcome(GameController? gameController, GameObject? directObject);
 
-        public abstract void GoodOutcome(GameController? gameController, GameObject? directObject);
-
-        public abstract void BadOutcome(GameController? gameController, GameObject? directObject);
-
-        public abstract void WorstOutcome(GameController? gameController, GameObject? directObject);
+        public abstract SkillCheckOutcome SkillCheckOutcome { get;}
     }
 }

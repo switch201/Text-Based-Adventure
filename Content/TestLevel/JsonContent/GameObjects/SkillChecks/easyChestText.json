@@ -14,6 +14,7 @@
     "GoodTarget": 10,
     "BadTarget": 5,
     "SkillWord": "pick",
+    "TriggerWord": "open",
     "Locked": true
   }
 ]

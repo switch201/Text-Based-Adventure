@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_Based_Adventure.Engine.GameObjects.Containers;
 using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.GameObjects;
@@ -55,6 +56,11 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
         public bool IsEquipable()
         {
             return this is Equipable;
+        }
+
+        public bool IsContainer()
+        {
+            return this is Container;
         }
     }
 }

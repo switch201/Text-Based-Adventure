@@ -21,24 +21,8 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             string itemName = seperatedWords.Last();
-            var item = controller.roomController.currentRoom.getItem(itemName);
-            if(item == null)
-            {
-                Util.wl("You don't see that"); // TODO put in a shared place.
-            }
-            else if (item.isLocked(this))
-            {
-                var text = item.getSkillCheckGroup(this).LockedText;
-                Util.wl(text ?? $"The {item.Name} is Locked");
-            }
-            else if (item is Container)
-            {
-                controller.playerController.player.Inventory.AddRange(((Container)item).Open());
-            }
-            else
-            {
-                Util.wl("You can't open that");
-            }
+            var items = controller.roomController.TryOpenContainer(itemName, controller.playerController.player);
+            controller.playerController.TryTakeItem(item);
         }
     }
 }

@@ -10,7 +10,6 @@ namespace Text_Based_Adventure.Engine.GameObjects
 {
     public class NPC : Creature
     {
-        public List<string> Identifiers;
         public List<string> SmallTalk;
         public bool IsFinalBoss;
         public List<string> Weapons;
