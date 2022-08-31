@@ -4,10 +4,13 @@ using System.Text;
 using System.Linq;
 using Text_Based_Adventure.Engine.InputActions;
 
-namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks
+namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 {
     public class SkillCheckGroup : List<ActionSkillCheck>
     {
+        // All Locks in a SkillCheck Group need to be unlocked before the whole group is considered unlocked.
+        // This is to group skill checks in series like jumping off a cliff and grabing a rope. which might combine Athletasism
+        // and strength
         public string Name;
         public string LockedText;
         public bool IsLocked()
@@ -19,7 +22,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks
         public Verb getTriggerAction()
         {
             var skill = this.FirstOrDefault();
-            if(skill != null)
+            if (skill != null)
             {
                 return skill.TriggerAction;
             }

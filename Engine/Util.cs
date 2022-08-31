@@ -12,7 +12,9 @@ namespace Text_Based_Adventure
     {
         public static bool debugMode = true;
 
-        public static Random r = new Random(8919811);
+        public static Random r = new Random();
+
+        public static List<char> vowels = new List<char>() { 'a', 'e', 'i', 'o', 'u' };
         public static void wl(string line)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -21,7 +23,7 @@ namespace Text_Based_Adventure
 
         public static void writeList(List<string> list)
         {
-            foreach(string line in list)
+            foreach (string line in list)
             {
                 Util.wl(line);
             }
@@ -71,7 +73,7 @@ namespace Text_Based_Adventure
 
         public static void fourthWall(string text)
         {
-            Console.ForegroundColor= ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(text);
         }
 
@@ -97,16 +99,10 @@ namespace Text_Based_Adventure
             return roll;
         }
 
-        public static T RandomFromList<T>(IEnumerable<T> list) {
+        public static T RandomFromList<T>(IEnumerable<T> list)
+        {
             int index = r.Next(list.Count());
             return list.ElementAt(index);
-        }
-
-        public static T RandomFromDictionary<K, T>(IDictionary<K, T> dict)
-        {
-            Random rand = new Random();
-            IEnumerable<T> values = dict.Values.ToList();
-            return Util.RandomFromList(dict.Values.ToList());
         }
 
         public static string RandomIdentifier(NPC npc)
@@ -126,6 +122,18 @@ namespace Text_Based_Adventure
         public static int Round(double number)
         {
             return (int)Math.Round(number);
+        }
+
+        public static void WriteExceptionSentance(string preText, string itemName)
+        {
+            if (Util.vowels.Any(x => itemName.StartsWith(x)))
+            {
+                Util.wl($"{preText} an {itemName}");
+            }
+            else
+            {
+                Util.wl($"{preText} a {itemName}");
+            }
         }
     }
 }

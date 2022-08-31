@@ -24,6 +24,7 @@
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\PrisonText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\TreasureRoomText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\SkillChecks\easyChestText.json" />
+    <None Remove="Content\TestLevel\JsonContent\GameObjects\SkillChecks\poisonTrapText.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,12 +70,16 @@
     <Content Include="Content\TestLevel\JsonContent\GameObjects\SkillChecks\easyChestText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\SkillChecks\poisonTrapText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Figgle" Version="0.4.0" />
     <PackageReference Include="Json.Net" Version="1.0.33" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="WeCantSpell.Hunspell" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -30,9 +30,15 @@ namespace Text_Based_Adventure.Engine.Controllers
 
     public class CombatController
     {
-        private PlayerObject player;
+        private PlayerObject? player;
         private List<NPC> enemies;
         private bool gameWon;
+
+        //TODO the whole framework of the combatcontroller needs a redo
+        public CombatController()
+        {
+            enemies = new List<NPC>();
+        }
 
         public void setPlayer(PlayerObject player)
         {
@@ -40,13 +46,12 @@ namespace Text_Based_Adventure.Engine.Controllers
         }
         public void setEnemies(List<NPC> enemies)
         {
-            this.enemies = new List<NPC>();
             this.enemies.AddRange(enemies);
         }
 
         public void RemoveEnemies()
         {
-            this.enemies.Clear();
+            enemies.Clear();
         }
 
         public CombatResult GetResult()
@@ -65,7 +70,7 @@ namespace Text_Based_Adventure.Engine.Controllers
 
         private NPC GetEnemy(string nameOrIdentifier)
         {
-            return Util.NameOrIdentifier(this.enemies, nameOrIdentifier);
+            return Util.NameOrIdentifier(enemies, nameOrIdentifier);
         }
 
         public PlayerObject GetPlayer()
@@ -77,8 +82,12 @@ namespace Text_Based_Adventure.Engine.Controllers
         {
             var diceRoll = Util.d20();
             var enemyValue = (
-                    this.enemies.Sum(x => x.getFullMod(Attribute.Dexterity)) //Sum of Enemy Agility More Enemies means harder to run away
+                    enemies.Sum(x => x.getFullMod(Attribute.Dexterity)) //Sum of Enemy Agility More Enemies means harder to run away
                 );
+            if(this.player == null)
+            {
+                throw new Exception("You can't run with no player in combat ya dingus!!!");
+            }
             var playerValue = this.player.getFullMod(Attribute.Dexterity); // Player Agility
             Util.log($"Enemy Run Value {enemyValue}");
             Util.log($"Player Run Value {playerValue}");
@@ -91,6 +100,11 @@ namespace Text_Based_Adventure.Engine.Controllers
         public int ResolveEnemyAttack(NPC npc)
         {
             //TODO since this can be called from anywhere needs to check if valid
+
+            if(player == null)
+            {
+                throw new Exception("An NPC can't attack when a player is null ya Dingus!!");
+            }
 
             // Enemy Attacks Back
             int damage = npc.Attack(player, npc.weaponSlots.getWeapon(WeaponSlot.RightHand));
@@ -106,13 +120,17 @@ namespace Text_Based_Adventure.Engine.Controllers
 
         private bool isEnemyInCombat(NPC npc)
         {
-            return this.enemies.Contains(npc);
+            return enemies.Contains(npc);
         }
 
 
         //TODO combine with Resolve Enemy Attack
         public int ResolvePlayerAttack(NPC enemy, Weapon weapon)
         {
+            if(player == null)
+            {
+                throw new Exception("You can't resolve player attack with a player ya DINGUS");
+            }
             int damage = player.Attack(enemy, weapon);
             if (enemy.Health <= 0)
             {

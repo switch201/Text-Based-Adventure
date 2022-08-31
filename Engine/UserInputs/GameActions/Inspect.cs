@@ -35,7 +35,7 @@ namespace Text_Based_Adventure.Engine.InputActions
             else
             {
                 int checkResult = controller.playerController.AttributeCheck(Attribute.Wisdom);
-                controller.roomController.InspectSomething(directObject, checkResult);
+                controller.roomController.TryInspectSomething(directObject, checkResult);
             }
             
         }

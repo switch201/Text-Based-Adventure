@@ -4,8 +4,8 @@ using System.Text;
 using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 using Text_Based_Adventure.GameObjects;
-using Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks;
 using Text_Based_Adventure.Engine.GameObjects.Containers;
+using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
 
 namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
 {
@@ -21,43 +21,48 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                 "type 'break <itemName>' to try to over come something like a locked door or chest.";
         }
 
-        
 
-        public override void BadOutcome(GameController? gameController, GameObject? gameObject)
-        {
-            Util.wl($"You give the {gameObject.Name} a hardy smack but it seems unsaved");
-        }
+        public override SkillCheckOutcome SkillCheckOutcome => new BreakOutCome();
 
-        public override void BestOutcome(GameController? gameController, GameObject? gameObject)
+        internal class BreakOutCome : SkillCheckOutcome
         {
-            this.GoodOutcome(gameController, gameObject);
-        }
-
-        public override void GoodOutcome(GameController? gameController, GameObject? gameObject)
-        {
-            Util.wl($"You are able to break the {gameObject.Name}");
-            ((ActionSkillCheck)gameObject.getActionSkillCheck(this)).Locked = false;
-            if(gameObject is Container){
-                var returnedItems = ((Container)gameObject).UnloadAllItems();
-                if (returnedItems.Count() == 0)
-                {
-                    Util.wl($"The {gameObject.Name} was empty.");
-                }
-                else
-                {
-                    gameController.roomController.currentRoom.addItems(returnedItems);
-                    gameController.roomController.currentRoom.removeItem(gameObject.Name);
-                    Util.wl($"Items spill out of the {gameObject.Name}");
-                }
-                
-                
+            public override void BadOutcome(GameController? gameController, GameObject? gameObject)
+            {
+                Util.wl($"You give the {gameObject.Name} a hardy smack but it seems unsaved");
             }
-        }
 
-        public override void WorstOutcome(GameController? gameController, GameObject? gameObject)
-        {
-            Util.wl($"You messed up so bad I can describe it {gameObject.Name}");
-            ((ActionSkillCheck)gameObject.getActionSkillCheck(this)).Broken = true;
+            public override void BestOutcome(GameController? gameController, GameObject? gameObject)
+            {
+                this.GoodOutcome(gameController, gameObject);
+            }
+
+            public override void GoodOutcome(GameController? gameController, GameObject? gameObject)
+            {
+                Util.wl($"You are able to break the {gameObject.Name}");
+                ((ActionSkillCheck)gameObject.getActionSkillCheck(UserInput.GetSkillAction("break"))).Locked = false;
+                if (gameObject is Container)
+                {
+                    var returnedItems = ((Container)gameObject).UnloadAllItems();
+                    if (returnedItems.Count() == 0)
+                    {
+                        Util.wl($"The {gameObject.Name} was empty.");
+                    }
+                    else
+                    {
+                        gameController.roomController.currentRoom.addItems(returnedItems);
+                        gameController.roomController.currentRoom.removeItem(gameObject.Name);
+                        Util.wl($"Items spill out of the {gameObject.Name}");
+                    }
+
+
+                }
+            }
+
+            public override void WorstOutcome(GameController? gameController, GameObject? gameObject)
+            {
+                Util.wl($"You messed up so bad I can describe it {gameObject.Name}");
+                ((ActionSkillCheck)gameObject.getActionSkillCheck(UserInput.GetSkillAction("break"))).Broken = true;
+            }
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             Util.log($"Health now at {this.Health}");
         }
 
-        public int Attack(Creature defender, Weapon weapon = null)
+        public int Attack(Creature defender, Weapon weapon)
         {
             //TODO since this can be called from anywhere needs to check if valid
             if(weapon == null)
@@ -151,22 +151,17 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             return (int)Math.Floor((decimal)((this.getFullAttribute(stat) - 10) / 2));
         }
 
-        public void Equip(Equipable item, string hand = null)
+        public void Equip(Equipable item, WeaponSlot hand)
         {
-            // Assume right hand sorry left handers.
-            if (hand == null)
-            {
                 if (item is Weapon)
                 {
-                    this.weaponSlots.setWeapon(WeaponSlot.RightHand, (Weapon)item);
+                    this.weaponSlots.setWeapon(hand, (Weapon)item);
                 }
                 else
                 {
                     // Player should not need to specify slot for armor since it can only go one spot
                     Util.wl("Don't know how to do this yet");
                 }
-
-            }
         }
 
         public int AttributeCheck(Attribute attr)

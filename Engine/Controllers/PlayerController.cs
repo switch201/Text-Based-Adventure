@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.Engine.Player;
+using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.Controllers
@@ -14,19 +14,44 @@ namespace Text_Based_Adventure.Engine.Controllers
         public PlayerObject player;
 
         //Attempt here is for player based checks of can this item be taken
-        public void AttemptToTakeItem(Item item)
+        public void TryTakeItem(Item item)
         {
-            player.Inventory.addItem(item);
+            player.Inventory.AddItem(item);
             Util.wl($"You take the {item.Name}");
+        }
+
+        public void TryTakeItems(List<Item> items)
+        {
+            if (items.Any())
+            {
+                player.Inventory.AddRange(items);
+                Util.wl("You take the items");
+            }
         }
 
 
 
         //TODO need checks for if item is already equiped
         //TODO need to specify right hand left hand etc.
-        public void AttemptToEquipItem(Equipable item){
-            this.player.Equip(item);
-            Util.wl($"You equip the {item.Name}");
+        public void TryEquipItem(string itemName){
+            if (player.Inventory.IsItemInInventory(itemName))
+            {
+                var item = player.Inventory.GetItem(itemName);
+                if (item is Equipable)
+                {
+                    this.player.Equip((Equipable)item, WeaponSlot.RightHand);
+                    Util.wl($"You equip the {item.Name}");
+                }
+                else
+                {
+                    Util.WriteExceptionSentance("you can't equip", itemName);
+                }
+            }
+            else
+            {
+                ItemNotInInventory(itemName);
+            }
+            
         }
 
         public void CheckConsumableTime(int gameTime)
@@ -38,43 +63,49 @@ namespace Text_Based_Adventure.Engine.Controllers
         }
 
         //TODO What happens when it is not a consumable?
-        public void AttemptToEatConsumable(string itemName, int gameTime)
+        public void TryEatConsumable(string itemName, int gameTime)
         {
-            Consumable item = null;
-            try
+            if (player.Inventory.IsItemInInventory(itemName))
             {
-                item = (Consumable)player.Inventory.getItem(itemName);
+                var item = player.Inventory.GetItem(itemName);
+                if (item is Consumable)
+                {
+                    player.Eat((Consumable)player.Inventory.RemoveItem(itemName), gameTime); ;
+                }
+                else
+                {
+                    Util.WriteExceptionSentance("You can't eat", itemName);
+                }
             }
-            catch (InvalidCastException e)
+            else
             {
-                Util.wl($"You can't eat a {itemName}. It's not good for you.");
-                return;
+                ItemNotInInventory(itemName);
             }
-            if (item == null)
-            {
-                Util.wl($"You aren't carrying a {itemName}");
-                return;
-            }
-
-            Util.wl($"You eat the {item.Name}");
-            player.Eat((Consumable)player.Inventory.removeItem(itemName), gameTime);
         }
 
-        public Item DropItem(string itemName)
+        public Item? TryDropItem(string itemName)
         {
-            Item item = player.Inventory.getItem(itemName);
-            if(item == null)
+
+            if (player.Inventory.IsItemInInventory(itemName))
             {
-                Util.wl($"You aren't carrying a {itemName}");
+                Util.wl($"You drop the {itemName}");
+                return player.Inventory.RemoveItem(itemName);
+            }
+            else
+            {
+                ItemNotInInventory(itemName);
                 return null;
             }
-            Util.wl($"You drop the {item.Name}");
-            return player.Inventory.removeItem(itemName);
         }
 
         public int AttributeCheck(Attribute attr)
         {
             return player.AttributeCheck(attr);
+        }
+
+        private void ItemNotInInventory(string itemName)
+        {
+            Util.WriteExceptionSentance("You aren't carrying", itemName);
         }
     }
 }

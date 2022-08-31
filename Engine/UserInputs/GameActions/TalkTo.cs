@@ -19,7 +19,7 @@ namespace Text_Based_Adventure.Engine.InputActions
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             string directobject = seperatedWords.Last();
-            controller.roomController.TalkToNpc(directobject);
+            controller.roomController.TryTalkToNpc(directobject);
         }
     }
 }

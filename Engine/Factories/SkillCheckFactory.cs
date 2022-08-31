@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
-using Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks;
 
 namespace Text_Based_Adventure.Engine.Factories
 {
@@ -12,6 +11,13 @@ namespace Text_Based_Adventure.Engine.Factories
         public static SkillCheck MakeSkillCheck(string itemName)
         {
             SkillCheck item = JsonConvert.DeserializeObject<SkillCheck>(Util.Readfile($"{basePath}/GameObjects/SkillChecks/{itemName}Text.json"));
+            item.TriggerAction = UserInput.GetVerb(item.TriggerWord);
+            return item;
+        }
+
+        public static PassiveSkillCheck MakePassiveSkillCheck(string itemName)
+        {
+            PassiveSkillCheck item = JsonConvert.DeserializeObject<PassiveSkillCheck>(Util.Readfile($"{basePath}/GameObjects/SkillChecks/{itemName}Text.json"));
             item.TriggerAction = UserInput.GetVerb(item.TriggerWord);
             return item;
         }

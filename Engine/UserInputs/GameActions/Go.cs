@@ -19,7 +19,7 @@ namespace Text_Based_Adventure.Engine.InputActions
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
-            controller.roomController.AttemptToChangeRooms(seperatedWords[1]);
+            controller.roomController.TryChangeRooms(seperatedWords[1]);
         }
     }
 }

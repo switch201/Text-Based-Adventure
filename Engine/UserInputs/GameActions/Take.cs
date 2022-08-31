@@ -25,7 +25,7 @@ namespace Text_Based_Adventure.Engine.InputActions
             {
                 //TODO need to put item back in room if over carrying capacity
                 // no capacity as of now so don't care
-                controller.playerController.AttemptToTakeItem(item);
+                controller.playerController.TryTakeItem(item);
             }
         }
     }

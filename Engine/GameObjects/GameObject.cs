@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
-using Text_Based_Adventure.Engine.GameObjects.SkillChecks.ActionSkillChecks;
 using Text_Based_Adventure.Engine.InputActions;
 using System.Linq;
 using Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions;
+using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
+using Text_Based_Adventure.Engine.Player;
+using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.GameObjects
 {
@@ -21,12 +22,20 @@ namespace Text_Based_Adventure.GameObjects
 
         public List<SkillCheckGroup> SkillChecks; // TODO maybe make Item only
 
+        public List<PassiveSkillCheck> PassiveChecks;
+
         public List<string> SkillCheckNames;
+
+        public List<string> PassiveCheckNames;
+
+        public List<string> Identifiers;
 
         public GameObject()
         {
             SkillChecks = new List<SkillCheckGroup>();
+            PassiveChecks = new List<PassiveSkillCheck>();
             SkillCheckNames = new List<string>();
+            Identifiers = new List<string>();
         }
 
         protected string Readfile(string fileName = "Engine/GameObjects/ObjectText.json")
@@ -47,7 +56,48 @@ namespace Text_Based_Adventure.GameObjects
         // Checks to see if the given action can be performed on this game object
         public bool isLocked(Verb action)
         {
-            return this.SkillChecks.Where(x => x.IsLocked() && x.getTriggerAction() == action).Count() > 0;
+            return this.SkillChecks.Any(x => x.IsLocked() && x.getTriggerAction() == action);
+        }
+
+        public bool hasEvent(Verb action)
+        {
+            return this.PassiveChecks.Any(x => x.TriggerAction == action && !x.Broken);
+        }
+
+        public void TriggerEvent(Verb action, PlayerObject playerObject)
+        {
+            var events = this.PassiveChecks.Where(x => x.TriggerAction == action && !x.Broken).ToList();
+            foreach(var e in events)
+            {
+
+                int result;
+                //TODO Combo attribute + skill rolls?
+                if (e.Attribute != Attribute.None)
+                {
+                    result = e.PerformSkillCheck(playerObject, e.Attribute);
+                }
+                else
+                {
+                    result = e.PerformSkillCheck(playerObject);
+                }
+
+                if (result > e.BestTarget)
+                {
+                    Util.wl("You dodge the dart");
+                }
+                else if (result > e.GoodTarget)
+                {
+                    Util.wl("You kinda dodge the dart");
+                }
+                else if (result > e.BadTarget)
+                {
+                    Util.wl("You don't dodge the dart");
+                }
+                else
+                {
+                    Util.wl("You messed up big");
+                }
+            }
         }
 
         public SkillCheckGroup getSkillCheckGroup(Verb action)
