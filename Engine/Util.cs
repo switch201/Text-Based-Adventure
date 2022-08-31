@@ -19,6 +19,14 @@ namespace Text_Based_Adventure
             Console.WriteLine(line);
         }
 
+        public static void writeList(List<string> list)
+        {
+            foreach(string line in list)
+            {
+                Util.wl(line);
+            }
+        }
+
         public static int readNumber(bool positiveNumber = false)
         {
             bool inputAccepted = false;

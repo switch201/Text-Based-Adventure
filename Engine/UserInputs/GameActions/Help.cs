@@ -29,15 +29,17 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             else if (seperatedWords.Last() == "action")
             {
                 Util.fourthWall("Here are a list of available actions");
-                foreach(string keyWord in controller.userInput.getGameActionWords())
+                var combinedList = UserInput.getGameActionWords();
+                combinedList.AddRange(UserInput.GetSkillActionWords());
+                foreach (string keyWord in combinedList)
                 {
                     Util.fourthWall(keyWord);
                 }
-                Util.fourthWall("These are all of the actions you can do right now");
+                Util.fourthWall("Type 'help <actionName>' to get more info.");
             }
             else
             {
-                var action = controller.userInput.GetGameAction(seperatedWords.Last());
+                var action = UserInput.GetGameAction(seperatedWords.Last()) ?? UserInput.GetSkillAction(seperatedWords.Last());
                 if(action != null)
                 {
                     Util.fourthWall(action.HelpText());

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.GameTools;
 
@@ -26,6 +27,8 @@ namespace Text_Based_Adventure.Engine.GameClasses
         public List<Item> StartingInventory;
         public Dictionary<string, int> StartingWeaponsText;
         public List<Proficiencies> Proficiencies;
+        public List<Skill> SkillChoices;
+        public int SkillCount;
 
         public GameClass()
         {

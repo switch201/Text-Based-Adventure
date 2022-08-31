@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Items;
+using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
 using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Containers
@@ -9,12 +10,23 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
     public class Container : Item
     {
         public List<Item> Items;
-        public LockObject LockObject;
+        public SkillCheck Lock;
         public List<string> ItemStrings;
 
         public Container()
         {
             Items = new List<Item>() { };
+        }
+
+        public List<Item> UnloadAllItems()
+        {
+            List<Item> returnedItems = new List<Item>();
+            foreach (var item in Items)
+            {
+                returnedItems.Add(item);
+            }
+            Items.Clear();
+            return returnedItems;
         }
 
         public List<Item> Open()
@@ -41,11 +53,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
                 if (userInput == "take all")
                 {
                     Util.wl("You take all the items");
-                    foreach (var item in Items)
-                    {
-                        returnedItems.Add(item);
-                    }
-                    Items.Clear();
+                    returnedItems = UnloadAllItems();
                 }
             }
             return returnedItems;

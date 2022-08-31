@@ -17,7 +17,7 @@ namespace Text_Based_Adventure.Rooms
 
         public Dictionary<string, Door> Doors;
 
-        public Dictionary<string, Item> Items;
+        public List<Item> Items;
 
         public string EnterText;
 
@@ -29,7 +29,7 @@ namespace Text_Based_Adventure.Rooms
 
          public Room(string roomName)
         {
-            Items = new Dictionary<string, Item>() { };
+            Items = new List<Item>() { };
             Exits = new Dictionary<string, Room>() { };
             NPCs = new List<NPC>() { };
         }
@@ -71,15 +71,20 @@ namespace Text_Based_Adventure.Rooms
 
         public void addItem(Item item)
         {
-            Items.Add(item.Name, item);
+            Items.Add(item);
+        }
+
+        public void addItems(List<Item> items)
+        {
+            this.Items.AddRange(items);
         }
 
         public Item getItem(string name)
         {
-            return Items.GetValueOrDefault(name);
+            return Items.Where(x => x.Name == name).FirstOrDefault();
         }
 
-        public void setItems(Dictionary<string, Item> items)
+        public void setItems(List<Item> items)
         {
             this.Items = items;
         }
@@ -87,11 +92,11 @@ namespace Text_Based_Adventure.Rooms
         public Item removeItem(string itemName)
         {
             var item = this.getItem(itemName);
-            this.Items.Remove(itemName);
+            this.Items.Remove(item);
             return item;
         }
 
-        public Dictionary<string, Item> getItems()
+        public List<Item> getItems()
         {
             return this.Items;
         }

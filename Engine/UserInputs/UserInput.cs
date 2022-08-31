@@ -6,11 +6,18 @@ using Text_Based_Adventure.Engine.InputActions;
 using System.Linq;
 using Text_Based_Adventure.Engine.InputActions.BattleActions;
 using Text_Based_Adventure.Engine.UserInputs.GameActions;
+using Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions;
 
 namespace Text_Based_Adventure.Engine
 {
     public class UserInput
     {
+        public static List<SkillAction> skillActions = new List<SkillAction>()
+        {
+            new Break(),
+            new PickLock()
+        };
+
         public static List<BattleAction> battleActions = new List<BattleAction>()
             {
                 new Punch(),
@@ -34,16 +41,15 @@ namespace Text_Based_Adventure.Engine
                 new Open()
             };
 
-        public List<string> getGameActionWords()
+        public static List<string> GetSkillActionWords()
         {
-            var list = new List<string>();
-            foreach(GameAction action in gameActions)
-            {
-                list.Add(action.keyWord.First());
-            }
-            return list;
+            return skillActions.Select(x => x.keyWord.First()).ToList();
         }
-        public List<string> getBAttleActionWords()
+        public static List<string> getGameActionWords()
+        {
+            return gameActions.Select(x => x.keyWord.First()).ToList();
+        }
+        public static List<string> getBattleActionWords()
         {
             var list = new List<string>();
             foreach (BattleAction action in battleActions)
@@ -53,7 +59,7 @@ namespace Text_Based_Adventure.Engine
             return list;
         }
 
-        public GameAction GetGameAction(string keyWord)
+        public static GameAction? GetGameAction(string keyWord)
         {
             foreach (GameAction action in gameActions)
             {
@@ -65,7 +71,7 @@ namespace Text_Based_Adventure.Engine
             return null;
         }
 
-        public BattleAction GetBattleActtion(string keyWord)
+        public static BattleAction? GetBattleActtion(string keyWord)
         {
             foreach (BattleAction action in battleActions)
             {
@@ -77,12 +83,29 @@ namespace Text_Based_Adventure.Engine
             return null;
         }
 
+        public static SkillAction? GetSkillAction(string keyWord)
+        {
+            foreach (SkillAction action in skillActions)
+            {
+                if (action.keyWord.Contains(keyWord))
+                {
+                    return action;
+                }
+            }
+            return null;
+        }
+
+        public static Verb? GetVerb(string keyWord)
+        {
+            Verb? verb = GetGameAction(keyWord);
+            return verb != null ? verb : GetBattleActtion(keyWord); 
+
+        }
+
 
         public void AcceptStringInput(string userInput, GameController gameController)
         {
             userInput = userInput.ToLower();
-
-            
 
             string userOutput;
 
@@ -103,7 +126,7 @@ namespace Text_Based_Adventure.Engine
             }
             else
             {
-                GameAction validAction = GetGameAction(seperatedInputWords.First());
+                GameAction validAction = GetGameAction(seperatedInputWords.First()) ?? GetSkillAction(seperatedInputWords.First());
                 if(validAction == null)
                 {
                     Util.wl("That is not a valid action. Type 'help action' to see a list of valid actions");
