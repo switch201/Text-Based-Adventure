@@ -42,6 +42,7 @@ namespace Text_Based_Adventure.Engine.Factories
                 container.Items.Add(ItemFactory.MakeConsumable(item));
             }
             Factory.AttachSkillCheck(container);
+            Factory.AttachPassiveSkillCheck(container);
             return container;
         }
     }

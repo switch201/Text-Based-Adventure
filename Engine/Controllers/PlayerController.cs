@@ -1,8 +1,10 @@
-﻿using Text_Based_Adventure.Engine.GameObjects.Creatures;
+﻿using System.Collections.Generic;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables;
 using Text_Based_Adventure.Engine.Player;
+using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.Controllers
@@ -18,6 +20,15 @@ namespace Text_Based_Adventure.Engine.Controllers
             Util.wl($"You take the {item.Name}");
         }
 
+        public void TryTakeItems(List<Item> items)
+        {
+            if (items.Any())
+            {
+                player.Inventory.AddRange(items);
+                Util.wl("You take the items");
+            }
+        }
+
 
 
         //TODO need checks for if item is already equiped
@@ -26,7 +37,7 @@ namespace Text_Based_Adventure.Engine.Controllers
             if (player.Inventory.IsItemInInventory(itemName))
             {
                 var item = player.Inventory.GetItem(itemName);
-                if (item.IsEquipable())
+                if (item is Equipable)
                 {
                     this.player.Equip((Equipable)item, WeaponSlot.RightHand);
                     Util.wl($"You equip the {item.Name}");
@@ -57,7 +68,7 @@ namespace Text_Based_Adventure.Engine.Controllers
             if (player.Inventory.IsItemInInventory(itemName))
             {
                 var item = player.Inventory.GetItem(itemName);
-                if (item.IsConsumable())
+                if (item is Consumable)
                 {
                     player.Eat((Consumable)player.Inventory.RemoveItem(itemName), gameTime); ;
                 }

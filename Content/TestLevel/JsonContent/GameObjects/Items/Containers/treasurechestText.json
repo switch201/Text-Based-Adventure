@@ -6,5 +6,6 @@
   "InspectionText": "It looks unsecured",
   "QuallityText": "Its the best chest you have ever seen..... almost.",
   "Name": "treasurechest",
-  "SkillCheckNames": [ "easyChest" ]
+  "SkillCheckNames": [ "easyChest" ],
+  "PassiveCheckNames": [ "poisonTrap" ]
 }

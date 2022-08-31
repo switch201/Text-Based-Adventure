@@ -22,7 +22,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
         {
             string itemName = seperatedWords.Last();
             var items = controller.roomController.TryOpenContainer(itemName, controller.playerController.player);
-            controller.playerController.TryTakeItem(item);
+            controller.playerController.TryTakeItems(items);
         }
     }
 }

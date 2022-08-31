@@ -126,6 +126,8 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
+
+        // TODO make Try to Open (not just container)
         public List<Item> TryOpenContainer(string containerName, PlayerObject player)
         {
             var gameAction = UserInput.GetGameAction("open");
@@ -136,7 +138,7 @@ namespace Text_Based_Adventure.Engine
                 GameObjectNotInRoom(containerName);
                 return new List<Item>();
             }
-            if (!item.IsContainer())
+            if (!(item is Container))
             {
                 Util.WriteExceptionSentance("You can't open", containerName);
                 return new List<Item>();

@@ -15,6 +15,15 @@ namespace Text_Based_Adventure.Engine.Factories
             return JsonConvert.DeserializeObject<GameObject>(Util.Readfile($"{basePath}/GameObjects/Rooms/{itemname}Text.json"));
         }
 
+        protected static GameObject AttachPassiveSkillCheck(GameObject gameObject)
+        {
+            foreach (string name in gameObject.PassiveCheckNames)
+            {
+                gameObject.PassiveChecks.Add(SkillCheckFactory.MakePassiveSkillCheck(name));
+            }
+            return gameObject;
+        }
+
         protected static GameObject AttachSkillCheck(GameObject gameObject)
         {
             foreach(string name in gameObject.SkillCheckNames)

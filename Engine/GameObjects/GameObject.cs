@@ -8,6 +8,7 @@ using System.Linq;
 using Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions;
 using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
 using Text_Based_Adventure.Engine.Player;
+using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.GameObjects
 {
@@ -24,6 +25,8 @@ namespace Text_Based_Adventure.GameObjects
         public List<PassiveSkillCheck> PassiveChecks;
 
         public List<string> SkillCheckNames;
+
+        public List<string> PassiveCheckNames;
 
         public List<string> Identifiers;
 
@@ -66,7 +69,34 @@ namespace Text_Based_Adventure.GameObjects
             var events = this.PassiveChecks.Where(x => x.TriggerAction == action && !x.Broken).ToList();
             foreach(var e in events)
             {
-                var result = e.PerformSkillCheck(playerObject);
+
+                int result;
+                //TODO Combo attribute + skill rolls?
+                if (e.Attribute != Attribute.None)
+                {
+                    result = e.PerformSkillCheck(playerObject, e.Attribute);
+                }
+                else
+                {
+                    result = e.PerformSkillCheck(playerObject);
+                }
+
+                if (result > e.BestTarget)
+                {
+                    Util.wl("You dodge the dart");
+                }
+                else if (result > e.GoodTarget)
+                {
+                    Util.wl("You kinda dodge the dart");
+                }
+                else if (result > e.BadTarget)
+                {
+                    Util.wl("You don't dodge the dart");
+                }
+                else
+                {
+                    Util.wl("You messed up big");
+                }
             }
         }
 

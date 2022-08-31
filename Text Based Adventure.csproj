@@ -24,6 +24,7 @@
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\PrisonText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Rooms\TreasureRoomText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\SkillChecks\easyChestText.json" />
+    <None Remove="Content\TestLevel\JsonContent\GameObjects\SkillChecks\poisonTrapText.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,6 +68,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel\JsonContent\GameObjects\SkillChecks\easyChestText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel\JsonContent\GameObjects\SkillChecks\poisonTrapText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

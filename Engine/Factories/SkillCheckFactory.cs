@@ -15,6 +15,13 @@ namespace Text_Based_Adventure.Engine.Factories
             return item;
         }
 
+        public static PassiveSkillCheck MakePassiveSkillCheck(string itemName)
+        {
+            PassiveSkillCheck item = JsonConvert.DeserializeObject<PassiveSkillCheck>(Util.Readfile($"{basePath}/GameObjects/SkillChecks/{itemName}Text.json"));
+            item.TriggerAction = UserInput.GetVerb(item.TriggerWord);
+            return item;
+        }
+
         public static SkillCheckGroup MakeActionSkillCheck(string itemName)
         {
             SkillCheckGroup group = JsonConvert.DeserializeObject<SkillCheckGroup>(Util.Readfile($"{basePath}/GameObjects/SkillChecks/{itemName}Text.json"));

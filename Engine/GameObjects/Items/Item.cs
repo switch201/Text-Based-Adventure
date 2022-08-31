@@ -47,20 +47,5 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
         {
             Util.wl(this.GrabText);
         }
-
-        public bool IsConsumable()
-        {
-            return this is Consumable;
-        }
-
-        public bool IsEquipable()
-        {
-            return this is Equipable;
-        }
-
-        public bool IsContainer()
-        {
-            return this is Container;
-        }
     }
 }
