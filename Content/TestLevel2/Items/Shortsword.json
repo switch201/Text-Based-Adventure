@@ -1,0 +1,13 @@
+{
+  "DiceSet": {
+    "Count": 1,
+    "Sides": 6
+  },
+  "Weight": 2,
+  "DamageType": "Piercing",
+  "Properties": [
+    "Light",
+    "Finesse"
+  ],
+  "Weight": "2 lb"
+}

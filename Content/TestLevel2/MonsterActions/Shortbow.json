@@ -1,0 +1,9 @@
+{
+  "Description": "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage.",
+  "attack_bonus": 4,
+  "damage_dice": {
+    "sides": 6,
+    "count": 1,
+    "mod": 2
+  }
+}

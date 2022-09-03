@@ -1,0 +1,11 @@
+{
+  "DescriptionText": "A worn old brown chest",
+  "InspectionText": "It looks unsecured",
+  "QuallityText": "Its the best chest you have ever seen..... almost.",
+  "Locks": [ "EasyLock" ],
+  "Events": [ "PoisonTrap" ],
+  "Items": [
+    "Pumpkinpie"
+  ],
+  "Durability": 5
+}

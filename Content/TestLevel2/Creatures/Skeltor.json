@@ -1,0 +1,80 @@
+{
+  "Name": "skeletor",
+  "Health": 25,
+  "MaxHealth": 25,
+  "IsFinalBoss": false,
+  "AC": 13,
+  "DamageVulnerabilities": [
+    "Bludgeoning"
+  ],
+  "DamageResistances": [],
+  "DamageImmunities": [
+    "Poison"
+  ],
+  "ConditionImmunities": [
+    "Exhaustion",
+    "Poisoned"
+  ],
+  "XP": 50,
+  "ProficiencyBonus": 2,
+  "Identifiers": [
+    "skeletor",
+    "skeleton"
+  ],
+  "SmallTalk": [
+    "He has no lungs how could you expect him to talk.",
+    "<skeleton noises>"
+  ],
+  "DescriptionText": "Skeletor, a rickty old skeleton",
+  "InspectionText": "Hes just bones",
+  "Attributes": {
+    "Strength": 10,
+    "Dexterity": 14,
+    "Intelligence": 6,
+    "Wisdom": 8,
+    "Charisma": 5,
+    "Constitution": 15
+  },
+  "Weapons": [
+    "shortsword"
+  ],
+  "ChallangeRaiting": 0.25,
+  "Size": "Medium",
+  "Type": "Undead",
+  "Subtype": null,
+  "Alighnment": "Lawful Evil",
+  "SavingThrows": {
+    "Strength": false,
+    "Dexterity": false,
+    "Intelligence": false,
+    "Wisdom": false,
+    "Charisma": false,
+    "Constitution": false
+  },
+  "Properties": {
+    "Athletics": false,
+    "Acrobatics": false,
+    "Stealth": false,
+    "Arcana": false,
+    "History": false,
+    "Investigation": false,
+    "Nature": false,
+    "Religion": false,
+    "Insight": false,
+    "Medicine": false,
+    "Perception": false,
+    "Survival": false,
+    "Deception": false,
+    "Intimidation": false,
+    "Performance": false,
+    "Persuasion": false
+  },
+  "Senses": {
+    "Darkvision": "60 ft."
+  },
+  "Traits": [],
+  "Actions": [
+    "Shortsword",
+    "Shortbow"
+  ]
+}

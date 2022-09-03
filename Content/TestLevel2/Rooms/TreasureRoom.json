@@ -1,0 +1,18 @@
+{
+  "DescriptionText": "The room is filled with so much treasure you don't even know where to start.",
+  "InspectionText": "There is an open door to the west you can go through.",
+  "EnterText": "As you walk in, your eyes are blinded by the glistening gold coins overflowing from the many chests in the room",
+  "ExitText": "As you leave, a tear falls from your eye as you look at what was left behind.",
+  "Exits": [
+    {
+      "west" : "Graveyard"
+    }
+  ],
+  "NPCs": [],
+  "Items": [
+    "Pumpkinpie",
+    "Shortsword",
+    "TreasureChest"
+  ],
+  "RunModifier": 5
+}
