@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure
@@ -112,7 +113,7 @@ namespace Text_Based_Adventure
         }
 
         //TODO Items andd stuff too
-        public static NPC NameOrIdentifier(List<NPC> npcs, string nameOrIdentifier)
+        public static Creature NameOrIdentifier(List<Creature> npcs, string nameOrIdentifier)
         {
             return npcs
                 .Where(x => x.Name.Equals(nameOrIdentifier) || x.Identifiers.Contains(nameOrIdentifier))

@@ -7,6 +7,7 @@ using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.GameObjects;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
 namespace Text_Based_Adventure.Rooms
 {
@@ -23,15 +24,15 @@ namespace Text_Based_Adventure.Rooms
 
         public string ExitText;
 
-        public List<NPC> NPCs;
+        public List<Creature> Creatures;
 
         public int runModifier; // how easy is it to run away from a fight in this "Room"
 
-         public Room(string roomName)
+         public Room()
         {
             Items = new List<Item>() { };
             Exits = new Dictionary<string, Room>() { };
-            NPCs = new List<NPC>() { };
+            Creatures = new List<Creature>() { };
         }
 
         public Room Enter() {
@@ -102,29 +103,29 @@ namespace Text_Based_Adventure.Rooms
             return this.Items;
         }
 
-        public List<NPC> getNPCs()
+        public List<Creature> getNPCs()
         {
-            return this.NPCs;
+            return this.Creatures;
         }
 
-        public void addNPC(NPC npc)
+        public void addNPC(Creature npc)
         {
-            NPCs.Add(npc);
+            Creatures.Add(npc);
         }
 
-        public NPC GetNPC(string name)
+        public Creature GetNPC(string name)
         {
-            return Util.NameOrIdentifier(this.NPCs, name);
+            return Util.NameOrIdentifier(this.Creatures, name);
         }
 
         public bool removeNPC(NPC npc)
         {
-            return NPCs.Remove(npc);
+            return Creatures.Remove(npc);
         }
 
         public void removeNPCs()
         {
-            NPCs.Clear();
+            Creatures.Clear();
         }
     }
 }

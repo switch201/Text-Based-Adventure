@@ -5,9 +5,8 @@ using Text_Based_Adventure.Rooms;
 
 namespace Text_Based_Adventure.Engine.Levels
 {
-    public abstract class Level
+    public class Level
     {
         public List<Room> Rooms;
-        public Room StartingRoom;
     }
 }

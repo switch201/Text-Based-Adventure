@@ -9,7 +9,6 @@ using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Items
 {
-
     // TODO need class for any Item, Creature etc. that can exist inside a room.
     public class Item : GameObject
     {

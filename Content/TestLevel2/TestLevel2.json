@@ -1,0 +1,14 @@
+{
+  "Rooms": [
+    "TreasureRoom",
+    "Graveyard"
+  ]
+  "Conections": [
+    {
+      "Room1": "TreasureRoom",
+      "Room2": "Graveyard",
+      "ExitDirection": "west",
+      "EnterDirection": "east"
+    }
+  ]
+}

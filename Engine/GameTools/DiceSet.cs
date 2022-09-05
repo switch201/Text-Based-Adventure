@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,6 +25,12 @@ namespace Text_Based_Adventure.Engine.GameTools
                 result += Util.d(Sides);
             }
             return result;
+        }
+
+        public static explicit operator DiceSet(JToken? v)
+        {
+            return new DiceSet((int)v["Count"], (int)v["Sides"]);
+
         }
     }
 }

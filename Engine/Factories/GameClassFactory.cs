@@ -9,7 +9,7 @@ namespace Text_Based_Adventure.Engine.Factories
 {
     class GameClassFactory : Factory //TODO only thing it gets from base class is basePath
     {
-
+        protected static string basePath = "Content/TestLevel/JsonContent";
         public static GameClass MakeClass(string itemName)
         {
             GameClass item = JsonConvert.DeserializeObject<GameClass>(Util.Readfile($"{basePath}/Classes/{itemName}Text.json"));
