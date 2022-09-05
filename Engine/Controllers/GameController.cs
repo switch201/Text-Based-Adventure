@@ -57,7 +57,7 @@ namespace Text_Based_Adventure.Engine
 
         public void StartGame()
         {
-            this.roomController.currentRoom = game.Levels[0].StartingRoom.Enter();
+            this.roomController.currentRoom = game.Levels[0].Rooms[0].Enter();
         }
 
         public void StartCombat()

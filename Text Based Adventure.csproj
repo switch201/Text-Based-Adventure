@@ -14,6 +14,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Content\TestLevel2\Creatures\Skeltor.json" />
+    <None Remove="Content\TestLevel2\Items\MagicShortsword.json" />
+    <None Remove="Content\TestLevel2\Items\Pumpkinpie.json" />
+    <None Remove="Content\TestLevel2\Items\Shortsword.json" />
+    <None Remove="Content\TestLevel2\Items\TreasureChest.json" />
+    <None Remove="Content\TestLevel2\MonsterActions\Shortbow.json" />
+    <None Remove="Content\TestLevel2\MonsterActions\Shortsword.json" />
+    <None Remove="Content\TestLevel2\Rooms\Graveyard.json" />
+    <None Remove="Content\TestLevel2\Rooms\TreasureRoom.json" />
+    <None Remove="Content\TestLevel2\StatusEffects\PieBelly.json" />
+    <None Remove="Content\TestLevel2\TestLevel2.json" />
     <None Remove="Content\TestLevel\JsonContent\Classes\barbarianText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Items\Containers\treasurechestText.json" />
     <None Remove="Content\TestLevel\JsonContent\GameObjects\Items\ItemText.json" />
@@ -28,6 +39,39 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Content\TestLevel2\Creatures\Skeltor.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\Items\MagicShortsword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\Items\Pumpkinpie.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\Items\Shortsword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\Items\TreasureChest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\MonsterActions\Shortbow.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\MonsterActions\Shortsword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\Rooms\Graveyard.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\Rooms\TreasureRoom.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\StatusEffects\PieBelly.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\TestLevel2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\TestLevel\JsonContent\Classes\barbarianText.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -8,5 +8,10 @@ namespace Text_Based_Adventure.Engine.Levels
     public class Level
     {
         public List<Room> Rooms;
+
+        public Level()
+        {
+            Rooms = new List<Room>();
+        }
     }
 }

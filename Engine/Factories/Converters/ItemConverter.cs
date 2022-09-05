@@ -35,7 +35,10 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
                 HydrateItem(item, jObject);
                 if (FieldExists("AttributeModifers", jObject))
                 {
-                    item.AttributeModifers.Add(StatusEffectFactory.MakeAttributeModifierSet((string)jObject["AttributeModifers"]));
+                    foreach (string mod in jObject["AttributeModifers"])
+                    {
+                        item.AttributeModifers.Add(StatusEffectFactory.MakeAttributeModifierSet(mod));
+                    }
                 }
                 else {
                     throw new Exception("Consumable json does not have Type AttributeModifers set");
@@ -52,7 +55,9 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
                 }
                 if(FieldExists("HoldEffects", jObject))
                 {
-                    item.HoldEffects.Add(StatusEffectFactory.MakeAttributeModifierSet((string)jObject["HoldEffects"]));
+                    foreach(string effect in jObject["HoldEffects"]){
+                        item.HoldEffects.Add(StatusEffectFactory.MakeAttributeModifierSet(effect));
+                    }
                 }
                 Enum.TryParse((string)jObject["DamageType"], out DamageType damageType);
                 item.DamageType = damageType;
@@ -62,7 +67,19 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
             else if (GetTypeString(jObject) == "Container")
             {
                 var item = new Container();
-                return item;
+                HydrateItem(item, jObject);
+                if (FieldExists("Items", jObject))
+                {
+                    foreach(string containerItem in jObject["Items"])
+                    {
+                        item.Items.Add(GameObjectFactory.CreateItem(containerItem));
+                    }
+                    return item;
+                }
+                else
+                {
+                    throw new Exception("Container needs an Items prop!");
+                }
             }
             else
             {

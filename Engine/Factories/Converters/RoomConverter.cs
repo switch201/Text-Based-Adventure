@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_Based_Adventure.Engine.GameObjects;
 using Text_Based_Adventure.GameObjects;
 using Text_Based_Adventure.Rooms;
 
@@ -34,7 +35,7 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
             }
             foreach (string item in jObject["Creatures"])
             {
-                room.addNPC(GameObjectFactory.CreateCreature(item));
+                room.addNPC((NPC)GameObjectFactory.CreateCreature(item));
             }
             return room;
         }

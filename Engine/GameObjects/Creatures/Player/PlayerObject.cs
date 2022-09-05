@@ -15,7 +15,7 @@ namespace Text_Based_Adventure.Engine.Player
     public class PlayerObject : Creature
     {
         public StatsSet stats;
-        public int XP;
+        public double XP;
         public GameClass playerClass;
 
         public PlayerObject(string name, AttributeSet attributes, List<Skill> skills) : base()
@@ -28,7 +28,7 @@ namespace Text_Based_Adventure.Engine.Player
             this.ProficiencyBonus = 0;
             this.skills = skills;
         }
-        public void AddXp(int xp)
+        public void AddXp(double xp)
         {
             this.XP += xp;
         }

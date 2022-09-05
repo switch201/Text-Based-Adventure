@@ -2,8 +2,8 @@
   "Rooms": [
     "TreasureRoom",
     "Graveyard"
-  ]
-  "Conections": [
+  ],
+  "Connections": [
     {
       "Room1": "TreasureRoom",
       "Room2": "Graveyard",

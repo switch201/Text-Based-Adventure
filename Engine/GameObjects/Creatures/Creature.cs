@@ -29,6 +29,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         //public string DamageImmunities;
         //public string ConditionImmunities;
         public int ProficiencyBonus;
+        public double XP;
 
         public Creature()
         {

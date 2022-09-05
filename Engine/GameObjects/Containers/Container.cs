@@ -54,6 +54,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
                     Util.wl("You take all the items");
                     returnedItems = UnloadAllItems();
                 }
+                //TODO implement something other than take all
             }
             return returnedItems;
         }

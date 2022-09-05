@@ -10,5 +10,10 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items.SmallItems.Consumables
         public int HealingValue;
 
         public List<AttributeModifierSet> AttributeModifers; //TODO make this a list and different stuff can have different durations.
+
+        public Consumable()
+        {
+            AttributeModifers = new List<AttributeModifierSet>();
+        }
     }
 }
