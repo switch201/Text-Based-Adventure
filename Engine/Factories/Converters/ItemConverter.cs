@@ -40,6 +40,7 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
                 else {
                     throw new Exception("Consumable json does not have Type AttributeModifers set");
                 }
+                return item;
             }
             else if (GetTypeString(jObject) == "Weapon")
             {
@@ -60,13 +61,13 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
             }
             else if (GetTypeString(jObject) == "Container")
             {
-                item = new Container();
+                var item = new Container();
+                return item;
             }
             else
             {
                 throw new Exception($"Could not find type {GetTypeString(jObject)}");
             }
-            return item;
         }
 
         //TODO there is a better way to do this maybe nester deserialization?

@@ -57,7 +57,7 @@ namespace Text_Based_Adventure.Engine.Factories
 
         public static Creature CreateCreature(string objectName)
         {
-
+            return NPCFactory.MakeNPC("blah");
         }
     }
 }
