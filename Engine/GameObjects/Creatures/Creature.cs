@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
-using Text_Based_Adventure.Engine.GameObjects.Items;
+using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
 using Text_Based_Adventure.Engine.Player;
 using Text_Based_Adventure.GameObjects;
-using Weapon = Text_Based_Adventure.Engine.GameObjects.Items.Weapons.Weapon;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
-using Text_Based_Adventure.Engine.GameObjects.Items.Equipables;
+using Weapon = Text_Based_Adventure.Engine.GameObjects.Items.Weapons.Weapon;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Creatures
 {
@@ -22,20 +20,14 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public Inventory Inventory;
         public int Health;
         public int MaxHealth;
-        public int? AC; //Armor Class
-        public ArmorSlots armorSlots;
-        public WeaponSlots weaponSlots;
         //public string DamageVulnerabilities;
         //public string DamageImmunities;
         //public string ConditionImmunities;
-        public int ProficiencyBonus;
         public double XP;
 
         public Creature()
         {
             this.Inventory = new Inventory();
-            this.weaponSlots = new WeaponSlots();
-            this.armorSlots = new ArmorSlots();
             this.skills = new List<Skill>() { };
         }
 
@@ -55,85 +47,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
             Util.log($"Health now at {this.Health}");
         }
 
-        public int Attack(Creature defender, Weapon weapon)
-        {
-            //TODO since this can be called from anywhere needs to check if valid
-            if(weapon == null)
-            {
-                Util.wl($"{this.Name} attacks with fists");
-            }
-            else
-            {
-                Util.wl($"{this.Name} attacks with a {weapon.Name}");
-            }
-
-            int strengthMod = this.getFullMod(Attribute.Strength);
-            int dexterityMod = this.getFullMod(Attribute.Dexterity);
-
-            Util.log($"Attacker ProficiencyBonus {ProficiencyBonus}");
-            Util.log($"Attacker Strength Mod: {strengthMod}");
-            Util.log($"Attacker Dex Mod: {dexterityMod}");
-            //Calcul(int)it Chance 
-            Util.log("HitRoll");
-            int diceRoll = Util.d20();
-
-            // TODO Finese and weapon types
-            // Chance to hit is d20 + proficiencyBonus + mod
-            int attackerValue = diceRoll + this.ProficiencyBonus + strengthMod;
-            int defenderValue = defender.Dodge();
-
-            Util.log($"Attacker hit value {attackerValue}");
-            Util.log($"Defender AC: {defenderValue}");
-
-            int damage = 0;
-
-            if (attackerValue > defenderValue)
-            {
-                Util.wl($"{Name} lands a hit");
-                if(weapon != null)
-                {
-                    int damageRoll = weapon.DiceSet.roll();
-                    Util.log($"Damage roll: {damageRoll}");
-                    // TODO if weapon has finesse can use strength or dex
-                    // TODO if ranged weapon then us dex for melee weapons use strength
-                    // TODO I think Damage bonus is only for NPCs.....
-                    // Damage is damage dice + mod
-                    damage = strengthMod + damageRoll;
-                }
-                else
-                {
-                    // Punch
-                    damage = 1 + strengthMod;
-                }
-                
-                
-            }
-            else
-            {
-                Util.wl($"{this.Name}'s attack misses!");
-            }
-
-            if(damage > 0)
-            {
-                defender.adjustHealth(-damage);
-            }
-
-            Util.log($"DamageValue: {damage}");
-            Util.log($"Defender Health After {defender.Health}");
-            return damage;
-
-        }
-
-        public int Dodge()
-        {
-            //TODO always use AC and make sure to keep it up to date
-            if(AC != null)
-            {
-                return (int)AC;
-            }
-            //This is where meat and potatoes of how items play into attributes and skills comes into play for now "punching" is generalize unarmed combat
-            return this.getFullMod(Attribute.Dexterity) + 10; //base dodge;
-        }
+        public abstract int Dodge();
 
         // used for Attribute mod calculation on the fly
         public int getFullAttribute(Attribute stat)
@@ -150,19 +64,6 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public int getFullMod(Attribute stat)
         {
             return (int)Math.Floor((decimal)((this.getFullAttribute(stat) - 10) / 2));
-        }
-
-        public void Equip(Equipable item, WeaponSlot hand)
-        {
-                if (item is Weapon)
-                {
-                    this.weaponSlots.setWeapon(hand, (Weapon)item);
-                }
-                else
-                {
-                    // Player should not need to specify slot for armor since it can only go one spot
-                    Util.wl("Don't know how to do this yet");
-                }
         }
 
         public int AttributeCheck(Attribute attr)

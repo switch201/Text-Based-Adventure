@@ -1,9 +1,16 @@
 {
-  "Description": "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage.",
-  "attack_bonus": 4,
-  "damage_dice": {
-    "sides": 6,
-    "count": 1,
-    "mod": 2
-  }
+  "DamageType": "Piercing",
+  "AttackDescriptions": [
+    "A quick arrow shot"
+  ],
+  "Description": "A wooden Bow, with an iron arrow",
+  "AttackBonus": 4,
+  "DamageDice": {
+    "Sides": 6,
+    "Count": 1,
+    "Mod": 2
+  },
+  "DamageBonus": 0,
+  "Legendary": false,
+  "Reaction": false
 }

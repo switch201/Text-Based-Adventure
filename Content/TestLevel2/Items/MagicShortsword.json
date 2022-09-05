@@ -2,7 +2,8 @@
   "Type":  "Weapon",
   "DiceSet": {
     "Count": 1,
-    "Sides": 6
+    "Sides": 6,
+    "Mod":  0,
   },
   "Weight": 2,
   "DamageType": "Piercing",

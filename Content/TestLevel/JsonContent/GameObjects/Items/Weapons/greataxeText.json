@@ -1,7 +1,8 @@
 {
   "DiceSet": {
     "Count": 1,
-    "Sides": 12
+    "Sides": 12,
+    "Mod":  0
   },
   "Weight": 7
 }

@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Content\TestLevel2\Creatures\Skeltor.json" />
+    <None Remove="Content\TestLevel2\Creatures\Skeletor.json" />
+    <None Remove="Content\TestLevel2\Items\Greataxe.json" />
     <None Remove="Content\TestLevel2\Items\MagicShortsword.json" />
     <None Remove="Content\TestLevel2\Items\Pumpkinpie.json" />
     <None Remove="Content\TestLevel2\Items\Shortsword.json" />
@@ -39,7 +40,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Content\TestLevel2\Creatures\Skeltor.json">
+    <Content Include="Content\TestLevel2\Creatures\Skeletor.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\Items\Greataxe.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel2\Items\MagicShortsword.json">

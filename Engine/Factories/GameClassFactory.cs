@@ -24,7 +24,7 @@ namespace Text_Based_Adventure.Engine.Factories
                 int count = gameClass.StartingWeaponsText.GetValueOrDefault(itemName);
                 for (var x = 0; x < count; x++)
                 {
-                    gameClass.StartingInventory.Add(ItemFactory.MakeWeapon(itemName));
+                    gameClass.StartingInventory.Add(GameObjectFactory.CreateItem(itemName));
                 }
             }
             return gameClass;

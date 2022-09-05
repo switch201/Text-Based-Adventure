@@ -10,11 +10,13 @@ namespace Text_Based_Adventure.Engine.GameTools
     {
         public int Count;
         public int Sides;
+        public int Mod;
 
-        public DiceSet(int count, int sides)
+        public DiceSet(int count, int sides, int Mod)
         {
             this.Count = count;
             this.Sides = sides;
+            this.Mod = Mod;
         }
 
         public int roll()
@@ -24,12 +26,12 @@ namespace Text_Based_Adventure.Engine.GameTools
             {
                 result += Util.d(Sides);
             }
-            return result;
+            return result + Mod;
         }
 
         public static explicit operator DiceSet(JToken? v)
         {
-            return new DiceSet((int)v["Count"], (int)v["Sides"]);
+            return new DiceSet((int)v["Count"], (int)v["Sides"], (int)v["Mod"]);
 
         }
     }

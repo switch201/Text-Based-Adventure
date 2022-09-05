@@ -17,6 +17,9 @@ namespace Text_Based_Adventure.Engine.Player
         public StatsSet stats;
         public double XP;
         public GameClass playerClass;
+        public ArmorSlots armorSlots;
+        public WeaponSlots weaponSlots;
+        public int ProficiencyBonus;
 
         public PlayerObject(string name, AttributeSet attributes, List<Skill> skills) : base()
         {
@@ -46,6 +49,7 @@ namespace Text_Based_Adventure.Engine.Player
             this.ProficiencyBonus = playerClass.ProficencyBonus.First();
             this.Inventory.AddRange(playerClass.StartingInventory);
             this.skills = selectedSkills;
+            this.weaponSlots = new WeaponSlots();
         }
 
         private void AdjustAttribute(Attribute attribute, int ammount)
@@ -127,10 +131,90 @@ namespace Text_Based_Adventure.Engine.Player
             attributeMods.AddRange(item.AttributeModifers);
         }
 
-        
-        public new void Equip(Equipable item, WeaponSlot hand)
+        public int Attack(Creature defender, Weapon weapon)
         {
-            base.Equip(item, hand);
+            //TODO since this can be called from anywhere needs to check if valid
+            if (weapon == null)
+            {
+                Util.wl($"{this.Name} attacks with fists");
+            }
+            else
+            {
+                Util.wl($"{this.Name} attacks with a {weapon.Name}");
+            }
+
+            int strengthMod = this.getFullMod(Attribute.Strength);
+            int dexterityMod = this.getFullMod(Attribute.Dexterity);
+
+            Util.log($"Attacker ProficiencyBonus {ProficiencyBonus}");
+            Util.log($"Attacker Strength Mod: {strengthMod}");
+            Util.log($"Attacker Dex Mod: {dexterityMod}");
+            //Calcul(int)it Chance 
+            Util.log("HitRoll");
+            int diceRoll = Util.d20();
+
+            // TODO Finese and weapon types
+            // Chance to hit is d20 + proficiencyBonus + mod
+            int attackerValue = diceRoll + this.ProficiencyBonus + strengthMod;
+            int defenderValue = defender.Dodge();
+
+            Util.log($"Attacker hit value {attackerValue}");
+            Util.log($"Defender AC: {defenderValue}");
+
+            int damage = 0;
+
+            if (attackerValue > defenderValue)
+            {
+                Util.wl($"{Name} lands a hit");
+                if (weapon != null)
+                {
+                    int damageRoll = weapon.DiceSet.roll();
+                    Util.log($"Damage roll: {damageRoll}");
+                    // TODO if weapon has finesse can use strength or dex
+                    // TODO if ranged weapon then us dex for melee weapons use strength
+                    // Damage is damage dice + mod
+                    damage = strengthMod + damageRoll;
+                }
+                else
+                {
+                    // Punch
+                    damage = 1 + strengthMod;
+                }
+
+
+            }
+            else
+            {
+                Util.wl($"{this.Name}'s attack misses!");
+            }
+
+            if (damage > 0)
+            {
+                defender.adjustHealth(-damage);
+            }
+
+            Util.log($"DamageValue: {damage}");
+            Util.log($"Defender Health After {defender.Health}");
+            return damage;
+
         }
-}
+
+        public override int Dodge()
+        {
+            return this.getFullMod(Attribute.Dexterity) + 10; //base dodge;
+        }
+
+        public void Equip(Equipable item, WeaponSlot hand)
+        {
+            if (item is Weapon)
+            {
+                this.weaponSlots.setWeapon(hand, (Weapon)item);
+            }
+            else
+            {
+                // Player should not need to specify slot for armor since it can only go one spot
+                Util.wl("Don't know how to do this yet");
+            }
+        }
+    }
 }

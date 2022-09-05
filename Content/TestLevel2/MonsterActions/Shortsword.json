@@ -1,4 +1,5 @@
 {
+  "DamageType": "Piercing",
   "AttackDescriptions": [
     "A strong vertical attack",
     "A quick and direct stab",
@@ -7,9 +8,9 @@
   "Description": "A standard shortsword. sharp on both side and pointy at the top.",
   "AttackBonus": 4,
   "DamageDice": {
-    "Side": 6,
+    "Sides": 6,
     "Count": 1,
-    "Mod":  2
+    "Mod": 2
   },
   "DamageBonus": 0,
   "Legendary": false,

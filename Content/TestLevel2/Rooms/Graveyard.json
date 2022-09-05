@@ -3,7 +3,7 @@
   "EnterText": "Oh boy here you go, its a another generic grave yard.",
   "ExitText": "You march on through onwards and upward",
   "InspectionText": "DO you see dead people? I suppose you do.",
-  "Creatures": [],
+  "Creatures": [ "Skeletor" ],
   "Items": [],
   "RunModifier": 2
 }

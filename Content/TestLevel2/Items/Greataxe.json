@@ -2,15 +2,15 @@
   "Type": "Weapon",
   "DiceSet": {
     "Count": 1,
-    "Sides": 6,
-    "Mod":  0
+    "Sides": 12,
+    "Mod": 0
   },
   "Weight": 2,
-  "DamageType": "Piercing",
+  "DamageType": "Slashing",
   "Properties": [
-    "Light",
-    "Finesse"
+    "Heavy",
+    "Two Handed"
   ],
-  "Weight": "2 lb",
+  "Weight": "7 lb",
   "HoldEffects": []
 }
