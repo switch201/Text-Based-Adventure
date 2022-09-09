@@ -17,6 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Engine\Scripts\ActionEvent.cs" />
+    <Compile Remove="Engine\Scripts\ActionList.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Content\TestLevel2\Creatures\Skeletor.json" />
     <None Remove="Content\TestLevel2\Items\Greataxe.json" />
     <None Remove="Content\TestLevel2\Items\Handaxe.json" />

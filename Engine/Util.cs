@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
-using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure
