@@ -7,22 +7,18 @@ using Text_Based_Adventure.Engine.Levels;
 
 namespace Text_Based_Adventure.Engine.Games
 {
+
+    //TODO right now no reason to have a game can just have level as this just copies level data
     public class Game
     {
         public List<Level> Levels;
 
         public List<GameClass> AvailableGameClasses;
 
-        public Game() {
-            Levels = new List<Level>() { };
-            AvailableGameClasses = new List<GameClass>() { };
-            AvailableGameClasses.Add(GameClassFactory.MakeBarbarianClass());
-        }
-
         public Game(Level level)
         {
             AvailableGameClasses = new List<GameClass>() { };
-            AvailableGameClasses.Add(GameClassFactory.MakeBarbarianClass());
+            AvailableGameClasses.AddRange(level.GameClasses);
             Levels = new List<Level>() { };
             Levels.Add(level);
         }

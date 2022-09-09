@@ -111,7 +111,6 @@ namespace Text_Based_Adventure
             return Util.RandomFromList(nameList);
         }
 
-        //TODO Items andd stuff too but not repeated
         public static T NameOrIdentifier<T>(List<T> npcs, string nameOrIdentifier) where T : GameObject
         {
             return npcs

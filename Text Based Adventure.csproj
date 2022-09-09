@@ -9,13 +9,18 @@
 
   <ItemGroup>
     <Compile Remove="Engine\GameObjects\Items\SmallItems\Equipables\**" />
+    <Compile Remove="Engine\UserInputs\InputResults\**" />
     <EmbeddedResource Remove="Engine\GameObjects\Items\SmallItems\Equipables\**" />
+    <EmbeddedResource Remove="Engine\UserInputs\InputResults\**" />
     <None Remove="Engine\GameObjects\Items\SmallItems\Equipables\**" />
+    <None Remove="Engine\UserInputs\InputResults\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Content\TestLevel2\Creatures\Skeletor.json" />
     <None Remove="Content\TestLevel2\Items\Greataxe.json" />
+    <None Remove="Content\TestLevel2\Items\Handaxe.json" />
+    <None Remove="Content\TestLevel2\Items\Javelin.json" />
     <None Remove="Content\TestLevel2\Items\MagicShortsword.json" />
     <None Remove="Content\TestLevel2\Items\Pumpkinpie.json" />
     <None Remove="Content\TestLevel2\Items\Shortsword.json" />
@@ -44,6 +49,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel2\Items\Greataxe.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\Items\Handaxe.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\Items\Javelin.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel2\Items\MagicShortsword.json">
@@ -76,7 +87,7 @@
     <Content Include="Content\TestLevel2\TestLevel2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel\JsonContent\Classes\barbarianText.json">
+    <Content Include="Content\TestLevel2\GameClasses\Barbarian.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel\JsonContent\GameObjects\Items\Containers\treasurechestText.json">
@@ -131,7 +142,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Engine\UserInputs\InputResults\" />
+    <Folder Include="Content\TestLevel\JsonContent\Classes\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,6 +3,9 @@
     "TreasureRoom",
     "Graveyard"
   ],
+  "GameClasses": [
+    "Barbarian"
+  ],
   "Connections": [
     {
       "Room1": "TreasureRoom",

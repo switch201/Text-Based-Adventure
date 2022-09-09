@@ -1,27 +1,9 @@
 {
-  "Name": "barbarian",
-  "ProficencyBonus": [
-    2,
-    2,
-    2,
-    2,
-    3,
-    3,
-    3,
-    3,
-    4,
-    4,
-    4,
-    4,
-    5,
-    5,
-    5,
-    5,
-    6,
-    6,
-    6,
-    6
-  ],
+  "HitDice": {
+    "Sides": 12,
+    "Count": 1,
+    "Mod": 0
+  },
   "LevelAmmounts": [
     0,
     300,
@@ -44,15 +26,29 @@
     305000,
     355000
   ],
-  "HitDice": {
-    "Sides": 12,
-    "Count": 1
-  },
-  "StartingWeaponsText": {
-    "Greataxe": 1
-    //"handaxe": 2,
-    //"javalin": 4
-  },
+  "Name": "Barbarian",
+  "ProficencyBonus": [
+    2,
+    2,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    4,
+    4,
+    4,
+    4,
+    5,
+    5,
+    5,
+    5,
+    6,
+    6,
+    6,
+    6
+  ],
   "Proficiencies": [
     "LightArmor",
     "MediumArmor",
@@ -66,5 +62,11 @@
     "Perception",
     "Survival"
   ],
-  "SkillCount": 2
+  "SkillCount": 2,
+  "StartingInventory": {
+    "Greataxe": 1,
+    "Handaxe": 2,
+    "Javelin": 4,
+    "Pumpkinpie": 2
+  }
 }

@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Text_Based_Adventure.Engine.Levels;
 
 namespace Text_Based_Adventure.Engine.Factories.Converters
@@ -27,6 +25,10 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
                 var room2 = level.Rooms.Single(x => x.Name == (string)connection["Room2"]);
                 room1.setExit((string)connection["ExitDirection"], room2);
                 room2.setExit((string)connection["EnterDirection"], room1);
+            }
+            foreach(string gameClass in obj["GameClasses"])
+            {
+                level.GameClasses.Add(GameClassFactory.MakeClass(gameClass));
             }
             return level;
         }
