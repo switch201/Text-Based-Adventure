@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure
@@ -95,7 +95,7 @@ namespace Text_Based_Adventure
         public static int d(int sides)
         {
             var roll = r.Next(1, sides);
-            Util.log($"D{sides}, Dice Roll {roll}");
+            Util.log($"D{sides} Dice Roll. Result: {roll}");
             return roll;
         }
 
@@ -111,12 +111,13 @@ namespace Text_Based_Adventure
             return Util.RandomFromList(nameList);
         }
 
-        //TODO Items andd stuff too
-        public static NPC NameOrIdentifier(List<NPC> npcs, string nameOrIdentifier)
+        // TODO for now Gameobjects with the same name/identifier are identical.
+        // Once there are multiple NPCs in one room that won't be the case
+        public static T NameOrIdentifier<T>(List<T> npcs, string nameOrIdentifier) where T : GameObject
         {
             return npcs
-                .Where(x => x.Name.Equals(nameOrIdentifier) || x.Identifiers.Contains(nameOrIdentifier))
-                .SingleOrDefault();
+                .Where(x => x.Name.ToLower().Equals(nameOrIdentifier) || x.Identifiers.Select(x => x.ToLower()).Contains(nameOrIdentifier))
+                .FirstOrDefault();
         }
 
         public static int Round(double number)

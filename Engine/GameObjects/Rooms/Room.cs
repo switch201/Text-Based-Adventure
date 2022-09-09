@@ -7,6 +7,7 @@ using Text_Based_Adventure.Engine.GameObjects.Items;
 using Text_Based_Adventure.GameObjects;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
 namespace Text_Based_Adventure.Rooms
 {
@@ -17,17 +18,19 @@ namespace Text_Based_Adventure.Rooms
 
         public Dictionary<string, Door> Doors;
 
-        public List<Item> Items;
-
         public string EnterText;
 
         public string ExitText;
 
-        public List<NPC> NPCs;
-
         public int runModifier; // how easy is it to run away from a fight in this "Room"
 
-         public Room(string roomName)
+        [JsonIgnore]
+        public List<NPC> NPCs;
+
+        [JsonIgnore]
+        public List<Item> Items;
+
+        public Room()
         {
             Items = new List<Item>() { };
             Exits = new Dictionary<string, Room>() { };
@@ -81,8 +84,7 @@ namespace Text_Based_Adventure.Rooms
 
         public Item getItem(string name)
         {
-            return Items.Where(x => x.Name.Equals(name) || x.Identifiers.Contains(name))
-                .SingleOrDefault();
+            return Util.NameOrIdentifier(this.Items, name);
         }
 
         public void setItems(List<Item> items)

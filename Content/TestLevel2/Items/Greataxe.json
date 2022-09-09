@@ -1,0 +1,16 @@
+{
+  "Type": "Weapon",
+  "DiceSet": {
+    "Count": 1,
+    "Sides": 12,
+    "Mod": 0
+  },
+  "Weight": 2,
+  "DamageType": "Slashing",
+  "Properties": [
+    "Heavy",
+    "Two Handed"
+  ],
+  "Weight": "7 lb",
+  "HoldEffects": []
+}

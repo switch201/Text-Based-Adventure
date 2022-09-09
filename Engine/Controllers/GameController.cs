@@ -57,7 +57,7 @@ namespace Text_Based_Adventure.Engine
 
         public void StartGame()
         {
-            this.roomController.currentRoom = game.Levels[0].StartingRoom.Enter();
+            this.roomController.currentRoom = game.Levels[0].Rooms[0].Enter();
         }
 
         public void StartCombat()
@@ -141,7 +141,7 @@ namespace Text_Based_Adventure.Engine
                 Util.wl("Select one of the following Classes:");
                 Util.writeList(this.game.AvailableGameClasses.Select(x => x.Name).ToList());
                 string userInput = debug ? "barbarian" : Util.rl().ToLower();
-                selectedClass = this.game.AvailableGameClasses.Where(x => x.Name == userInput).SingleOrDefault();
+                selectedClass = this.game.AvailableGameClasses.Where(x => x.Name.ToLower() == userInput).SingleOrDefault();
                 if(selectedClass == null)
                 {
                     Util.wl("You gotta pick one...");

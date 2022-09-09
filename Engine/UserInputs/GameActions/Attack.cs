@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
@@ -24,7 +25,7 @@ namespace Text_Based_Adventure.Engine.InputActions
             if (seperatedWords.Count > 1)
             {
                 directObject = seperatedWords.Last();
-                NPC npc = Util.NameOrIdentifier(npcs, directObject);
+                Creature npc = Util.NameOrIdentifier(npcs, directObject);
                 if(npc != null)
                 {
                     controller.StartCombat(); // TODO specific person combat

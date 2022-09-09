@@ -4,30 +4,17 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameClasses;
 using System.Linq;
+using Text_Based_Adventure.Engine.Factories.Converters;
 
 namespace Text_Based_Adventure.Engine.Factories
 {
-    class GameClassFactory : Factory //TODO only thing it gets from base class is basePath
+    class GameClassFactory //TODO only thing it gets from base class is basePath
     {
-
+        protected static string basePath = "Content/TestLevel2/GameClasses";
         public static GameClass MakeClass(string itemName)
         {
-            GameClass item = JsonConvert.DeserializeObject<GameClass>(Util.Readfile($"{basePath}/Classes/{itemName}Text.json"));
+            GameClass item = JsonConvert.DeserializeObject<GameClass>(Util.Readfile($"{basePath}/{itemName}.json"), new GameClassConverter());
             return item;
-        }
-
-        public static Barbarian MakeBarbarianClass()
-        {
-            Barbarian gameClass = JsonConvert.DeserializeObject<Barbarian>(Util.Readfile($"{basePath}/Classes/barbarianText.json"));
-            foreach (string itemName in gameClass.StartingWeaponsText.Keys)
-            {
-                int count = gameClass.StartingWeaponsText.GetValueOrDefault(itemName);
-                for (var x = 0; x < count; x++)
-                {
-                    gameClass.StartingInventory.Add(ItemFactory.MakeWeapon(itemName));
-                }
-            }
-            return gameClass;
         }
     }
 }

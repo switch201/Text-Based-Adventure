@@ -1,0 +1,16 @@
+{
+  "DamageType": "Piercing",
+  "AttackDescriptions": [
+    "A quick arrow shot"
+  ],
+  "Description": "A wooden Bow, with an iron arrow",
+  "AttackBonus": 4,
+  "DamageDice": {
+    "Sides": 6,
+    "Count": 1,
+    "Mod": 2
+  },
+  "DamageBonus": 0,
+  "Legendary": false,
+  "Reaction": false
+}

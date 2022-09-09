@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 using System.Linq;
+using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine.Player
 {
@@ -16,7 +17,7 @@ namespace Text_Based_Adventure.Engine.Player
 
         public Item GetItem(string name)
         {
-            return this.Where(x => x.Name == name).FirstOrDefault();
+            return Util.NameOrIdentifier(this, name);
         }
 
         /// <summary>

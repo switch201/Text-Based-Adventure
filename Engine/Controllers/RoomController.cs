@@ -103,7 +103,7 @@ namespace Text_Based_Adventure.Engine
 
         private void InspectNpc(NPC npc, int checkResult)
         {
-            npc.Inspect(checkResult);
+            npc.Inspect();
         }
 
         private void InspectItem(Item item, int checkResult)

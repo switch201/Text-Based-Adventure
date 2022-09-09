@@ -9,7 +9,6 @@ using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Items
 {
-
     // TODO need class for any Item, Creature etc. that can exist inside a room.
     public class Item : GameObject
     {
@@ -22,9 +21,9 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items
 
         public int hiddenModifier = 0;
 
-        public int Cost; //TODO UOM
+        public string Cost; //TODO UOM
 
-        public int Weight; //TODO UOM
+        public string Weight; //TODO UOM
 
 
 

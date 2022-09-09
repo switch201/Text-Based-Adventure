@@ -1,0 +1,17 @@
+{
+  "Rooms": [
+    "TreasureRoom",
+    "Graveyard"
+  ],
+  "GameClasses": [
+    "Barbarian"
+  ],
+  "Connections": [
+    {
+      "Room1": "TreasureRoom",
+      "Room2": "Graveyard",
+      "ExitDirection": "west",
+      "EnterDirection": "east"
+    }
+  ]
+}

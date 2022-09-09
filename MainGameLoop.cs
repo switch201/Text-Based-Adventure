@@ -1,7 +1,6 @@
 ﻿using System;
-using Text_Based_Adventure.Content;
-using Text_Based_Adventure.Content.TestLevel;
 using Text_Based_Adventure.Engine;
+using Text_Based_Adventure.Engine.Factories;
 using Text_Based_Adventure.Engine.Games;
 using Text_Based_Adventure.Engine.GameStates;
 using Text_Based_Adventure.Engine.Levels;
@@ -22,7 +21,7 @@ namespace Text_Based_Adventure
 
             while (gameController.gameState.currentGameState != States.Exit)
             {
-                Level testLevel = new TestLevel();
+                Level testLevel = LevelFactory.MakeLevel("TestLevel2");
 
                 Game testGame = new Game(testLevel);
 

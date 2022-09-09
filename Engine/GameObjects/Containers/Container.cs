@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Items;
@@ -9,8 +10,8 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
 {
     public class Container : Item
     {
+        [JsonIgnore]
         public List<Item> Items;
-        public List<string> ItemStrings;
 
         public Container()
         {
@@ -54,6 +55,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Containers
                     Util.wl("You take all the items");
                     returnedItems = UnloadAllItems();
                 }
+                //TODO implement something other than take all
             }
             return returnedItems;
         }

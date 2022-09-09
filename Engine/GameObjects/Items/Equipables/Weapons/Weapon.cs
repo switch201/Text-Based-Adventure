@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;

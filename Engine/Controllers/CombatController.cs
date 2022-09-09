@@ -107,7 +107,7 @@ namespace Text_Based_Adventure.Engine.Controllers
             }
 
             // Enemy Attacks Back
-            int damage = npc.Attack(player, npc.weaponSlots.getWeapon(WeaponSlot.RightHand));
+            int damage = npc.Attack(this.player);
 
             if (player.Health <= 0)
             {

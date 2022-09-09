@@ -7,6 +7,6 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items.Equipables
 {
     public class Equipable : Item
     {
-        public List<AttributeModifierSet> AttributeModifers;
+        public List<AttributeModifierSet> HoldEffects;
     }
 }

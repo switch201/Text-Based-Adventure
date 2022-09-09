@@ -38,11 +38,6 @@ namespace Text_Based_Adventure.GameObjects
             Identifiers = new List<string>();
         }
 
-        protected string Readfile(string fileName = "Engine/GameObjects/ObjectText.json")
-        {
-            return Util.Readfile(fileName);
-        }
-
         public void Describe()
         {
             Util.wl(this.DescriptionText);
