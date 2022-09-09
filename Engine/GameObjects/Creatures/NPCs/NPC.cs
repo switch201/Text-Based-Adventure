@@ -52,9 +52,12 @@ namespace Text_Based_Adventure.Engine.GameObjects
 
             int damage = action.DamageDice.roll();
 
+            Util.log($"Attack Damage Dice Count: {action.DamageDice.Count} Sides: {action.DamageDice.Sides} Mod: {action.DamageDice.Mod}");
+
+            Util.wl($"{this.Name} attacks with {Util.RandomFromList(action.AttackDescriptions)}");
             if (attackerValue > defenderValue)
             {
-                Util.wl($"{this.Name} attacks with {Util.RandomFromList(action.AttackDescriptions)}");
+                Util.wl($"{this.Name} lands a hit!");
                 defender.adjustHealth(-damage);
             }
             else

@@ -18,17 +18,19 @@ namespace Text_Based_Adventure.Rooms
 
         public Dictionary<string, Door> Doors;
 
-        public List<Item> Items;
-
         public string EnterText;
 
         public string ExitText;
 
-        public List<NPC> NPCs;
-
         public int runModifier; // how easy is it to run away from a fight in this "Room"
 
-         public Room()
+        [JsonIgnore]
+        public List<NPC> NPCs;
+
+        [JsonIgnore]
+        public List<Item> Items;
+
+        public Room()
         {
             Items = new List<Item>() { };
             Exits = new Dictionary<string, Room>() { };

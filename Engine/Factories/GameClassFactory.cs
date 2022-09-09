@@ -8,7 +8,7 @@ using Text_Based_Adventure.Engine.Factories.Converters;
 
 namespace Text_Based_Adventure.Engine.Factories
 {
-    class GameClassFactory : Factory //TODO only thing it gets from base class is basePath
+    class GameClassFactory //TODO only thing it gets from base class is basePath
     {
         protected static string basePath = "Content/TestLevel2/GameClasses";
         public static GameClass MakeClass(string itemName)

@@ -14,7 +14,6 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
         {
             JObject jObject = JObject.Load(reader);
             var item = Create(objectType, jObject);
-            HydrateGameObject(item, jObject);
             return item;
         }
 
@@ -27,8 +26,8 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
         {
             if (GetTypeString(jObject) == "NPC")
             {
-                var npc = GameObjectFactory.CreateNPC((string)jObject["Name"]);
-                foreach(string action in jObject["Actions"])
+                var npc = jObject.ToObject<NPC>();
+                foreach (string action in jObject["Actions"])
                 {
                     npc.NPCActions.Add(GameObjectFactory.CreateNPCAction(action));
                 }

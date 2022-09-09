@@ -95,7 +95,7 @@ namespace Text_Based_Adventure
         public static int d(int sides)
         {
             var roll = r.Next(1, sides);
-            Util.log($"D{sides}, Dice Roll {roll}");
+            Util.log($"D{sides} Dice Roll. Result: {roll}");
             return roll;
         }
 
@@ -111,11 +111,13 @@ namespace Text_Based_Adventure
             return Util.RandomFromList(nameList);
         }
 
+        // TODO for now Gameobjects with the same name/identifier are identical.
+        // Once there are multiple NPCs in one room that won't be the case
         public static T NameOrIdentifier<T>(List<T> npcs, string nameOrIdentifier) where T : GameObject
         {
             return npcs
                 .Where(x => x.Name.ToLower().Equals(nameOrIdentifier) || x.Identifiers.Select(x => x.ToLower()).Contains(nameOrIdentifier))
-                .SingleOrDefault();
+                .FirstOrDefault();
         }
 
         public static int Round(double number)

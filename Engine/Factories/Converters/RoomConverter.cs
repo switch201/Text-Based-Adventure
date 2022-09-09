@@ -15,7 +15,6 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
         {
             JObject jObject = JObject.Load(reader);
             var room = Create(objectType, jObject);
-            HydrateGameObject(room, jObject);
             return room;
         }
 
@@ -26,9 +25,7 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
 
         protected override Room Create(Type objectType, JObject jObject)
         {
-            var room = new Room();
-            room.EnterText = (string)jObject["EnterText"];
-            room.ExitText = (string)jObject["ExitText"];
+            var room = jObject.ToObject<Room>();
             foreach (string item in jObject["Items"])
             {
                 room.addItem(GameObjectFactory.CreateItem(item));

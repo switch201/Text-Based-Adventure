@@ -17,7 +17,6 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
         {
             JObject jObject = JObject.Load(reader);
             var item = Create(objectType, jObject);
-            HydrateGameObject(item, jObject);
             return item;
         }
 
@@ -31,8 +30,8 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
             //TODO enums or something?
             if (GetTypeString(jObject) == "Consumable")
             {
-                var item = new Consumable();
-                HydrateItem(item, jObject);
+                var item = jObject.ToObject<Consumable>();
+
                 if (FieldExists("AttributeModifers", jObject))
                 {
                     foreach (string mod in jObject["AttributeModifers"])
@@ -47,50 +46,29 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
             }
             else if (GetTypeString(jObject) == "Weapon")
             {
-                var item = new Weapon();
-                HydrateItem(item, jObject);
-                if(FieldExists("DiceSet", jObject))
-                {
-                    item.DiceSet = (DiceSet)jObject["DiceSet"];
-                }
+                var item = jObject.ToObject<Weapon>();
                 if(FieldExists("HoldEffects", jObject))
                 {
                     foreach(string effect in jObject["HoldEffects"]){
                         item.HoldEffects.Add(StatusEffectFactory.MakeAttributeModifierSet(effect));
                     }
                 }
-                Enum.TryParse((string)jObject["DamageType"], out DamageType damageType);
-                item.DamageType = damageType;
                 return item;
 
             }
             else if (GetTypeString(jObject) == "Container")
             {
-                var item = new Container();
-                HydrateItem(item, jObject);
-                if (FieldExists("Items", jObject))
+                var item = jObject.ToObject<Container>();
+                foreach (string containerItem in jObject["Items"])
                 {
-                    foreach(string containerItem in jObject["Items"])
-                    {
-                        item.Items.Add(GameObjectFactory.CreateItem(containerItem));
-                    }
-                    return item;
+                    item.Items.Add(GameObjectFactory.CreateItem(containerItem));
                 }
-                else
-                {
-                    throw new Exception("Container needs an Items prop!");
-                }
+                return item;
             }
             else
             {
                 throw new Exception($"Could not find type {GetTypeString(jObject)}");
             }
-        }
-
-        //TODO there is a better way to do this maybe nester deserialization?
-        protected void HydrateItem(Item gameObject, JObject jObject)
-        {
-            gameObject.QuallityText = (string)jObject["QuallityText"];
         }
     }
 }

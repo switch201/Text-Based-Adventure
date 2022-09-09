@@ -28,12 +28,5 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
         {
             return jObject[fieldName] != null;
         }
-
-        //TODO there is a better way to do this maybe nester deserialization?
-        protected void HydrateGameObject(GameObject gameObject, JObject jObject)
-        {
-            gameObject.DescriptionText = (string)jObject["DescriptionText"];
-            gameObject.InspectionText = (string)jObject["Inspectiontext"];
-        }
     }
 }
