@@ -21,35 +21,23 @@ namespace Text_Based_Adventure.Engine.Player
         public WeaponSlots weaponSlots;
         public int ProficiencyBonus;
 
-        public PlayerObject(string name, AttributeSet attributes, List<Skill> skills) : base()
-        {
-            this.stats = new StatsSet();
-            this.attributes = attributes;
-            this.Name = name;
-            this.Health = this.MaxHealth = 5 + attributes.getAttribute(Attribute.Strength);
-            this.XP = 0;
-            this.ProficiencyBonus = 0;
-            this.skills = skills;
-        }
-        public void AddXp(double xp)
-        {
-            this.XP += xp;
-        }
-
-
-
         public PlayerObject(string name, AttributeSet attributes, GameClass playerClass, List<Skill> selectedSkills ) : base()
         {
             this.playerClass = playerClass;
             this.stats = new StatsSet();
             this.attributes = attributes;
             this.Name = name;
-            this.Health = this.MaxHealth = playerClass.HitDice.Count * playerClass.HitDice.Sides;
+            this.Health = this.MaxHealth = playerClass.HitDice.Count * playerClass.HitDice.Sides + this.getFullMod(Attribute.Constitution);
             this.XP = 0;
             this.ProficiencyBonus = playerClass.ProficencyBonus.First();
             this.Inventory.AddRange(playerClass.StartingInventory);
             this.skills = selectedSkills;
             this.weaponSlots = new WeaponSlots();
+        }
+
+        public void AddXp(double xp)
+        {
+            this.XP += xp;
         }
 
         private void AdjustAttribute(Attribute attribute, int ammount)
