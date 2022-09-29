@@ -25,7 +25,7 @@ namespace Text_Based_Adventure.Rooms
         public int runModifier; // how easy is it to run away from a fight in this "Room"
 
         [JsonIgnore]
-        public List<NPC> NPCs;
+        public List<Creature> CreaturesAndNPCs;
 
         [JsonIgnore]
         public List<Item> Items;

@@ -8,7 +8,6 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes
 {
     public enum Attribute
     {
-        None,
         Strength,
         Dexterity,
         Intelligence,

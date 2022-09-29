@@ -9,7 +9,10 @@ using Weapon = Text_Based_Adventure.Engine.GameObjects.Items.Weapons.Weapon;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Creatures
 {
-    // Right now a Creature is anything that can participate in combat 
+    // Right now a Creature is anything that can participate in combat
+    // A Create is both a player and an NPC. NPCs can have quests tied to them, and the player is the player,
+    // Anything that is just a creatrue then is just something you can fight. If a creature is tied to a quest in some way
+    // Then that Creature should instead be an NPC
     public abstract class Creature : GameObject
     {
         public AttributeSet attributes;

@@ -20,33 +20,19 @@ namespace Text_Based_Adventure.Engine.InputActions
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
-            string directObject;
-            List<NPC> npcs = controller.roomController.currentRoom.NPCs;
-            if (seperatedWords.Count > 1)
+            var directObjectString = seperatedWords.Last();
+            var directObject = controller.roomController.TryGetGameObject(directObjectString);
+            if (!directObject.Script.React(directObject, this))
             {
-                directObject = seperatedWords.Last();
-                Creature npc = Util.NameOrIdentifier(npcs, directObject);
-                if(npc != null)
+                if(directObject is Creature)
                 {
-                    controller.StartCombat(); // TODO specific person combat
+                    controller.StartCombat();
                 }
                 else
                 {
-                    Util.wl($"You don't see or can't attack a {directObject}");
-                    return;
+                    Util.WriteExceptionSentance("You can't attack", directObjectString);
                 }
             }
-            //TODO check if there is an NPC that can be attacked
-            else if (npcs.Count == 1)
-            {
-                controller.StartCombat();
-            }
-            else
-            {
-                Util.wl("There is no one to attack");
-            }
-            
-            
         }
     }
 }

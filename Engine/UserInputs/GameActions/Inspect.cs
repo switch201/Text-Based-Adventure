@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
+using Text_Based_Adventure.Engine.Scripts;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
@@ -19,23 +20,28 @@ namespace Text_Based_Adventure.Engine.InputActions
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
-            string directObject = seperatedWords.Last();
-            if (directObject == "room")
+            string directObjectString = seperatedWords.Last();
+            if (directObjectString == "room")
             {
                 controller.roomController.InspectRoom();
             }
-            else if (directObject == "self")
+            else if (directObjectString == "self")
             {
                 controller.playerController.player.InspectSelf();
             }
-            else if (directObject == "inventory")
+            else if (directObjectString == "inventory")
             {
                 controller.playerController.player.InspectInventory();
             }
             else
             {
-                int checkResult = controller.playerController.AttributeCheck(Attribute.Wisdom);
-                controller.roomController.TryInspectSomething(directObject, checkResult);
+                var directObject = controller.roomController.TryGetGameObject(directObjectString);
+                if(directObject != null)
+                {
+
+                }
+                directObject.Script.React(directObject, this);
+                directObject.Inspect();
             }
             
         }

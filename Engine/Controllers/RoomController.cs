@@ -10,6 +10,7 @@ using Text_Based_Adventure.Engine.GameObjects;
 using Text_Based_Adventure.Engine.GameObjects.Containers;
 using Text_Based_Adventure.GameObjects;
 using Text_Based_Adventure.Engine.UserInputs.GameActions;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -79,21 +80,20 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
-        public void TryInspectSomething(string name, int checkResult)
+        public void TryInspectSomething(string name)
         {
+            var gameObject = currentRoom.getItem(name);
             //check for items
-            Item item = currentRoom.getItem(name);
             if(item != null)
             {
-                InspectItem(item, checkResult);
+                InspectItem(item);
                 return;
             }
             //check for creatures
-            NPC npc = currentRoom.NPCs.Find(npc => npc.Name == name);
-            if(npc != null)
+            var creature = currentRoom.CreaturesAndNPCs.Find(npc => npc.Name == name);
+            if(creature != null)
             {
-                InspectNpc(npc, checkResult);
-                return;
+                creature.Inspect();
             }
             else
             {
@@ -101,7 +101,7 @@ namespace Text_Based_Adventure.Engine
             }
         }
 
-        private void InspectNpc(NPC npc, int checkResult)
+        private void InspectNpc(Creature npc, int checkResult)
         {
             npc.Inspect();
         }
@@ -114,7 +114,9 @@ namespace Text_Based_Adventure.Engine
 
         public void TryTalkToNpc(string nameOrIdentifier)
         {
-            NPC target = this.currentRoom.GetNPC(nameOrIdentifier);
+             target = this.currentRoom.GetNPC(nameOrIdentifier);
+
+            if()
 
             if (target != null)
             {
@@ -145,7 +147,8 @@ namespace Text_Based_Adventure.Engine
             }
             if (item.hasEvent(gameAction))
             {
-                item.TriggerEvent(gameAction, player);
+                Util.log("Event Triggered");
+                //item.TriggerEvent(gameAction, player);
             }
             if (item.isLocked(gameAction)) // TODO should I make key words an enum, and uss that for skill checks?
             {
@@ -203,28 +206,13 @@ namespace Text_Based_Adventure.Engine
         }
 
         // Will search all gameobject in a room to find match including the room itself.
-        public GameObject TryGetGameObject(string name)
+        public GameObject TryGetGameObject(string nameOrIdentifier)
         {
             List<GameObject> searchList = new List<GameObject>();
             searchList.AddRange(this.currentRoom.getItems());
             searchList.AddRange(this.currentRoom.getNPCs());
-            return searchList.FirstOrDefault(x => x.Name == name);
+            return Util.NameOrIdentifier(searchList, nameOrIdentifier);
 
-        }
-
-        private void CheckForEvents(GameObject gameObject)
-        {
-
-        }
-
-        private void GameObjectNotInRoom(string itemName)
-        {
-            Util.WriteExceptionSentance("You don't see", itemName);
-        }
-
-        private void GameObjectLocked(GameObject gameObject)
-        {
-            Util.wl($"The {gameObject.Name} is Locked"); // TODO need to make more unique
         }
     }
 }

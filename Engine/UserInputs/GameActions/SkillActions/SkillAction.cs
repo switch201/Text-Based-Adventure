@@ -29,9 +29,10 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                 {
                     int result;
                     //TODO Combo attribute + skill rolls?
-                    if (gameLock.Attribute != Attribute.None)
+                    if (false)
                     {
-                        result = gameLock.PerformSkillCheck(controller.playerController.player, gameLock.Attribute);
+                        Util.log("Mega Broke");
+                        //result = gameLock.PerformSkillCheck(controller.playerController.player, gameLock.Attribute);
                     }
                     else
                     {

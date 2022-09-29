@@ -12,9 +12,6 @@ namespace Text_Based_Adventure.Engine.GameObjects
 {
     public class NPC : Creature
     {
-        internal readonly object weaponSlots;
-        public List<string> SmallTalk;
-        public bool IsFinalBoss;
         public int XP;
         public List<NPCAction> NPCActions;
         public int AC; //Armor Class
@@ -26,11 +23,6 @@ namespace Text_Based_Adventure.Engine.GameObjects
         public bool isAlive()
         {
             return Health > 0;
-        }
-
-        public void SaySmallTalk()
-        {
-            Util.wl(Util.RandomFromList(this.SmallTalk));
         }
 
         public int Attack(Creature defender)

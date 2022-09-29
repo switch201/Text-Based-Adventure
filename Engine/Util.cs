@@ -135,5 +135,10 @@ namespace Text_Based_Adventure
                 Util.wl($"{preText} a {itemName}");
             }
         }
+
+        public static void GameObjectNotInRoom(string itemName)
+        {
+            Util.WriteExceptionSentance("You don't see", itemName);
+        }
     }
 }
