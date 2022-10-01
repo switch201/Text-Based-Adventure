@@ -1,5 +1,6 @@
 {
   "Type": "Weapon",
+  "WeaponRange": "Both",
   "DiceSet": {
     "Count": 1,
     "Sides": 6,

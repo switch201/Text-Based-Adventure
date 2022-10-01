@@ -22,7 +22,10 @@ namespace Text_Based_Adventure.Engine
             {
                 new Punch(),
                 new RunAway(),
-                new AttackWith()
+                new AttackWith(),
+                //new BattleEquip(),
+                //new BattleInspect(),
+                //new GetClose(),
             };
 
         public static List<GameAction> gameActions = new List<GameAction>()

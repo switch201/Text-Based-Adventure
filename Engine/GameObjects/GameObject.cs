@@ -43,6 +43,7 @@ namespace Text_Based_Adventure.GameObjects
             Util.wl(this.DescriptionText);
         }
 
+        // When you inspect something if it has a certain trap on it, you have a chance of detecting said trap.
         public void Inspect()
         {
             Util.wl(this.InspectionText);

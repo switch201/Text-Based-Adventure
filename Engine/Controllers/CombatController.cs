@@ -7,7 +7,6 @@ using Text_Based_Adventure.Engine.Player;
 using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 using Text_Based_Adventure.Engine.GameObjects.Items.Weapons;
-using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
 namespace Text_Based_Adventure.Engine.Controllers
 {
@@ -129,7 +128,7 @@ namespace Text_Based_Adventure.Engine.Controllers
         {
             if(player == null)
             {
-                throw new Exception("You can't resolve player attack with a player ya DINGUS");
+                throw new Exception("You can't resolve player attack with out a player ya DINGUS");
             }
             int damage = player.Attack(enemy, weapon);
             if (enemy.Health <= 0)
@@ -152,7 +151,7 @@ namespace Text_Based_Adventure.Engine.Controllers
         }
 
 
-            public AttackResult ResolveMeleeAttack(Weapon weapon, string npcName) //TODO needs to be weapons, not all Items can be used in combat;
+    public AttackResult ResolveMeleeAttack(Weapon weapon, string npcName)
         {
             var attackResult = new AttackResult();
 
@@ -172,7 +171,22 @@ namespace Text_Based_Adventure.Engine.Controllers
                 };
             }
 
-
+            if (player.IsCloseTo(enemy) && weapon.WeaponRange == WeaponRange.LongRange)
+            {
+                Util.fourthWall($"You can't attack with a {weapon.Name} up close.");
+                return new AttackResult()
+                {
+                    wasValid = false,
+                };
+            }
+            if(!player.IsCloseTo(enemy) && weapon.WeaponRange == WeaponRange.CloseRange)
+            {
+                Util.fourthWall($"You can't attack with a {weapon.Name} at Range.");
+                return new AttackResult()
+                {
+                    wasValid = false,
+                };
+            }
 
             attackResult.damage = this.ResolvePlayerAttack(enemy, weapon);
 

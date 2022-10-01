@@ -13,6 +13,14 @@ namespace Text_Based_Adventure.Rooms
 {
     public class Room : GameObject
     {
+        public enum ExitType
+        {
+            None,
+            North,
+            South,
+            East,
+            West,
+        }
 
         protected Dictionary<string, Room> Exits;
 

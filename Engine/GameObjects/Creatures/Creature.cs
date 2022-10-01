@@ -15,6 +15,8 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public AttributeSet attributes;
         public List<Skill> skills;
 
+        public List<Creature> CloseCreatures;
+
         // List of things that might be modifying your attributes like food or spells
         public List<AttributeModifierSet> attributeMods = new List<AttributeModifierSet>(); //list because multiple effects at once
         public Inventory Inventory;
@@ -29,6 +31,7 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         {
             this.Inventory = new Inventory();
             this.skills = new List<Skill>() { };
+            this.CloseCreatures = new List<Creature>();
         }
 
         public bool hasSkill(Skill skill)
@@ -69,6 +72,16 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public int AttributeCheck(Attribute attr)
         {
             return Util.d20() + (int)this.getFullMod(attr);
+        }
+
+        public bool IsCloseTo(Creature creature)
+        {
+            return CloseCreatures.Contains(creature);
+        }
+
+        public void GetCloseTo(Creature creature)
+        {
+            CloseCreatures.Add(creature);
         }
     }
 }

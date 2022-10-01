@@ -18,9 +18,16 @@ namespace Text_Based_Adventure.Engine.GameObjects.Items.Weapons
         Piercing,
         Slashing
     }
+    public enum WeaponRange
+    {
+        CloseRange,
+        LongRange,
+        Both
+    }
     public class Weapon : Equipable
     {
         public DiceSet DiceSet;
+        public WeaponRange WeaponRange;
         public DamageType DamageType; // TODO will I need a list?
     }
 }
