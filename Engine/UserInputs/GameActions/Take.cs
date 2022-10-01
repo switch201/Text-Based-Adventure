@@ -14,7 +14,7 @@ namespace Text_Based_Adventure.Engine.InputActions
 
         public override string HelpText()
         {
-            throw new NotImplementedException();
+            return "Use take to take!";
         }
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
