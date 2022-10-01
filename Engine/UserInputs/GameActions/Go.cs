@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.GameObjects;
 using Text_Based_Adventure.Rooms;
+using System.Linq;
 
 namespace Text_Based_Adventure.Engine.InputActions
 {
@@ -14,12 +15,12 @@ namespace Text_Based_Adventure.Engine.InputActions
 
         public override string HelpText()
         {
-            throw new NotImplementedException();
+            return "Use Go to move to another room!";
         }
 
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
-            controller.roomController.TryChangeRooms(seperatedWords[1]);
+            controller.roomController.TryChangeRooms(seperatedWords.Last());
         }
     }
 }
