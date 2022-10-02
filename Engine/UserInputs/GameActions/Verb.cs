@@ -11,5 +11,7 @@ namespace Text_Based_Adventure.Engine.InputActions
 
         public abstract int duration { get; }
 
+        public abstract void RespondToInput(GameController controller, List<string> seperatedWords);
+
     }
 }

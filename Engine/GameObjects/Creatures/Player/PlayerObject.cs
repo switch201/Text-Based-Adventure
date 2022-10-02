@@ -30,6 +30,7 @@ namespace Text_Based_Adventure.Engine.Player
             this.XP = 0;
             this.ProficiencyBonus = 0;
             this.skills = skills;
+            this.IsFriendly = true;
         }
         public void AddXp(double xp)
         {

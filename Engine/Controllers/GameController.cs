@@ -10,6 +10,7 @@ using Text_Based_Adventure.Engine.GameObjects;
 using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 using Text_Based_Adventure.Engine.GameClasses;
+using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -23,6 +24,7 @@ namespace Text_Based_Adventure.Engine
         public Game game;
         public PlayerController playerController;
         public CombatController combatController;
+        public CombatController2 combatController2;
 
 
         List<string> actionLog = new List<string>();
@@ -34,7 +36,7 @@ namespace Text_Based_Adventure.Engine
             gameState = initialState;
             userInput = new UserInput();
             playerController = new PlayerController();
-            combatController = new CombatController();
+            combatController2 = new CombatController2();
         }
 
         public void setGame(Game game)
@@ -62,12 +64,12 @@ namespace Text_Based_Adventure.Engine
 
         public void StartCombat()
         {
-            this.gameState.Combat();
-            this.combatController.setPlayer(playerController.player);
-            this.combatController.setEnemies(this.roomController.currentRoom.getNPCs()); // TODO filter out friendly NPCs
-
+            var tempList = new List<Creature>(this.roomController.currentRoom.getNPCs());
+            tempList.Add(this.playerController.player);
+            this.combatController2.AddCombatants(tempList);
             Util.wl($"You Start Combat against a");
             this.roomController.currentRoom.getNPCs().ForEach(x => Util.wl(Util.RandomIdentifier(x)));
+            this.combatController2.CombatLoop();
         }
 
         private void checkTimedEvents()

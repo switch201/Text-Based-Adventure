@@ -22,6 +22,7 @@ namespace Text_Based_Adventure.Engine.InputActions
         {
             string directObject;
             List<NPC> npcs = controller.roomController.currentRoom.NPCs;
+
             if (seperatedWords.Count > 1)
             {
                 directObject = seperatedWords.Last();

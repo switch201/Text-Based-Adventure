@@ -15,6 +15,8 @@ namespace Text_Based_Adventure.Engine.GameObjects.Creatures
         public AttributeSet attributes;
         public List<Skill> skills;
 
+        public bool IsFriendly = false;
+
         public List<Creature> CloseCreatures;
 
         // List of things that might be modifying your attributes like food or spells

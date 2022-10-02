@@ -18,16 +18,6 @@ namespace Text_Based_Adventure.Engine
             new PickLock()
         };
 
-        public static List<BattleAction> battleActions = new List<BattleAction>()
-            {
-                new Punch(),
-                new RunAway(),
-                new AttackWith(),
-                //new BattleEquip(),
-                //new BattleInspect(),
-                //new GetClose(),
-            };
-
         public static List<GameAction> gameActions = new List<GameAction>()
             {
                 new Go(),
@@ -52,31 +42,10 @@ namespace Text_Based_Adventure.Engine
         {
             return gameActions.Select(x => x.keyWord.First()).ToList();
         }
-        public static List<string> getBattleActionWords()
-        {
-            var list = new List<string>();
-            foreach (BattleAction action in battleActions)
-            {
-                list.Add(action.keyWord.First());
-            }
-            return list;
-        }
 
         public static GameAction? GetGameAction(string keyWord)
         {
             foreach (GameAction action in gameActions)
-            {
-                if (action.keyWord.Contains(keyWord))
-                {
-                    return action;
-                }
-            }
-            return null;
-        }
-
-        public static BattleAction? GetBattleActtion(string keyWord)
-        {
-            foreach (BattleAction action in battleActions)
             {
                 if (action.keyWord.Contains(keyWord))
                 {
