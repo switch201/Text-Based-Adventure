@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using Text_Based_Adventure.Engine.InputActions;
+using Text_Based_Adventure.Engine.UserInputs.Actions;
+using Text_Based_Adventure.Engine.UserInputs.GameActions;
 
 namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks
 {

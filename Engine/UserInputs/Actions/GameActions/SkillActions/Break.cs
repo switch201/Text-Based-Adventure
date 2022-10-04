@@ -21,6 +21,15 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                 "type 'break <itemName>' to try to over come something like a locked door or chest.";
         }
 
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
+        }
 
         public override SkillCheckOutcome SkillCheckOutcome => new BreakOutCome();
 

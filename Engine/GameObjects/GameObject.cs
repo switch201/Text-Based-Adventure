@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Text_Based_Adventure.Engine.InputActions;
 using System.Linq;
 using Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions;
 using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
 using Text_Based_Adventure.Engine.Player;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
+using Text_Based_Adventure.Engine.UserInputs.Actions;
 
 namespace Text_Based_Adventure.GameObjects
 {

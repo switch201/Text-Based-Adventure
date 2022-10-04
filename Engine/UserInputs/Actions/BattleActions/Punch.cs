@@ -4,7 +4,7 @@ using System.Text;
 using Text_Based_Adventure.Engine.Controllers;
 using System.Linq;
 
-namespace Text_Based_Adventure.Engine.InputActions.BattleActions
+namespace Text_Based_Adventure.Engine.UserInputs.BattleActions
 {
     public class Punch : BattleAction
     {
@@ -24,6 +24,16 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
             {
                 Util.wl("You can't punch this person");
             }
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
         }
     }
 }

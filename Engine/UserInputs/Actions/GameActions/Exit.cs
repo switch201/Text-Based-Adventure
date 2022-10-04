@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Text_Based_Adventure.Engine.InputActions
+namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 {
     class Exit : GameAction
     {
@@ -18,6 +18,16 @@ namespace Text_Based_Adventure.Engine.InputActions
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             controller.ExitGame();
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
         }
     }
 }

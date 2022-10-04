@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Text_Based_Adventure.Engine.InputActions
+namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 {
     class TalkTo : GameAction
     {
@@ -20,6 +20,16 @@ namespace Text_Based_Adventure.Engine.InputActions
         {
             string directobject = seperatedWords.Last();
             controller.roomController.TryTalkToNpc(directobject);
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
         }
     }
 }

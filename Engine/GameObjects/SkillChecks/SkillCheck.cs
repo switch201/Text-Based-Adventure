@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
-using Text_Based_Adventure.Engine.InputActions;
 using Text_Based_Adventure.Engine.Player;
+using Text_Based_Adventure.Engine.UserInputs.Actions;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
 namespace Text_Based_Adventure.Engine.GameObjects.SkillChecks

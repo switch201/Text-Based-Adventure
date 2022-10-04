@@ -22,5 +22,15 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             string directObject = seperatedWords.Last();
             controller.playerController.TryEquipItem(directObject);
         }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

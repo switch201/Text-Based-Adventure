@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using Text_Based_Adventure.Engine.GameObjects.Items.Weapons;
 
-namespace Text_Based_Adventure.Engine.InputActions.BattleActions
+namespace Text_Based_Adventure.Engine.UserInputs.BattleActions
 {
     public class AttackWith : BattleAction
     {
@@ -28,6 +28,16 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
             {
                 Util.wl($"You don't have a {weaponName} equipped");
             }
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

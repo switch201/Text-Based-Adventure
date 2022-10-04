@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 
-namespace Text_Based_Adventure.Engine.InputActions
+namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 {
     class Inspect : GameAction
     {
@@ -38,6 +38,16 @@ namespace Text_Based_Adventure.Engine.InputActions
                 controller.roomController.TryInspectSomething(directObject, checkResult);
             }
             
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
         }
     }
 }

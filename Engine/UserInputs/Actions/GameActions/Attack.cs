@@ -5,7 +5,7 @@ using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
 using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
-namespace Text_Based_Adventure.Engine.InputActions
+namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 {
     public class Attack : GameAction
     {
@@ -48,6 +48,16 @@ namespace Text_Based_Adventure.Engine.InputActions
             }
             
             
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
         }
     }
 }

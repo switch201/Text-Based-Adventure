@@ -142,6 +142,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Content\MenuTrees\" />
     <Folder Include="Content\TestLevel\JsonContent\Classes\" />
   </ItemGroup>
 
@@ -154,6 +155,6 @@
     </None>
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties content_4testlevel_4jsoncontent_4classes_4barbariantext_1json__JsonSchema="https://cdn.jsdelivr.net/gh/tarampampam/error-pages@latest/schemas/config/1.0.schema.json" content_4testlevel_4jsoncontent_4gameobjects_4rooms_4prisontext_1json__JsonSchema="https://cdn.jsdelivr.net/gh/tarampampam/error-pages@latest/schemas/config/1.0.schema.json" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties content_4testlevel_4jsoncontent_4gameobjects_4rooms_4prisontext_1json__JsonSchema="https://cdn.jsdelivr.net/gh/tarampampam/error-pages@latest/schemas/config/1.0.schema.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

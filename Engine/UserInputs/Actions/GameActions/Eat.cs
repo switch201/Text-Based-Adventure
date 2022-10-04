@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Text_Based_Adventure.Engine.UserInputs.MenuTrees;
 
 namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 {
@@ -20,6 +21,24 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
         public override void RespondToInput(GameController controller, List<string> seperatedWords)
         {
             controller.playerController.TryEatConsumable(seperatedWords.Last(), controller.gameState.getGameTime());
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            controller.playerController.TryEatConsumable(direcObject, controller.gameState.getGameTime());
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            if (String.IsNullOrEmpty(directObjectString))
+            {
+                var menu = new EatMenuTree(controller.playerController.player);
+                menu.StartMenuTree(controller);
+            }
+            else
+            {
+                controller.playerController.TryEatConsumable(directObjectString, controller.gameState.getGameTime());
+            }
         }
     }
 }

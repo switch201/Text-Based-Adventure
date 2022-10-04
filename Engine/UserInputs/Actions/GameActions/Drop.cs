@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 
-namespace Text_Based_Adventure.Engine.InputActions
+namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 {
     class Drop : GameAction
     {
@@ -21,6 +21,16 @@ namespace Text_Based_Adventure.Engine.InputActions
         {
             string directobject = seperatedWords.Last();
             controller.roomController.AddItemToRoom(controller.playerController.TryDropItem(directobject));
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
         }
     }
 }

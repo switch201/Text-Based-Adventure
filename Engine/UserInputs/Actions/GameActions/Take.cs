@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects.Items;
 
-namespace Text_Based_Adventure.Engine.InputActions
+namespace Text_Based_Adventure.Engine.UserInputs.GameActions
 {
     class Take : GameAction
     {
@@ -27,6 +27,16 @@ namespace Text_Based_Adventure.Engine.InputActions
                 // no capacity as of now so don't care
                 controller.playerController.TryTakeItem(item);
             }
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
         }
     }
 }

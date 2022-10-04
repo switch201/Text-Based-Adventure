@@ -11,6 +11,7 @@ using Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes;
 using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
 using Text_Based_Adventure.Engine.GameClasses;
 using Text_Based_Adventure.Engine.GameObjects.Creatures;
+using Text_Based_Adventure.Engine.UserInputs.MenuTrees;
 
 namespace Text_Based_Adventure.Engine
 {
@@ -69,7 +70,7 @@ namespace Text_Based_Adventure.Engine
             this.combatController2.AddCombatants(tempList);
             Util.wl($"You Start Combat against a");
             this.roomController.currentRoom.getNPCs().ForEach(x => Util.wl(Util.RandomIdentifier(x)));
-            this.combatController2.CombatLoop();
+            //this.combatController2.CombatLoop();
         }
 
         private void checkTimedEvents()
@@ -196,8 +197,10 @@ namespace Text_Based_Adventure.Engine
 
         public void TakeUserInputAndRespond()
         {
-            string input = Util.rl();
-            userInput.AcceptStringInput(input, this);
+            var tree = new MainGameMenuTree();
+            tree.StartMenuTree(this);
+            //string input = Util.rl();
+            //userInput.AcceptStringInput(input, this);
             checkTimedEvents();
             if(gameState.currentGameState == States.Combat)
             {

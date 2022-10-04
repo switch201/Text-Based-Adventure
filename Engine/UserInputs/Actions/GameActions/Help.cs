@@ -29,12 +29,13 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             else if (seperatedWords.Last() == "action")
             {
                 Util.fourthWall("Here are a list of available actions");
-                var combinedList = UserInput.getGameActionWords();
-                combinedList.AddRange(UserInput.GetSkillActionWords());
-                foreach (string keyWord in combinedList)
-                {
-                    Util.fourthWall(keyWord);
-                }
+                Util.fourthWall("Broke");
+                //var combinedList = UserInput.getGameActionWords();
+                //combinedList.AddRange(UserInput.GetSkillActionWords());
+                //foreach (string keyWord in combinedList)
+                //{
+                //    Util.fourthWall(keyWord);
+                //}
                 Util.fourthWall("Type 'help <actionName>' to get more info.");
             }
             else
@@ -49,6 +50,16 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
                     Util.fourthWall("Thats not a valid action, so I can't help you with that.");
                 }
             }
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
         }
     }
 }

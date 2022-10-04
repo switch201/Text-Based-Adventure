@@ -7,7 +7,9 @@ namespace Text_Based_Adventure.Engine.UserInputs.MenuTrees
 {
     public class MenuTree
     {
-        private List<MenuOption> MenuOptions;
+        protected List<MenuOption> MenuOptions;
+
+        protected string MenuStartText;
 
         public MenuTree()
         {
@@ -38,11 +40,18 @@ namespace Text_Based_Adventure.Engine.UserInputs.MenuTrees
 
         public void StartMenuTree(GameController controller)
         {
-            Util.fourthWall("Select one of the following options using using the numbers.");
+            if (String.IsNullOrEmpty(MenuStartText))
+            {
+                Util.fourthWall("Select one of the following options using using the numbers.");
+            }
+            else
+            {
+                Util.fourthWall(MenuStartText);
+            }
             
             MenuOptions.ForEach(option =>
             {
-                Util.fourthWall($"${MenuOptions.IndexOf(option)+1} : {option.PreSelectionText}");
+                Util.fourthWall($"{MenuOptions.IndexOf(option)+1} : {option.PreSelectionText}");
             });
             Util.fourthWall("type exit to exit.");
             var input = Util.rl();
@@ -51,7 +60,7 @@ namespace Text_Based_Adventure.Engine.UserInputs.MenuTrees
                 var index = -1;
                 if (ParseValidInput(input, out index))
                 {
-                    var nextOption = MenuOptions[index];
+                    var nextOption = MenuOptions[index-1];
                     if (!String.IsNullOrEmpty(nextOption.PostSelectionText))
                     {
                         Util.fourthWall(nextOption.PostSelectionText);
@@ -60,7 +69,8 @@ namespace Text_Based_Adventure.Engine.UserInputs.MenuTrees
                     {
                         // TODO need to figure this part out
                         // TODO may want to change the RespondToInput function to take in direct object and not parse scetence
-                        nextOption.Action.RespondToInput(controller, new List<string>() { });
+                        nextOption.Action.RespondToInput(controller);
+                        break;
                     }
                     if(nextOption.NextMenuTree != null)
                     {

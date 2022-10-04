@@ -20,6 +20,16 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions
                 "type 'pick <itemName>' to give it a try";
         }
 
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
+        }
+
         internal class LockOutCome : SkillCheckOutcome
         {
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.Controllers;
 
-namespace Text_Based_Adventure.Engine.InputActions.BattleActions
+namespace Text_Based_Adventure.Engine.UserInputs.BattleActions
 {
     class RunAway : BattleAction
     {
@@ -20,6 +20,16 @@ namespace Text_Based_Adventure.Engine.InputActions.BattleActions
         {
             //TODO FIX THIS WHOLE THING!
             controller.RunAway(); //TODO Conditions for running away here;
+        }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
         }
     }
 }

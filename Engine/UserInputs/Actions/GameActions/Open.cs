@@ -24,5 +24,15 @@ namespace Text_Based_Adventure.Engine.UserInputs.GameActions
             var items = controller.roomController.TryOpenContainer(itemName, controller.playerController.player);
             controller.playerController.TryTakeItems(items);
         }
+
+        public override void RespondToInput(GameController controller, string direcObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RespondToInput(GameController controller)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
