@@ -4,12 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects;
-using Text_Based_Adventure.GameObjects;
-using Text_Based_Adventure.Rooms;
+using Text_Based_Adventure.Engine.GameObjects.Rooms;
 
 namespace Text_Based_Adventure.Engine.Factories.Converters
 {
-    internal class RoomConverter : GameObjectConverter<Room>
+    internal class RoomConverter : Converter<Room>
     {
         public override Room? ReadJson(JsonReader reader, Type objectType, Room? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
@@ -26,14 +25,14 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
         protected override Room Create(Type objectType, JObject jObject)
         {
             var room = jObject.ToObject<Room>();
-            foreach (string item in jObject["Items"])
+            foreach (string item in jObject["Contents"])
             {
-                room.addItem(GameObjectFactory.CreateItem(item));
+                room.Contents.Add(GameObjectFactory.CreateGameObject<GameObject>(item));
             }
-            foreach (string item in jObject["Creatures"])
-            {
-                room.addNPC((NPC)GameObjectFactory.CreateCreature(item));
-            }
+            //foreach (string item in jObject["Creatures"])
+            //{
+            //    room.addNPC((NPC)GameObjectFactory.CreateCreature(item));
+            //}
             return room;
         }
     }

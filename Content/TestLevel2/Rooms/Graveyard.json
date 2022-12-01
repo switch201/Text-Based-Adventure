@@ -1,9 +1,15 @@
+//{
+//  "DescriptionText": "A creepy graveyard full of spook wooky stuff.",
+//  "EnterText": "Oh boy here you go, its a another generic grave yard.",
+//  "ExitText": "You march on through onwards and upward",
+//  "InspectionText": "DO you see dead people? I suppose you do.",
+//  "Creatures": [ "Skeletor" ],
+//  "Items": [],
+//  "RunModifier": 2
+//}
+
 {
-  "DescriptionText": "A creepy graveyard full of spook wooky stuff.",
-  "EnterText": "Oh boy here you go, its a another generic grave yard.",
-  "ExitText": "You march on through onwards and upward",
-  "InspectionText": "DO you see dead people? I suppose you do.",
-  "Creatures": [ "Skeletor" ],
-  "Items": [],
-  "RunModifier": 2
+  "Name": "Graveyard",
+  "Description": "Its a Room Filled with Dead People",
+  "Contents": []
 }

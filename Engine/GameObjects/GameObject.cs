@@ -1,113 +1,25 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
-using Text_Based_Adventure.Engine.InputActions;
-using System.Linq;
-using Text_Based_Adventure.Engine.UserInputs.GameActions.SkillActions;
-using Text_Based_Adventure.Engine.GameObjects.SkillChecks;
-using Text_Based_Adventure.Engine.Player;
-using Attribute = Text_Based_Adventure.Engine.GameObjects.Creatures.Attributes.Attribute;
+using Text_Based_Adventure.Engine.GameActions;
+using Text_Based_Adventure.Engine.MenuTrees;
 
-namespace Text_Based_Adventure.GameObjects
+namespace Text_Based_Adventure.Engine.GameObjects
+
 {
-    public abstract class GameObject
+    public enum GameObjectType
     {
-        public string Name;
+        Default,
+        Item,
+        Container,
+    }
+    //A Game Object is anything that can be seen or otherwise be detected in the game
+    internal class GameObject
+    {
+        public GameObjectType Type;
+        public string Name { get; set; }
+        public string Description { get; set; }
 
-        public string DescriptionText;
-
-        public string InspectionText;
-
-        public List<SkillCheckGroup> SkillChecks; // TODO maybe make Item only
-
-        public List<PassiveSkillCheck> PassiveChecks;
-
-        public List<string> SkillCheckNames;
-
-        public List<string> PassiveCheckNames;
-
-        public List<string> Identifiers;
-
-        public GameObject()
-        {
-            SkillChecks = new List<SkillCheckGroup>();
-            PassiveChecks = new List<PassiveSkillCheck>();
-            SkillCheckNames = new List<string>();
-            Identifiers = new List<string>();
-        }
-
-        public void Describe()
-        {
-            Util.wl(this.DescriptionText);
-        }
-
-        public void Inspect()
-        {
-            Util.wl(this.InspectionText);
-        }
-
-        // Checks to see if the given action can be performed on this game object
-        public bool isLocked(Verb action)
-        {
-            return this.SkillChecks.Any(x => x.IsLocked() && x.getTriggerAction() == action);
-        }
-
-        public bool hasEvent(Verb action)
-        {
-            return this.PassiveChecks.Any(x => x.TriggerAction == action && !x.Broken);
-        }
-
-        public void TriggerEvent(Verb action, PlayerObject playerObject)
-        {
-            var events = this.PassiveChecks.Where(x => x.TriggerAction == action && !x.Broken).ToList();
-            foreach(var e in events)
-            {
-
-                int result;
-                //TODO Combo attribute + skill rolls?
-                if (e.Attribute != Attribute.None)
-                {
-                    result = e.PerformSkillCheck(playerObject, e.Attribute);
-                }
-                else
-                {
-                    result = e.PerformSkillCheck(playerObject);
-                }
-
-                if (result > e.BestTarget)
-                {
-                    Util.wl("You dodge the dart");
-                }
-                else if (result > e.GoodTarget)
-                {
-                    Util.wl("You kinda dodge the dart");
-                }
-                else if (result > e.BadTarget)
-                {
-                    Util.wl("You don't dodge the dart");
-                }
-                else
-                {
-                    Util.wl("You messed up big");
-                }
-            }
-        }
-
-        public SkillCheckGroup getSkillCheckGroup(Verb action)
-        {
-            return this.SkillChecks.FirstOrDefault(x => x.IsLocked() && x.getTriggerAction() == action);
-        }
-
-        public ActionSkillCheck getActionSkillCheck(SkillAction action)
-        {
-            var lockedGroup = this.SkillChecks.SingleOrDefault(x => x.IsLocked());
-            if(lockedGroup != null)
-            {
-                return lockedGroup.SingleOrDefault(x => x.SkillAction == action);
-            }
-            return null;
-        }
+        public static List<GameAction> AvailbleActions = new List<GameAction>() { new Inspect() };
     }
 }

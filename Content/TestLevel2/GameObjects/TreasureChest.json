@@ -1,0 +1,8 @@
+{
+  "Name": "Wooden Chest",
+  "Description": "A Dusty Old Chest",
+  "Type": "Container",
+  "Inventory": [
+    "WoodenDoll"
+  ]
+}

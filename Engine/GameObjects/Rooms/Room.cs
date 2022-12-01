@@ -1,132 +1,36 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Text_Based_Adventure.Doors;
-using Text_Based_Adventure.Engine.GameObjects.Items;
-using Text_Based_Adventure.GameObjects;
+using Newtonsoft.Json;
 using System.Linq;
-using Text_Based_Adventure.Engine.GameObjects;
-using Text_Based_Adventure.Engine.GameObjects.Creatures;
 
-namespace Text_Based_Adventure.Rooms
+namespace Text_Based_Adventure.Engine.GameObjects.Rooms
 {
-    public class Room : GameObject
+    // A Room is well, a room. but it can also represent any "area" the player is able to enter.
+    // A room represents the local space and can be many sizes
+    internal class Room : GameObject
     {
-
-        protected Dictionary<string, Room> Exits;
-
-        public Dictionary<string, Door> Doors;
-
-        public string EnterText;
-
-        public string ExitText;
-
-        public int runModifier; // how easy is it to run away from a fight in this "Room"
-
+        // This is All things Except the Player that are in a given room.
+        //Could be NPCs, could be Scenary that does nothing,
+        // Could be items chests We don't know
         [JsonIgnore]
-        public List<NPC> NPCs;
+        public List<GameObject> Contents = new List<GameObject>();
 
-        [JsonIgnore]
-        public List<Item> Items;
+        public List<Exit> Exits = new List<Exit>();
 
-        public Room()
+        public List<Item> GetItems()
         {
-            Items = new List<Item>() { };
-            Exits = new Dictionary<string, Room>() { };
-            NPCs = new List<NPC>() { };
+            return Contents.Where(x => x is Item).ToList().ConvertAll(x => (Item)x);
         }
 
-        public Room Enter() {
-            Util.wl(this.EnterText);
-            return this;
-        }
-
-        public Room Exit(Room r) {
-            Util.wl(this.ExitText);
-            return r.Enter();
-        }
-
-        public Room Exit(string direction)
+        public List<Interactable> GetInteractables()
         {
-            return Exit(getExit(direction));
+            return Contents.Where(x => x is Interactable).ToList().ConvertAll(x => (Interactable)x);
         }
 
-        public Dictionary<string, Room> getExits()
+        public List<Container> GetContainers()
         {
-            return this.Exits;
-        }
-
-        public void setExits(Dictionary<string, Room> exits)
-        {
-            this.Exits = exits;
-        }
-
-        public Room getExit(string direction)
-        {
-            return Exits.GetValueOrDefault(direction);
-        }
-
-        public void setExit(string direction, Room room)
-        {
-            Exits.Add(direction, room);
-        }
-
-        public void addItem(Item item)
-        {
-            Items.Add(item);
-        }
-
-        public void addItems(List<Item> items)
-        {
-            this.Items.AddRange(items);
-        }
-
-        public Item getItem(string name)
-        {
-            return Util.NameOrIdentifier(this.Items, name);
-        }
-
-        public void setItems(List<Item> items)
-        {
-            this.Items = items;
-        }
-
-        public Item removeItem(string itemName)
-        {
-            var item = this.getItem(itemName);
-            this.Items.Remove(item);
-            return item;
-        }
-
-        public List<Item> getItems()
-        {
-            return this.Items;
-        }
-
-        public List<NPC> getNPCs()
-        {
-            return this.NPCs;
-        }
-
-        public void addNPC(NPC npc)
-        {
-            NPCs.Add(npc);
-        }
-
-        public NPC GetNPC(string name)
-        {
-            return Util.NameOrIdentifier(this.NPCs, name);
-        }
-
-        public bool removeNPC(NPC npc)
-        {
-            return NPCs.Remove(npc);
-        }
-
-        public void removeNPCs()
-        {
-            NPCs.Clear();
+            return Contents.Where(x => x is Container).ToList().ConvertAll(x => (Container)x);
         }
     }
 }

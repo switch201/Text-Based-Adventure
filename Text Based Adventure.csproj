@@ -8,16 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Engine\GameObjects\Items\SmallItems\Equipables\**" />
-    <Compile Remove="Engine\UserInputs\InputResults\**" />
-    <EmbeddedResource Remove="Engine\GameObjects\Items\SmallItems\Equipables\**" />
-    <EmbeddedResource Remove="Engine\UserInputs\InputResults\**" />
-    <None Remove="Engine\GameObjects\Items\SmallItems\Equipables\**" />
-    <None Remove="Engine\UserInputs\InputResults\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Content\TestLevel2\Creatures\Skeletor.json" />
+    <None Remove="Content\TestLevel2\GameObjects\OldTable.json" />
+    <None Remove="Content\TestLevel2\GameObjects\WoodenDoll.json" />
     <None Remove="Content\TestLevel2\Items\Greataxe.json" />
     <None Remove="Content\TestLevel2\Items\Handaxe.json" />
     <None Remove="Content\TestLevel2\Items\Javelin.json" />
@@ -48,6 +41,12 @@
     <Content Include="Content\TestLevel2\Creatures\Skeletor.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\TestLevel2\GameObjects\OldTable.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\GameObjects\WoodenDoll.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\TestLevel2\Items\Greataxe.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -66,7 +65,7 @@
     <Content Include="Content\TestLevel2\Items\Shortsword.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel2\Items\TreasureChest.json">
+    <Content Include="Content\TestLevel2\GameObjects\TreasureChest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel2\MonsterActions\Shortbow.json">
@@ -154,6 +153,6 @@
     </None>
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties content_4testlevel_4jsoncontent_4classes_4barbariantext_1json__JsonSchema="https://cdn.jsdelivr.net/gh/tarampampam/error-pages@latest/schemas/config/1.0.schema.json" content_4testlevel_4jsoncontent_4gameobjects_4rooms_4prisontext_1json__JsonSchema="https://cdn.jsdelivr.net/gh/tarampampam/error-pages@latest/schemas/config/1.0.schema.json" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties content_4testlevel_4jsoncontent_4gameobjects_4rooms_4prisontext_1json__JsonSchema="https://cdn.jsdelivr.net/gh/tarampampam/error-pages@latest/schemas/config/1.0.schema.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Text_Based_Adventure.Engine.GameObjects;
-using Text_Based_Adventure.Engine.GameObjects.Items;
-using Text_Based_Adventure.GameObjects;
 
 namespace Text_Based_Adventure
 {
-    class Util
+    static class Util
     {
         public static bool debugMode = true;
 
@@ -105,20 +103,20 @@ namespace Text_Based_Adventure
             return list.ElementAt(index);
         }
 
-        public static string RandomIdentifier(NPC npc)
-        {
-            var nameList = npc.Identifiers;
-            return Util.RandomFromList(nameList);
-        }
+        //public static string RandomIdentifier(NPC npc)
+        //{
+        //    var nameList = npc.Identifiers;
+        //    return Util.RandomFromList(nameList);
+        //}
 
         // TODO for now Gameobjects with the same name/identifier are identical.
         // Once there are multiple NPCs in one room that won't be the case
-        public static T NameOrIdentifier<T>(List<T> npcs, string nameOrIdentifier) where T : GameObject
-        {
-            return npcs
-                .Where(x => x.Name.ToLower().Equals(nameOrIdentifier) || x.Identifiers.Select(x => x.ToLower()).Contains(nameOrIdentifier))
-                .FirstOrDefault();
-        }
+        //public static T NameOrIdentifier<T>(List<T> npcs, string nameOrIdentifier) where T : GameObject
+        //{
+        //    return npcs
+        //        .Where(x => x.Name.ToLower().Equals(nameOrIdentifier) || x.Identifiers.Select(x => x.ToLower()).Contains(nameOrIdentifier))
+        //        .FirstOrDefault();
+        //}
 
         public static int Round(double number)
         {
@@ -135,6 +133,10 @@ namespace Text_Based_Adventure
             {
                 Util.wl($"{preText} a {itemName}");
             }
+        }
+        public static IEnumerable<(T item, int index)> WithIndex<T>(this IEnumerable<T> source)
+        {
+            return source.Select((item, index) => (item, index));
         }
     }
 }

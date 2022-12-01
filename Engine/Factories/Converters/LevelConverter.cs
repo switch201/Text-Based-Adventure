@@ -2,11 +2,12 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
+using Text_Based_Adventure.Engine.GameObjects.Rooms;
 using Text_Based_Adventure.Engine.Levels;
 
 namespace Text_Based_Adventure.Engine.Factories.Converters
 {
-    public class LevelConverter : JsonConverter<Level>
+    internal class LevelConverter : JsonConverter<Level>
     {
         protected string LevelPath;
 
@@ -23,13 +24,23 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
             {
                 var room1 = level.Rooms.Single(x => x.Name == (string)connection["Room1"]);
                 var room2 = level.Rooms.Single(x => x.Name == (string)connection["Room2"]);
-                room1.setExit((string)connection["ExitDirection"], room2);
-                room2.setExit((string)connection["EnterDirection"], room1);
+                room1.Exits.Add(new Exit()
+                {
+                    Direction = connection["ExitDirection"].ToObject<Direction>(),
+                    EnteringRoom = room2,
+                    Description = connection["ExitDirection"].ToObject<string>()
+                });
+                room2.Exits.Add(new Exit()
+                {
+                    Direction = connection["EnterDirection"].ToObject<Direction>(),
+                    EnteringRoom = room1,
+                    Description = connection["EnterDirection"].ToObject<string>()
+                });
             }
-            foreach(string gameClass in obj["GameClasses"])
-            {
-                level.GameClasses.Add(GameClassFactory.MakeClass(gameClass));
-            }
+            //foreach(string gameClass in obj["GameClasses"])
+            //{
+            //    level.GameClasses.Add(GameClassFactory.MakeClass(gameClass));
+            //}
             return level;
         }
 

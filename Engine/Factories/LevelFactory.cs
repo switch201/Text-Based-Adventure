@@ -7,7 +7,7 @@ using Text_Based_Adventure.Engine.Levels;
 
 namespace Text_Based_Adventure.Engine.Factories
 {
-    public static class LevelFactory
+    internal static class LevelFactory
     {
         public static Level? MakeLevel(string levelName)
         {
