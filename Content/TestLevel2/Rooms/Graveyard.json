@@ -11,5 +11,8 @@
 {
   "Name": "Graveyard",
   "Description": "Its a Room Filled with Dead People",
-  "Contents": []
+  "Contents": [
+    "AngryMan",
+    "NedStark"
+  ]
 }

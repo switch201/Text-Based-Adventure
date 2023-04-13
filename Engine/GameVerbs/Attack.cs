@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.Controllers;
+using Text_Based_Adventure.Engine.GameActions;
 using Text_Based_Adventure.Engine.GameObjects;
-using Text_Based_Adventure.Engine.MenuTrees;
 
-namespace Text_Based_Adventure.Engine.GameActions
+namespace Text_Based_Adventure.Engine.GameVerbs
 {
-    internal class Cancel : GameAction
+    internal class Attack : GameVerb
     {
         public override string KeyWord => throw new NotImplementedException();
 
-        public override MenuTreeResult PerformAction(GameController controller, MenuTreeResult incommingAction)
+        public override void PerformAction(GameController controller, GameAction action)
         {
-            incommingAction.ActionCanceled = true;
-            return incommingAction;
+            throw new NotImplementedException();
         }
 
         public override GameObject? SelectDirectObject(GameController controller)

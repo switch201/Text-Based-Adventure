@@ -37,6 +37,7 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
                     Description = connection["EnterDirection"].ToObject<string>()
                 });
             }
+            level.WorldBackStory = (string)obj["WorldBackStory"];
             //foreach(string gameClass in obj["GameClasses"])
             //{
             //    level.GameClasses.Add(GameClassFactory.MakeClass(gameClass));

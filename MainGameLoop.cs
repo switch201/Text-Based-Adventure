@@ -2,16 +2,19 @@
 using Text_Based_Adventure.Engine;
 using Text_Based_Adventure.Engine.Controllers;
 using Text_Based_Adventure.Engine.Factories;
-using Text_Based_Adventure.Engine.GameActions;
+using Text_Based_Adventure.Engine.GameVerbs;
 using Text_Based_Adventure.Engine.Games;
 using Text_Based_Adventure.Engine.Levels;
 using Text_Based_Adventure.Engine.MenuTrees;
+using Text_Based_Adventure.Engine.GameActions;
+using OpenAI_API;
+using System.Threading.Tasks;
 
 namespace Text_Based_Adventure
 {
     class MainGameLoop
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.Title = "Text Based Adventure";
 
@@ -25,22 +28,35 @@ namespace Text_Based_Adventure
             while (gameController.CurrentState != GameState.Exit)
             {
 
-                var currentAction = gameController.RunOverWorld();
+                GameAction currentAction = gameController.GetNextInGameAction();
 
-                //TODO Scripts listen here for player action, and check validity/react
-                // Maybe they do that in the function bellow...
-                currentAction.HasNext = true;
+                gameController.PerfomInGameAction(currentAction);
 
-                while (currentAction.HasNext == true)
+
+                if(gameController.CurrentState == GameState.Dialog)
                 {
-                    var previousAction = currentAction;
-                    currentAction = gameController.AttemptToPerformAction(currentAction);
-                    if (currentAction.ActionCanceled)
-                    {
-                        currentAction = previousAction;
-                    }
+                    Util.wl($"What do you want to say to {gameController.OpenAIManager.currentNPC.Name}? (Type 'goodbye' to leave dialog)'");
+                    var userInput = Util.rl();
 
+                    while (userInput != "goodbye")
+                    {
+                        Util.wl(await gameController.OpenAIManager.TalkToNPC(userInput));
+                        userInput = Util.rl();
+                    }
+                    gameController.CurrentState = GameState.Overworld;
                 }
+
+
+                //while (currentAction.HasNext == true)
+                //{
+                //    var previousAction = currentAction;
+                //    currentAction = gameController.AttemptToPerformAction(currentAction);
+                //    if (currentAction.ActionCanceled)
+                //    {
+                //        currentAction = previousAction;
+                //    }
+
+                //}
                 // interact with chest ^
 
                 // open, break, pick, leave

@@ -1,0 +1,14 @@
+{
+  "Name": "Ned Stark",
+  "Description": "This guy looks like Ned Stark from game of thrones",
+  "BackStory": "Go read a game of thrones. Or read as much as you can about the character ned stark from the book. this character is ned starck from a game of thrones.",
+  "Knowledge": "Ned Knows everything he knows in the a game of thrones book.",
+  "Motives": "Same motives he has in a game of thrones",
+  "Fears": "Same Fears as ned stark from a game of thrones",
+  "Inventory": [
+    "Shortsword",
+    "Javelin",
+    "Handaxe"
+  ],
+  "Type": "NPC"
+}

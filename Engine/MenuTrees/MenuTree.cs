@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.Controllers;
-using Text_Based_Adventure.Engine.GameActions;
+using Text_Based_Adventure.Engine.GameVerbs;
 using Text_Based_Adventure.Engine.GameObjects;
 
 namespace Text_Based_Adventure.Engine.MenuTrees
 {
     internal abstract class MenuTree
     {
-        public abstract List<MenuOption> Options { get; }
+        public List<MenuOption> Options = new List<MenuOption>()
+        {
+            //new MenuOption("cancel", new Cancel())
+        };
 
         public abstract string StartingText { get; }
 
-        public MenuOption PickSelection()
+        public MenuOption PickSelection(bool cancel = false)
         {
             var options = this.Options;
+            if(cancel)
+            {
+                options.Add(new MenuOption("cancel", new CancelObject()));
+            }
             Util.fourthWall(StartingText);
             foreach (var (option, index) in Util.WithIndex(options))
             {

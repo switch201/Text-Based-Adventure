@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Text_Based_Adventure.Engine.GameActions;
+using Text_Based_Adventure.Engine.GameVerbs;
 
 namespace Text_Based_Adventure.Engine.GameObjects
 {
     internal class Interactable : GameObject
     {
-        public List<GameAction> Interactions = new List<GameAction>();
+        public List<GameVerb> Interactions = new List<GameVerb>();
     }
 }

@@ -5,27 +5,17 @@ using Text_Based_Adventure.Engine.Controllers;
 using Text_Based_Adventure.Engine.GameObjects;
 using System.Linq;
 using Text_Based_Adventure.Engine.MenuTrees;
+using Text_Based_Adventure.Engine.GameActions;
 
-namespace Text_Based_Adventure.Engine.GameActions
+namespace Text_Based_Adventure.Engine.GameVerbs
 {
-    internal class Inspect : GameAction
+    internal class Inspect : GameVerb
     {
         public override string KeyWord => "inpsect";
 
-        public override MenuTreeResult PerformAction(GameController controller, MenuTreeResult incommingAction)
+        public override void PerformAction(GameController controller, GameAction action)
         {
-            Util.wl(incommingAction.DirectObject.Description);
-            if(incommingAction.DirectObject is Item)
-            {
-                Util.wl($"You could pick this up");
-            }
-            return new MenuTreeResult()
-            {
-                PlayerAction = this,
-                DirectObject = incommingAction.DirectObject,
-                HasNext = false,
-                ActionSuccess = true
-            };
+            Util.wl(action.DirectObject.Description);
         }
 
         public override GameObject SelectDirectObject(GameController controller)

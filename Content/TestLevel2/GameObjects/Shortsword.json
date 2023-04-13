@@ -1,9 +1,8 @@
 {
-  "Type": "Weapon",
   "DiceSet": {
     "Count": 1,
     "Sides": 6,
-    "Mod":  0
+    "Mod": 0
   },
   "Weight": 2,
   "DamageType": "Piercing",
@@ -12,5 +11,7 @@
     "Finesse"
   ],
   "Weight": "2 lb",
-  "HoldEffects": []
+  "HoldEffects": [],
+  "Type": "Item",
+  "Description":  "A Simple short sword like any other sword carried by a member of the town guard."
 }

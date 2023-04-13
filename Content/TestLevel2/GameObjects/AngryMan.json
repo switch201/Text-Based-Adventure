@@ -1,0 +1,14 @@
+{
+  "Name": "Dale Heartern",
+  "Description": "A man Rambiling in some sort of Stooper. He has that 'thousand yard stare' where it doesn't seem he is fully concious yet hee is awake",
+  "BackStory": "Dale never learned how to properly control his anger. when he was young he was beaten bloody by his dad. He was taught that anger is the only valid emotion for a man. Growing up he would constantly get into fights. and as he got older he fell in with the wrong crowd. He has killed many people, and sometimes would kill them just for looking at him the wrong way.",
+  "Knowledge": "Dale is in a blind rage. ALl he knows is that he is angry. He is not a very smart guy, but he is on the hunt for the person who betrayed him, and he will form connections and take actions to try and find said person. but he often loses track due to his anger. If the player trys to talk to him or engage him with him in any way. Dale will attack the player.",
+  "Motives": "Dale was betrayed and is searching for the person that betrayed him. that is the only thing that will fix his rage in the long term. For now he just wants to find someone weaker than him to pick on.",
+  "Fears": "Losing",
+  "Inventory": [
+    "Shortsword",
+    "Javelin",
+    "Handaxe"
+  ],
+  "Type": "NPC"
+}

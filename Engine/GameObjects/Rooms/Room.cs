@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using System.Linq;
+using Text_Based_Adventure.Engine.GameObjects.Actors;
 
 namespace Text_Based_Adventure.Engine.GameObjects.Rooms
 {
@@ -15,6 +16,12 @@ namespace Text_Based_Adventure.Engine.GameObjects.Rooms
         // Could be items chests We don't know
         [JsonIgnore]
         public List<GameObject> Contents = new List<GameObject>();
+
+        [JsonProperty("contents")]
+        private List<GameObject> ReadContents
+        {
+            get { return Contents; }
+        }
 
         public List<Exit> Exits = new List<Exit>();
 
@@ -31,6 +38,11 @@ namespace Text_Based_Adventure.Engine.GameObjects.Rooms
         public List<Container> GetContainers()
         {
             return Contents.Where(x => x is Container).ToList().ConvertAll(x => (Container)x);
+        }
+
+        public List<NPC> GetNPCs()
+        {
+            return Contents.Where(x => x is NPC).ToList().ConvertAll(x => (NPC)x);
         }
     }
 }

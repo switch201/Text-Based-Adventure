@@ -1,0 +1,14 @@
+{
+  "Name": "Jeff Mercat",
+  "Description":  "An old man with bright Robes and jewlery",
+  "BackStory": "Raised from a young age to be frugal. His father always had trouble making enough money to support his family of 6. In his later years Jeff became quite successful as a traveling merchant, but never learned how to be generous or helpful to others. Jeff always made sure he got the best deal, despite the hardships it may have caused others.",
+  "Knowledge": "Jeff does not where he is, All he knows about the area is that it is very large. He has walked far and wide, and has still not seen anything resebling an edge. Jeff is weary of others and will never tell the player his real name. He can be refered to as the SLy Merchant",
+  "Motives": "Jeff is motived by money above all else. He does not wish to harm people directly though, and wishes not to kill or fight people if he can avoid it.",
+  "Fears": "Jeff fears above all else struggling financially and becoming poor. He does not want to go back to how things were when he was a child. Revealing his name.",
+  "Inventory": [
+    "Shortsword",
+    "Javelin",
+    "Handaxe"
+  ],
+  "Type": "NPC"
+}

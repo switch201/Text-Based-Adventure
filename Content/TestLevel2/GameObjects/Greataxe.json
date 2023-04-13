@@ -1,5 +1,5 @@
 {
-  "Type": "Weapon",
+  "Type": "Item",
   "DiceSet": {
     "Count": 1,
     "Sides": 12,
@@ -13,4 +13,5 @@
   ],
   "Weight": "7 lb",
   "HoldEffects": []
+  "Type": "Item",
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.GameObjects;
+using Text_Based_Adventure.Engine.GameObjects.Actors;
 
 namespace Text_Based_Adventure.Engine.Factories.Converters
 {
@@ -55,6 +56,15 @@ namespace Text_Based_Adventure.Engine.Factories.Converters
                     container.Inventory.Add(GameObjectFactory.CreateGameObject<Item>(containerItem));
                 }
                 return container;
+            }
+            else if (gameObjectType == GameObjectType.NPC)
+            {
+                var npc = jObject.ToObject<NPC>();
+                foreach (string containerItem in jObject["Inventory"])
+                {
+                    npc.Inventory.Add(GameObjectFactory.CreateGameObject<Item>(containerItem));
+                }
+                return npc;
             }
             return jObject.ToObject<GameObject>();
 

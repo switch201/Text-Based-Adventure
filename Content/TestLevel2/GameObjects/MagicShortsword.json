@@ -1,0 +1,19 @@
+{
+  "DiceSet": {
+    "Count": 1,
+    "Sides": 6,
+    "Mod": 0
+  },
+  "Weight": 2,
+  "DamageType": "Piercing",
+  "Properties": [
+    "Light",
+    "Finesse"
+  ],
+  "Weight": "2 lb",
+  "HoldEffects": [
+    "PieBelly"
+  ],
+  "Type": "Item",
+  "Description":  "It seems just like any other sword. but really it imbued with magical powers. this sword has the power to make it wielder feel satted and full even if the weilder has not eaten in some time."
+}

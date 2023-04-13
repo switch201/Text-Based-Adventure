@@ -1,0 +1,14 @@
+{
+  "Name": "Jane Doe",
+  "Description":  "A small young woman, with a childlike deminor.",
+  "BackStory": "Jane always had a soft spot in her heart for anyone she met. But this was more of a curse than a blessing. She ended up putting her trust into the wrong people in the past, and as a result those she loved the most got hurt. She never fully understood the error in her ways.  She is aloof and very trusting, and is always friendly to strangers.",
+  "Knowledge": "Jane just follows Jeff around because thats all she knows how to do. Shes somewhat confused and scared, but knows that she will be alright if she sticks with Jeff and does as he says. She Has a feeling there is more to this world than she knows but che can't quite see why she feels that way. She knows about a town 5 miles north of here.",
+  "Motives": "Jane just wants to make sure everyone is happy, and get enjoyment from pleasing others. She will do this even if she knows deep down that it wrong.",
+  "Fears": "being alone.",
+  "Inventory": [
+    "MagicShortsword",
+    "PumpkinPie",
+    "WoodenDoll"
+  ],
+  "Type": "NPC"
+}

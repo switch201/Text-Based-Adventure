@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using Text_Based_Adventure.Engine.Controllers;
-using Text_Based_Adventure.Engine.GameActions;
+using Text_Based_Adventure.Engine.GameVerbs;
 using Text_Based_Adventure.Engine.GameObjects;
 
 namespace Text_Based_Adventure.Engine.MenuTrees
 {
     internal class MenuTreeResult
     {
-        public GameAction PlayerAction;
+        public GameVerb PlayerAction;
         public GameObject DirectObject;
         public GameObject IndirectObject;
         public bool ActionSuccess;
@@ -18,6 +18,6 @@ namespace Text_Based_Adventure.Engine.MenuTrees
     }
     internal abstract class ActionMenuTree : MenuTree
     {
-        public abstract MenuTreeResult StartMenuTree(GameController controller);
+
     }
 }

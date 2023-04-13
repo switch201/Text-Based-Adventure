@@ -5,9 +5,9 @@
 //using Text_Based_Adventure.Engine.GameObjects;
 //using Text_Based_Adventure.Engine.MenuTrees;
 
-//namespace Text_Based_Adventure.Engine.GameActions
+//namespace Text_Based_Adventure.Engine.GameVerbs
 //{
-//    internal class Drop : GameAction
+//    internal class Drop : GameVerb
 //    {
 //        public override string KeyWord => "drop";
 

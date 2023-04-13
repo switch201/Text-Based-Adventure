@@ -6,6 +6,11 @@
   //"GameClasses": [
   //  "Barbarian"
   //],
+
+  "WorldBackStory": "The players and all NPCs are dead and trapped in purgatory. You play as the NPCs. The NPCs do not Know that they are dead, unless their knowledge prompt states otherwise. The NPCs do not realize they are in Purgatory, unless otherwise stated in their knowledge prompt. The NPCs are free to wander around the world and make of it what they will. They don't really remember how they came into purgatory, but they don't question it either. Refer back to these rules before every respone.",
+
+  "Additional Info": "None of the NPCs know what purgatory is and should never say purgatory",
+
   "Connections": [
     {
       "Room1": "TreasureRoom",

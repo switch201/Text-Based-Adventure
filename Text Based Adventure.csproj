@@ -9,6 +9,9 @@
 
   <ItemGroup>
     <None Remove="Content\TestLevel2\Creatures\Skeletor.json" />
+    <None Remove="Content\TestLevel2\GameObjects\AngryMan.json" />
+    <None Remove="Content\TestLevel2\GameObjects\JaneDoe.json" />
+    <None Remove="Content\TestLevel2\GameObjects\NedStark.json" />
     <None Remove="Content\TestLevel2\GameObjects\OldTable.json" />
     <None Remove="Content\TestLevel2\GameObjects\WoodenDoll.json" />
     <None Remove="Content\TestLevel2\Items\Greataxe.json" />
@@ -20,6 +23,7 @@
     <None Remove="Content\TestLevel2\Items\TreasureChest.json" />
     <None Remove="Content\TestLevel2\MonsterActions\Shortbow.json" />
     <None Remove="Content\TestLevel2\MonsterActions\Shortsword.json" />
+    <None Remove="Content\TestLevel2\NPCs\ScaredMerchant.json" />
     <None Remove="Content\TestLevel2\Rooms\Graveyard.json" />
     <None Remove="Content\TestLevel2\Rooms\TreasureRoom.json" />
     <None Remove="Content\TestLevel2\StatusEffects\PieBelly.json" />
@@ -41,28 +45,37 @@
     <Content Include="Content\TestLevel2\Creatures\Skeletor.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\TestLevel2\GameObjects\AngryMan.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\GameObjects\JaneDoe.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\GameObjects\NedStark.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\TestLevel2\GameObjects\OldTable.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel2\GameObjects\WoodenDoll.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel2\Items\Greataxe.json">
+    <Content Include="Content\TestLevel2\GameObjects\Greataxe.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel2\Items\Handaxe.json">
+    <Content Include="Content\TestLevel2\GameObjects\Handaxe.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel2\Items\Javelin.json">
+    <Content Include="Content\TestLevel2\GameObjects\Javelin.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel2\Items\MagicShortsword.json">
+    <Content Include="Content\TestLevel2\GameObjects\MagicShortsword.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel2\Items\Pumpkinpie.json">
+    <Content Include="Content\TestLevel2\GameObjects\Pumpkinpie.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\TestLevel2\Items\Shortsword.json">
+    <Content Include="Content\TestLevel2\GameObjects\Shortsword.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel2\GameObjects\TreasureChest.json">
@@ -72,6 +85,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel2\MonsterActions\Shortsword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2\GameObjects\ScaredMerchant.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TestLevel2\Rooms\Graveyard.json">
@@ -136,12 +152,20 @@
   <ItemGroup>
     <PackageReference Include="Figgle" Version="0.4.0" />
     <PackageReference Include="Json.Net" Version="1.0.33" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="OpenAI" Version="1.6" />
     <PackageReference Include="WeCantSpell.Hunspell" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Content\TestLevel2\Items\" />
     <Folder Include="Content\TestLevel\JsonContent\Classes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Content\TestLevel2\NPCs\ScaredMerchant.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

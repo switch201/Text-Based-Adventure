@@ -1,37 +1,20 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Text;
-//using Text_Based_Adventure.Engine.Controllers;
-//using Text_Based_Adventure.Engine.GameActions;
-//using Text_Based_Adventure.Engine.GameObjects;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Text_Based_Adventure.Engine.Controllers;
+using Text_Based_Adventure.Engine.GameVerbs;
+using Text_Based_Adventure.Engine.GameObjects;
+using System.Linq;
 
-//namespace Text_Based_Adventure.Engine.MenuTrees
-//{
-//    internal class ObjectFirstMenuTree : ActionMenuTree
-//    {
-//        private List<MenuOption> ObjectOptions = new List<MenuOption>();
-//        public override List<MenuOption> Options => ObjectOptions;
+namespace Text_Based_Adventure.Engine.MenuTrees
+{
+    internal class ObjectFirstMenuTree : ActionMenuTree
+    {
+        public override string StartingText => "What do you want to interact with?";
 
-//        public override string StartingText => "Select Something to Interact With it.";
-
-//        public override MenuTreeResult StartMenuTree(GameController controller)
-//        {
-//            Interactable directObject = this.PickSelection().Selection;
-//            GameAction action = directObject.SelectAction("");
-//            var tree = new GameActionMenuTree<GameAction>()
-//            return new MenuTreeResult()
-//            {
-//                PlayerAction = action,
-//                DirectObject = directObject
-//            };
-//        }
-
-//        public void SetObjectOptions<T>(List<T> gameObjects) where T : GameObject
-//        {
-//            foreach (var gameObject in gameObjects)
-//            {
-//                ObjectOptions.Add(new MenuOption(gameObject.Name, gameObject));
-//            }
-//        }
-//    }
-//}
+        public ObjectFirstMenuTree(List<GameObject> gameObjects)
+        {
+            this.Options.AddRange(gameObjects.Select(x => new MenuOption(x.Name, x)).ToList());
+        }
+    }
+}
